@@ -1,0 +1,35 @@
+{
+  "name": "bankroller",
+  "version": "0.0.0",
+  "description": "Minimalist Funding Portal",
+  "author": "Ben Vacha",
+  "homepage": "https://github.com/benvacha/bankroller",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benvacha/bankroller.git"
+  },
+  "keywords": [
+    "bank",
+    "roller",
+    "bankroller",
+    "stripe",
+    "funding"
+  ],
+  "bugs": {
+    "url": "https://github.com/benvacha/bankroller/issues"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "express": "~4.10.x",
+    "jade": "~1.8.x",
+    "multer": "~0.1.6",
+    "stripe": "~3.0.2"
+  }
+}

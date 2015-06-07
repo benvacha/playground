@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>bankroller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:700,600,400,300">
+    <link type="text/css" rel="stylesheet" href="/styles/index.css">
+    <script type="text/javascript" src="/scripts/jquery.js"></script>
+    <script type="text/javascript" src="/scripts/stripe.js"></script>
+    <script type="text/javascript" src="/scripts/index.js"></script>
+</head>
+<body>
+    <div class="body">
+        <div class="calltoaction">
+            <a href="#checkout">Support Us</a>
+        </div>
+        <div class="content">
+            <h1>Sample Project</h1>
+            <h2>A sample project to help the community.</h2>
+            <img src="images/image-one.png" />
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt nibh id aliquam fringilla. Maecenas efficitur justo ante. Nullam fermentum fringilla porta. Proin dictum lectus eget congue accumsan. Donec ex libero, faucibus in commodo sed, semper eget risus. In vitae purus vestibulum, maximus justo sed, fermentum lectus. In rutrum semper tellus. Maecenas non pharetra erat. Duis non augue rutrum, feugiat tortor vitae, tempor tortor. Nam vel augue sit amet nunc ullamcorper dictum quis non lorem. Aenean condimentum ultricies odio, vitae mollis est posuere eget. Quisque fringilla in ipsum non blandit. Nunc volutpat tortor et pharetra fringilla.
+            </p>
+            <p>
+                Curabitur consectetur orci nec urna faucibus, ac tincidunt nibh semper. Ut imperdiet mi et ante molestie, eget posuere velit efficitur. Suspendisse tincidunt purus elit, sed tincidunt augue malesuada in. Donec a urna mattis, egestas mi scelerisque, blandit tortor. Vestibulum sed nibh augue. Praesent ultricies euismod sem, ac facilisis nulla molestie dapibus. Sed vitae sollicitudin velit. In dapibus mi quam, vel rhoncus dui feugiat non. Maecenas euismod, nulla in placerat egestas, massa sem convallis massa, at tincidunt ante dolor laoreet tortor. Praesent vel sem mauris. Nulla suscipit libero sed ipsum lacinia, nec ultricies sem cursus. Maecenas tristique nibh non libero dictum, eu tristique diam interdum.
+            </p>
+            <img src="images/image-two.png" />
+            <p>
+                Curabitur eu tincidunt lacus. Duis mauris arcu, dignissim sed consectetur eget, varius non dui. Vivamus sit amet mauris aliquam, volutpat mauris vitae, sodales odio. Aenean ut dui efficitur, dictum metus in, vestibulum ipsum. Sed ac iaculis est, non iaculis massa. Sed vitae dui fermentum, laoreet augue dictum, mollis ante. Aliquam semper tincidunt commodo. Praesent sed eleifend elit. Cras sollicitudin sollicitudin enim ut congue. Morbi at metus iaculis, tempor mauris at, facilisis nunc. Aliquam enim elit, molestie eu diam ut, consequat ornare risus.
+            </p>
+            <p>
+                Nullam ac auctor risus. Cras sit amet justo fringilla, cursus augue sit amet, facilisis ante. Maecenas fermentum ante quis odio efficitur congue. Vestibulum non porta urna. Pellentesque semper neque dui, nec congue velit mollis vel. Nullam viverra pulvinar euismod. Integer vel est nec odio elementum congue et vitae est. Suspendisse finibus nisi efficitur mollis gravida. Aliquam blandit, dolor et tempor commodo, diam ex vulputate elit, nec convallis purus nulla non quam. Cras fringilla ultrices dolor sed eleifend. Nam posuere arcu eu fermentum lacinia. Vestibulum non lectus hendrerit, vehicula ipsum in, rutrum diam. Vestibulum sit amet quam eros. Aenean fermentum, neque ac ornare tincidunt, purus ipsum bibendum felis, molestie sagittis metus sem quis felis. Donec iaculis neque nisl, et gravida arcu aliquet ut.
+            </p>
+            <p>
+                Morbi mauris libero, pretium laoreet mollis at, vulputate ut nulla. Aliquam imperdiet in orci ut egestas. Nunc tristique augue sit amet mauris elementum, lobortis ultrices ipsum rutrum. Vestibulum iaculis velit vulputate purus scelerisque pretium eget at eros. Sed sollicitudin suscipit dolor, vitae tristique elit. Etiam bibendum mi id metus pellentesque ultrices. Nulla egestas viverra orci venenatis aliquam. Donec eget libero tempus, dictum risus ut, volutpat est. Praesent sed egestas velit.
+            </p>
+        </div>
+        <div class="checkout" id="checkout">
+            <h2>Support Us</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt nibh id aliquam fringilla. Maecenas efficitur justo ante.
+            </p>
+            <form id="checkout-form">
+                <h3>Amount</h3>
+                <div class="cell amount">
+                    <label>Amount (USD)</label>
+                    <input type="text" />
+                </div>
+                <h3>Card Information</h3>
+                <div class="cell card">
+                    <label>Name</label>
+                    <input type="text" />
+                </div>
+                <div class="cell card">
+                    <label>Email</label>
+                    <input type="text" />
+                </div>
+                <div class="cell card">
+                    <label>Number</label>
+                    <input type="text" />
+                </div>
+                <div class="cell card">
+                    <label>Expiration Month</label>
+                    <input type="text" />
+                </div>
+                <div class="cell card">
+                    <label>Expiration Year</label>
+                    <input type="text" />
+                </div>
+                <div class="cell card">
+                    <label>CVC</label>
+                    <input type="text" />
+                </div>
+                <h3>Reward</h3>
+                <div class="cell reward">
+                    <input type="radio" name="reward" value="reward-one"/>
+                    <label class="reward">$1 or more</label>
+                    <p>
+                        <b>Name On Website</b><br />
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt nibh id aliquam fringilla. Maecenas efficitur justo ante.
+                    </p>
+                </div>
+                <div class="cell reward">
+                    <input type="radio" name="reward" value="reward-two" />
+                    <label class="reward">$20 or more</label>
+                    <p>
+                        <b>A Super Cool T-Shirt</b><br />
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt nibh id aliquam fringilla. Maecenas efficitur justo ante.
+                    </p>
+                </div>
+                <div class="cell reward">
+                    <input type="radio" name="reward" value="reward-three" />
+                    <label class="reward">$1,000 or more</label>
+                    <p>
+                        <b>Invitation To Opening Celebration</b><br />
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt nibh id aliquam fringilla. Maecenas efficitur justo ante.
+                    </p>
+                </div>
+                <input type="submit" value="Support Us" />
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <ul>
+            <li>
+                <a href="https://stripe.com">Stripe</a>
+            </li>
+            <li>
+                <a href="https://heroku.com">Heroku</a>
+            </li>
+            <li class="right">
+                <a href="https://github.com/benvacha/bankroller">Bankroller</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

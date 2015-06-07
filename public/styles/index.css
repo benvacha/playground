@@ -1,0 +1,261 @@
+/* */
+
+/* window */
+html, body {
+    margin:0px;
+    width:100%;
+    height:100% !important;
+    height:auto;
+    min-height:100%;
+}
+div, a, form, label, input {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -webkit-background-clip:padding;
+    -moz-background-clip:padding;
+    background-clip:padding-box;
+}
+.cleared {
+    position:relative;
+    float:none;
+    clear:both;
+    margin:0px;
+    width:100%;
+    height:0px;
+    padding:0px;
+}
+ 
+/* body and sticky footer */
+.body {
+    position:relative;
+    margin:0px auto;
+    width:960px;
+    height:auto !important;
+    height:100%;
+    min-height:100%;
+    padding:0px;
+    font-family: 'Open Sans', sans-serif;
+}
+.body:after, .footer {
+    content:"";
+    position:relative;
+    display:block;
+    clear:both;
+    margin:0px;
+    width:100%;
+    /* footer height and padding */
+    height:30px;
+    padding:0px;
+}
+.footer {
+    /* negative footer height + padding */
+    margin-top:-30px;
+}
+.footer ul,
+.footer li,
+.footer a {
+    position:relative;
+    display:block;
+    margin:0px;
+    width:auto;
+    height:auto;
+    padding:0px;
+    border:none;
+    font-family: 'Open Sans', sans-serif;
+    list-style:none outside none;
+}
+.footer ul:after,
+.footer li:after {
+    content:'';
+    display:block;
+    clear:both;
+}
+.footer ul {
+    
+}
+.footer ul li {
+    float:left;
+}
+.footer ul li.right {
+    float:right;
+}
+.footer ul li a {
+    padding:0px 15px;
+    line-height:30px;
+    color:#666;
+    text-decoration:none;
+}
+.footer ul li a:hover {
+    color:#333;
+}
+
+/* call to action */
+.calltoaction {
+    position:relative;
+    display:none;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:25px 25px 0px 25px;
+}
+.calltoaction a {
+    position:relative;
+    display:block;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:5px;
+    color:#333;
+    background-color:#CCC;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    text-align:center;
+    text-decoration:none;
+    font-weight:bold;
+    font-family:'Open Sans', sans-serif;
+}
+.calltoaction a:hover {
+    text-decoration:none;
+    color:#CCC;
+    background-color:#333;
+}
+
+/* content */
+.content {
+    position:relative;
+    float:left;
+    margin:0px;
+    width:700px;
+    height:auto;
+    min-height:500px;
+    padding:15px;
+}
+.content img {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+}
+
+/* checkout */
+.checkout {
+    position:relative;
+    float:right;
+    margin:50px 0px 0px 0px;
+    width:260px;
+    height:auto;
+    min-height:300px;
+    padding:15px;
+    -webkit-box-shadow:2px 2px 15px 3px rgba(0,0,0,.25);
+    box-shadow:2px 2px 15px 3px rgba(0,0,0,.25);
+}
+.checkout h1, .checkout h2, .checkout h3 {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    color:#333;
+}
+.checkout h3 {
+    margin:10px 0px;
+}
+.checkout p {
+    position:relative;
+    margin:0px 0px 10px 0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    color:#666;
+}
+.checkout .cell {
+    position:relative;
+    margin:0px;
+    width:auto;
+    height:auto;
+    padding:0px;
+}
+.checkout form {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+}
+.checkout form label {
+    position:relative;
+    margin:0px 0px 0px 5px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    color:#333;
+}
+.checkout form label.reward {
+    margin-left:5px;
+    width:auto;
+    font-weight:bold;
+    font-size:18px;
+    vertical-align:bottom;
+}
+.checkout form input {
+    position:relative;
+    margin:3px 0px 10px 0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    font-family: 'Open Sans', sans-serif;
+    font-size:13px;
+}
+.checkout form input[type=text] {
+    padding:5px 8px;
+    border:2px solid #CCC;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+.checkout form input[type=radio] {
+    margin:10px 0px 5px 3px;
+    width:auto;
+}
+.checkout form input[type=submit] {
+    margin-top:15px;
+    padding:5px 8px;
+    border:2px solid #CCC;
+    background-color:#CCC;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    color:#333;
+    font-weight:bold;
+}
+.checkout form input[type=submit]:hover {
+    color:#CCC;
+    background-color:#333;
+}
+
+/* responsive */
+@media screen and (max-width:960px) {
+    
+    .body {
+        margin:0px;
+        width:100%;
+    }
+    
+    .calltoaction {
+        display:block;
+    }
+    
+    .content {
+        float:none;
+        width:100%;
+    }
+    
+    .checkout {
+        float:none;
+        margin:0px;
+        width:100%;
+        -webkit-box-shadow:none;
+        box-shadow:none;
+    }
+    
+}
