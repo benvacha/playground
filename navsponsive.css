@@ -1,0 +1,162 @@
+/* navsponsive : github.com/benvacha/navsponsive :: v0.0.1 : June 2014 */
+
+/*** 
+	Static Configuration 
+***/
+
+ul.navsponsive, ul.navsponsive ul, ul.navsponsive li,
+ul.navsponsive span, ul.navsponsive a {
+	position:relative;
+	display:block;
+	margin:0px;
+	padding:0px;
+	border:none;
+	width:auto;
+	height:auto;
+	list-style:none outside none;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-background-clip:padding;
+	-moz-background-clip:padding;
+	background-clip:padding-box;
+}
+ul.navsponsive span, ul.navsponsive a {
+	text-decoration:none;
+	cursor:pointer;
+	white-space:nowrap;
+}
+/* 1st */
+ul.navsponsive {
+	
+}
+ul.navsponsive:after {
+	content:'';
+	display:block;
+	clear:both;
+}
+ul.navsponsive li, ul.navsponsive.left li,
+ul.navsponsive li.left, ul.navsponsive.right li.left {
+	float:left;
+}
+ul.navsponsive.right li, ul.navsponsive li.right {
+	float:right;
+}
+ul.navsponsive li a, ul.navsponsive li span {
+	
+}
+/* 2nd, 3rd */
+ul.navsponsive li ul, ul.navsponsive li ul li ul,
+ul.navsponsive li.left ul, ul.navsponsive li ul li.left ul,
+ul.navsponsive.right li.left ul, ul.navsponsive.right li ul li.left ul {
+	position:absolute;
+	z-index:1;
+	display:none;
+	left:0%;
+	right:auto;
+	min-width:100%;
+}
+ul.navsponsive.right li ul, ul.navsponsive.right li ul li ul,
+ul.navsponsive li.right ul, ul.navsponsive li ul li.right ul {
+	left:auto;
+	right:0%;
+}
+ul.navsponsive li ul:after, ul.navsponsive li ul li ul:after {
+	content:'';
+	display:block;
+	clear:both;
+}
+ul.navsponsive li ul li, ul.navsponsive li ul li ul li {
+	float:none;
+	min-width:100%;
+}
+ul.navsponsive li ul li a, ul.navsponsive li ul li span,
+ul.navsponsive li ul li ul li a, ul.navsponsive li ul li ul li span {
+	
+}
+
+/*** 
+	Dynamic Configuration 
+***/
+
+/* 2nd */
+ul.navsponsive li:hover ul {
+	display:block;
+	top:100%;
+	bottom:auto;
+}
+ul.navsponsive.up li:hover ul {
+	display:block;
+	top:auto;
+	bottom:100%;
+}
+ul.navsponsive li:hover ul li ul,
+ul.navsponsive.up li:hover ul li ul {
+	display:none;
+}
+/* 3rd */
+ul.navsponsive li ul li:hover ul {
+	display:block;
+	top:0%;
+	left:100%;
+}
+ul.navsponsive.up li ul li:hover ul {
+	display:block;
+	top:auto;
+	bottom:0%;
+	left:100%;
+}
+ul.navsponsive.right li ul li:hover ul {
+	left:auto;
+	right:100%;
+}
+
+/*** 
+	Style Configuration 
+***/
+
+/* 1st */
+ul.navsponsive {
+	background-color:#CCC;
+}
+ul.navsponsive li a, ul.navsponsive li span {
+	padding:5px 15px;
+	color:#333;
+	background-color:#999;
+}
+ul.navsponsive li a:hover, ul.navsponsive li span:hover {
+	color:#FFF;
+}
+/* 2nd */
+ul.navsponsive li ul {
+	
+}
+ul.navsponsive li ul li a, ul.navsponsive li ul li span {
+	padding:8px 15px 10px 20px;
+	color:#FFF;
+	background-color:#666;
+	border:1px solid #666;
+}
+ul.navsponsive li ul li a:hover, ul.navsponsive li ul li span:hover {
+	color:#09C;
+	background-color:#FFF;
+}
+/* 3rd */
+ul.navsponsive li ul li ul {
+	
+}
+ul.navsponsive li ul li ul li a, ul.navsponsive li ul li ul li span {
+	padding:8px 15px 10px 20px;
+	color:#FFF;
+	background-color:#333;
+	border:1px solid #333;
+}
+ul.navsponsive li ul li ul li a:hover, ul.navsponsive li ul li ul li span:hover {
+	color:#09C;
+	background-color:#FFF;
+}
+
+
+
+
+

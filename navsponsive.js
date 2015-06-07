@@ -1,0 +1,1 @@
+/* navsponsive : github.com/benvacha/navsponsive :: v0.0.1 : June 2014 */
