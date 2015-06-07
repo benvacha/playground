@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://www.w3.org/2005/10/profile">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pallet Placer CSP</title>
+    <link type="text/css" rel="stylesheet" href="index.css" />
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="palletplacer.js"></script>
+    <script type="text/javascript" src="minconflicts.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+<div id="header">
+	
+	<div id="banner">
+		<div class="title"><a class="fill" href="."></a></div>
+		<div class="logo"><a class="fill" href="."></a></div>
+	</div>
+	
+	<div id="control">
+		<form id="controlForm" method="post">
+			<div class="center">
+				<label>Boxes: <span>width:length, width:length, ... in pixels</span></label>
+				<textarea rows="5" id="boxList" tabindex="3"></textarea>
+				<label>Big-to-Small</label>
+				<input type="checkbox" id="checkBigSmall" />
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random</label>
+				<input type="checkbox" id="checkRandom" />
+			</div>
+			<div class="left">
+				<label>Truck Width: <span> in pixels</span></label>
+				<input type="text" id="truckWidth" tabindex="1" />
+				<label>Truck Length: <span>in pixels</span></label>
+				<input type="text" id="truckLength" tabindex="2" />
+			</div>
+			<div class="right">
+				<input type="submit" value="Pack" tabindex="4" />
+			</div>
+		</form>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="bay">
+		<div class="detail">
+			<div class="front">Front</div>
+			<div class="back">Back</div>
+			<div class="description" style="width:100%;text-align:center;color:#666;">
+			    proof of concept for an artificially intelligent truck packing and shipment lifecycle management startup
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+	</div>
+	
+	<div id="headerfooter"></div>
+</div>
+<div id="footer">
+	<div id="message"></div>
+</div>
+</body>
+</html>

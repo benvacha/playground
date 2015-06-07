@@ -1,0 +1,295 @@
+/*
+	Benjamin Vacha
+	Pallet Placer
+	
+	Color:
+		Green: #9AC65C
+	
+*/
+
+/* banner / whole document */
+html, body {
+	margin:0px;
+	width:auto;
+	min-width:960px;
+	height:100% !important;
+	height:auto;
+	min-height:100%;
+	background-color:#FFF;
+	font-family:Arial;
+	font-size:13px;
+}
+.fill {
+	position:relative;
+	display:block;
+	margin:0px;
+	width:100%;
+	height:100%;
+	padding:0px;
+}
+a.fill {
+	cursor:pointer;
+}
+.clear {
+	position:relative;
+	clear:both;
+	margin:0px;
+	width:100%;
+	height:0px;
+}
+
+
+/* banner */
+#banner {
+	position:relative;
+	z-index:5;
+	margin:0px;
+	width:100%;
+	height:75px;
+	padding:0px;
+	background-color:#9AC65C;
+	background-image:url('img/texture.png');
+	background-repeat:repeat-x;
+	background-position:bottom left;
+	border-bottom:3px solid #9AC65C;
+	box-shadow:0px 0px 15px rgba(0,0,0,.3);
+}
+#banner .title {
+	position:absolute;
+	top:0px;
+	left:13px;
+	width:470px;
+	height:83px;
+	background-image:url('img/title.png');
+}
+#banner .logo {
+	position:absolute;
+	top:-5px;
+	right:10px;
+	width:201px;
+	height:115px;
+	background-image:url('img/logo.png');
+}
+
+
+/* controls */
+#control {
+	position:relative;
+	z-index:4;
+	margin:0px;
+	width:100%;
+	height:auto;
+	padding:15px 0px 10px 0px;
+	box-shadow:0px 0px 15px rgba(0,0,0,.3);
+}
+#control form {
+	position:relative;
+	margin:0px;
+	width:auto;
+	height:auto;
+	padding:0px 200px 0px 200px;
+}
+#control form .center {
+	position:relative;
+	float:left;
+	margin:0px;
+	width:100%;
+	height:auto;
+}
+#control form .left {
+	position:relative;
+	float:left;
+	right:200px;
+	margin-left:-100%;
+	width:185px;
+	padding: 0px 0px 0px 15px;
+}
+#control form .right {
+	position:relative;
+	float:right;
+	margin-right:-200px;
+	width:165px;
+	padding:0px 0px 0px 35px;
+}
+#control form label {
+	position:relative;
+	font-weight:bold;
+	color:#333;
+}
+#control form label span {
+	font-weight:normal;
+	color:#CCC;
+}
+#control form input[type=text] {
+	position:relative;
+	margin:5px 0px 10px 0px;
+	width:150px;
+	height:auto;
+	padding:5px;
+	border:1px solid #CCC;
+	border-radius:5px;
+}
+#control form textarea {
+	position:relative;
+	margin:5px 0px 10px 0px;
+	width:100%;
+	height:auto;
+	padding:7px;
+	border:1px solid #CCC;
+	border-radius:5px;
+}
+#control form input[type=text]:focus, #control form textarea:focus {
+	border:1px solid #9AC65C;
+}
+#control form input[type=submit] {
+	position:relative;
+	margin:20px 0px 0px 15px;
+	width:auto;
+	height:auto;
+	padding:30px;
+	border:none;
+	border-radius:5px;
+	background-color:#E4E4E4;
+	color:#999;
+	font-size:18px;
+	font-weight:bold;
+	-webkit-box-shadow: inset 5px 5px 15px 0px rgba(0, 0, 0, .1);
+	box-shadow: inset 5px 5px 15px 0px rgba(0, 0, 0, .1);
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	-o-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+#control form input[type=submit]:hover, #control form input[type=submit]:focus {
+	background-color:#9AC65C;
+	color:#FFF;
+	-webkit-box-shadow: inset -5px -5px 15px 0px rgba(0, 0, 0, .1);
+	box-shadow: inset -5px -5px 15px 0px rgba(0, 0, 0, .1);
+	cursor:pointer;
+}
+#control form input[type=submit].loading {
+	color:transparent;
+	background-image:url('img/loadingGray.gif');
+	background-position:center center;
+	background-repeat:no-repeat;
+}
+#control form input[type=submit].loading:hover, #control form input[type=submit].loading:focus {
+	color:transparent;
+	background-image:url('img/loadingGreen.gif');
+	background-position:center center;
+	background-repeat:no-repeat;
+}
+
+
+/* bay, truck, box */
+#bay {
+	position:relative;
+	z-index:3;
+	margin:15px 0px;
+	width:100%;
+	height:auto;
+	padding:0px;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+#bay .detail {
+	position:relative;
+	margin:10px 0px;
+	width:100%;
+	height:auto;
+	padding:0px;
+}
+#bay .detail .front {
+	position:relative;
+	float:left;
+	margin:0px 25px;
+	font-size:15px;
+	font-weight:bold;
+	color:#CCC;
+}
+#bay .detail .back {
+	position:relative;
+	float:right;
+	margin:0px 25px;
+	font-size:15px;
+	font-weight:bold;
+	color:#CCC;
+}
+#bay .dock {
+	position:relative;
+	margin:0px;
+	width:100%;
+	height:auto;
+	overflow:auto;
+}
+#bay .dock .truck {
+	position:relative;
+	margin:0px;
+	padding:0px;
+	border:50px solid white;
+	border-left:75px solid white;
+	border-right:75px solid white;
+	background-color:#E4E4E4;
+}
+#bay .dock .truck .box {
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	background-color:#C9C075;
+	background-image:url('img/box.png');
+	background-size:100% 100%;
+	opacity:.5;
+	-webkit-transition: all .25s ease-out;
+	-moz-transition: all .25s ease-out;
+	-o-transition: all .25s ease-out;
+	transition: all .25s ease-out;
+}
+#bay .dock .truck .box:hover {
+	background-color:#B5AD69;
+	cursor:move;
+}
+
+
+/*
+	header, footer
+*/
+#header {
+	margin:0px 0px -30px 0px;
+	height:auto !important;
+	height:100%;
+	min-height:100%;
+}
+#headerfooter, #footer {
+	padding:10px 0px 0px 0px;
+	height:20px;
+}
+#footer {
+	position:relative;
+	margin:0px;
+	width:100%;
+	background-color:#9AC65C;
+	box-shadow:0px 0px 10px rgba(0,0,0,.5);
+	background-image:url('img/texture.png');
+	font-size:11px;
+	color:#999;
+}
+#footer a {
+	color:#999;
+	text-decoration:none;
+}
+#footer a:hover {
+	color:#000;
+	text-decoration:none;
+	cursor:pointer;
+}
+#footer #message {
+	position:absolute;
+	top:7px;
+	left:25px;
+	font-size:15px;
+	color:#FFF;
+	text-shadow:1px 1px 2px rgba(0,0,0,1);
+}
