@@ -1,0 +1,99 @@
+<html>
+<head>
+	<link type="image/png" rel="icon" href="http://esocode.com/img/icon.png" />
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready( function() {
+			
+			var delim = '-';
+			var br = '<br /><br />';
+			var textAreaStart = '<textarea style="width:100%;height:50px;" onclick="this.focus();this.select()">';
+			var textAreaEnd = '</textarea><br /><br />';
+			
+			var prefix = '.clear';
+			var option = ['n', 0, 10, 15, 20, 30];
+			
+			// var prefix = '.pos';
+			// var option = ['l', 'c', 'r'];
+			
+			// var prefix = '.size';
+			// var option = [960, 550, 100];
+			// var option = [100, 50, 33, 66, 25, 75, 20, 40, 60, 80];
+			
+			// var prefix = '.pad';
+			// var prefix = '.pad-tb';
+			// var prefix = '.pad-lr';
+			// var prefix = '.pad-t';
+			// var option = [0, 5, 10, 15, 20];
+			
+			// var prefix = '.push';
+			// var prefix = '.push-tb';
+			// var prefix = '.push-lr';
+			// var prefix = '.push-t';
+			// var option = [0, 5, 10, 15, 20];
+			
+			var desktop = [];
+			var tablet = [];
+			var phone = [];
+			
+			var temp = '';
+			
+			//
+			for(var i=0; i<option.length; i++) {
+				desktop[i] = '';
+				tablet[i] = '';
+				phone[i] = '';
+			}
+			
+			//
+			for(var i=0; i<option.length; i++) {
+				//
+				temp = prefix + delim + option[i] + ', ';
+				desktop[i] += temp;
+				//
+				for(var j=0; j<option.length; j++) {
+					//
+					temp = prefix + delim + option[i] + delim + option[j] + ', ';
+					if(i!=j) {
+						desktop[i] += temp;
+						tablet[j] += temp;
+					}
+					//
+					for(var k=0; k<option.length; k++) {
+						temp = prefix + delim + option[i] + delim + option[j] + delim + option[k] + ', ';
+						if(j!=k) {
+							desktop[i] += temp;
+							tablet[j] += temp;
+							phone[k] += temp;
+						}
+					}
+				}
+			}
+			
+			//
+			for(var i=0; i<option.length; i++) {
+				$('#desktop').append(textAreaStart + desktop[i].slice(0,-2) + textAreaEnd);
+				$('#tablet').append(textAreaStart + tablet[i].slice(0,-2) + textAreaEnd);
+				$('#phone').append(textAreaStart + phone[i].slice(0,-2) + textAreaEnd);
+			}
+			
+			
+		} );
+		
+	</script>
+</head>
+<body>
+	
+	<div id="desktop"><h3>Desktop</h3></div>
+	
+	<hr />
+	
+	<div id="tablet"><h3>Tablet</h3></div>
+	
+	<hr />
+	
+	<div id="phone"><h3>Phone</h3></div>
+	
+</body>
+</html>

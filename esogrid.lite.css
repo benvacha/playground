@@ -1,0 +1,415 @@
+/*	esoGrid : github.com/esocode/esogrid
+**	esoCode : esocode.com
+*/
+
+/* Objects
+*/
+.grid {
+	position:relative;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-background-clip:padding;
+	-moz-background-clip:padding;
+	background-clip:padding-box;
+}
+.col {
+	position:relative;
+	display:block;
+	float:left;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-background-clip:padding;
+	-moz-background-clip:padding;
+	background-clip:padding-box;
+}
+
+
+/* Clearing
+*/
+.grid:after, .col:after, .cleared:after {
+	content:'';
+	display:block;
+	clear:both;
+}
+.clear, .clear-0 {
+	clear:both;
+	height:0px;
+}
+.clear-10 {
+	clear:both;
+	height:10px;
+}
+.clear-15 {
+	clear:both;
+	height:15px;
+}
+.clear-20 {
+	clear:both;
+	height:20px;
+}
+.clear-30 {
+	clear:both;
+	height:30px;
+}
+
+
+/* Positioning
+*/
+.left, .pos-l {
+	float:left;
+}
+.center, .pos-c {
+	float:none;
+	margin-left:auto;
+	margin-right:auto;
+}
+.right, .pos-r {
+	float:right;
+}
+
+
+/* Sizes
+*/
+.ninesixty, .size-960 {
+	width:960px;
+}
+.fivefifty, .size-550 {
+	width:550px;
+}
+/* */
+.one, .size-100 {
+	width:100%;
+}
+.half, .size-50 {
+	width:50%;
+}
+.third, .size-33 {
+	width:33.333334%;
+}
+.twothird, .size-66 {
+	width:66.666668%;
+}
+.forth, .size-25 {
+	width:25%;
+}
+.threeforth, .size-75 {
+	width:75%;
+}
+.fifth, .size-20 {
+	width:20%;
+}
+.twofifth, .size-40 {
+	width:40%;
+}
+.threefifth, .size-60 {
+	width:60%;
+}
+.fourfifth, .size-80 {
+	width:80%;
+}
+
+
+/* Padding
+*/
+.pad-0 {
+	padding:0px;
+}
+.pad-5 {
+	padding:5px;
+}
+.pad-10 {
+	padding:10px;
+}
+.pad-15 {
+	padding:15px;
+}
+.pad-20 {
+	padding:20px;
+}
+/* */
+.pad-tb-0 {
+	padding-top:0px;
+	padding-bottom:0px;
+}
+.pad-tb-5 {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.pad-tb-10 {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.pad-tb-15 {
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.pad-tb-20 {
+	padding-top:20px;
+	padding-bottom:20px;
+}
+/* */
+.pad-lr-0 {
+	padding-left:0px;
+	padding-right:0px;
+}
+.pad-lr-5 {
+	padding-left:5px;
+	padding-right:5px;
+}
+.pad-lr-10 {
+	padding-left:10px;
+	padding-right:10px;
+}
+.pad-lr-15 {
+	padding-left:15px;
+	padding-right:15px;
+}
+.pad-lr-20 {
+	padding-left:20px;
+	padding-right:20px;
+}
+/* */
+.pad-t-0 {
+	padding-top:0px;
+}
+.pad-t-5 {
+	padding-top:5px;
+}
+.pad-t-10 {
+	padding-top:10px;
+}
+.pad-t-15 {
+	padding-top:15px;
+}
+.pad-t-20 {
+	padding-top:20px;
+}
+/* */
+.pad-r-0 {
+	padding-right:0px;
+}
+.pad-r-5 {
+	padding-right:5px;
+}
+.pad-r-10 {
+	padding-right:10px;
+}
+.pad-r-15 {
+	padding-right:15px;
+}
+.pad-r-20 {
+	padding-right:20px;
+}
+/* */
+.pad-b-0 {
+	padding-bottom:0px;
+}
+.pad-b-5 {
+	padding-bottom:5px;
+}
+.pad-b-10 {
+	padding-bottom:10px;
+}
+.pad-b-15 {
+	padding-bottom:15px;
+}
+.pad-b-20 {
+	padding-bottom:20px;
+}
+/* */
+.pad-l-0 {
+	padding-left:0px;
+}
+.pad-l-5 {
+	padding-left:5px;
+}
+.pad-l-10 {
+	padding-left:10px;
+}
+.pad-l-15 {
+	padding-left:15px;
+}
+.pad-l-20 {
+	padding-left:20px;
+}
+
+
+/* Pushing
+*/
+.push-0 {
+	border:0px solid transparent;
+}
+.push-5 {
+	border:5px solid transparent;
+}
+.push-10 {
+	border:10px solid transparent;
+}
+.push-15 {
+	border:15px solid transparent;
+}
+.push-20 {
+	border:20px solid transparent;
+}
+/* */
+.push-tb-0 {
+	border-top:0px solid transparent;
+	border-bottom:0px solid transparent;
+}
+.push-tb-5 {
+	border-top:5px solid transparent;
+	border-bottom:5px solid transparent;
+}
+.push-tb-10 {
+	border-top:10px solid transparent;
+	border-bottom:10px solid transparent;
+}
+.push-tb-15 {
+	border-top:15px solid transparent;
+	border-bottom:15px solid transparent;
+}
+.push-tb-20 {
+	border-top:20px solid transparent;
+	border-bottom:20px solid transparent;
+}
+/* */
+.push-lr-0 {
+	border-left:0px solid transparent;
+	border-right:0px solid transparent;
+}
+.push-lr-5 {
+	border-left:5px solid transparent;
+	border-right:5px solid transparent;
+}
+.push-lr-10 {
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+}
+.push-lr-15 {
+	border-left:15px solid transparent;
+	border-right:15px solid transparent;
+}
+.push-lr-20 {
+	border-left:20px solid transparent;
+	border-right:20px solid transparent;
+}
+/* */
+.push-t-0 {
+	border-top:0px solid transparent;
+}
+.push-t-5 {
+	border-top:5px solid transparent;
+}
+.push-t-10 {
+	border-top:10px solid transparent;
+}
+.push-t-15 {
+	border-top:15px solid transparent;
+}
+.push-t-20 {
+	border-top:20px solid transparent;
+}
+/* */
+.push-r-0 {
+	border-right:0px solid transparent;
+}
+.push-r-5 {
+	border-right:5px solid transparent;
+}
+.push-r-10 {
+	border-right:10px solid transparent;
+}
+.push-r-15 {
+	border-right:15px solid transparent;
+}
+.push-r-20 {
+	border-right:20px solid transparent;
+}
+/* */
+.push-b-0 {
+	border-bottom:0px solid transparent;
+}
+.push-b-5 {
+	border-bottom:5px solid transparent;
+}
+.push-b-10 {
+	border-bottom:10px solid transparent;
+}
+.push-b-15 {
+	border-bottom:15px solid transparent;
+}
+.push-b-20 {
+	border-bottom:20px solid transparent;
+}
+/* */
+.push-l-0 {
+	border-left:0px solid transparent;
+}
+.push-l-5 {
+	border-left:5px solid transparent;
+}
+.push-l-10 {
+	border-left:10px solid transparent;
+}
+.push-l-15 {
+	border-left:15px solid transparent;
+}
+.push-l-20 {
+	border-left:20px solid transparent;
+}
+
+
+
+/***
+**** Tablet
+***/
+@media screen and (max-width:960px) {
+	
+	
+	/* Sizes
+	*/
+	.ninesixty {
+		width:100%;
+	}
+	/* */
+	.forth, .threeforth {
+		width:50%;
+	}
+	.fifth, .twofifth, .threefifth, .fourfifth {
+		width:33.333334%;
+	}
+	
+	
+}
+
+
+
+/***
+**** Phone
+***/
+@media screen and (max-width:550px) {
+	
+	
+	/* Positioning
+	*/
+	.left, .center, .right {
+		float:left;
+	}
+	
+	
+	/* Sizes
+	*/
+	.fivefifty {
+		width:100%;
+	}
+	/* */
+	.half, .third, .twothird, .forth, .threeforth,
+	.fifth, .twofifth, .threefifth, .fourfifth {
+		width:100%;
+	}
+	
+	
+}
+

@@ -1,0 +1,1084 @@
+/*	esoGrid : github.com/esocode/esogrid
+**	esoCode : esocode.com
+*/
+
+/* Objects
+*/
+.grid {
+	position:relative;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-background-clip:padding;
+	-moz-background-clip:padding;
+	background-clip:padding-box;
+}
+.col {
+	position:relative;
+	display:block;
+	float:left;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-background-clip:padding;
+	-moz-background-clip:padding;
+	background-clip:padding-box;
+}
+
+
+/* Clearing
+*/
+.grid:after, .col:after, .cleared:after {
+	content:'';
+	display:block;
+	clear:both;
+}
+.clear-n, 
+.clear-n-n-0, .clear-n-n-10, .clear-n-n-15, .clear-n-n-20, .clear-n-n-30, .clear-n-0, .clear-n-0-n, .clear-n-0-10, .clear-n-0-15, .clear-n-0-20, .clear-n-0-30, .clear-n-10, .clear-n-10-n, .clear-n-10-0, .clear-n-10-15, .clear-n-10-20, .clear-n-10-30, .clear-n-15, .clear-n-15-n, .clear-n-15-0, .clear-n-15-10, .clear-n-15-20, .clear-n-15-30, .clear-n-20, .clear-n-20-n, .clear-n-20-0, .clear-n-20-10, .clear-n-20-15, .clear-n-20-30, .clear-n-30, .clear-n-30-n, .clear-n-30-0, .clear-n-30-10, .clear-n-30-15, .clear-n-30-20 {
+	clear:none;
+	height:0px;
+}
+.clear, .clear-0,
+.clear-0-n, .clear-0-n-0, .clear-0-n-10, .clear-0-n-15, .clear-0-n-20, .clear-0-n-30, .clear-0-0-n, .clear-0-0-10, .clear-0-0-15, .clear-0-0-20, .clear-0-0-30, .clear-0-10, .clear-0-10-n, .clear-0-10-0, .clear-0-10-15, .clear-0-10-20, .clear-0-10-30, .clear-0-15, .clear-0-15-n, .clear-0-15-0, .clear-0-15-10, .clear-0-15-20, .clear-0-15-30, .clear-0-20, .clear-0-20-n, .clear-0-20-0, .clear-0-20-10, .clear-0-20-15, .clear-0-20-30, .clear-0-30, .clear-0-30-n, .clear-0-30-0, .clear-0-30-10, .clear-0-30-15, .clear-0-30-20 {
+	clear:both;
+	height:0px;
+}
+.clear-10,
+.clear-10-n, .clear-10-n-0, .clear-10-n-10, .clear-10-n-15, .clear-10-n-20, .clear-10-n-30, .clear-10-0, .clear-10-0-n, .clear-10-0-10, .clear-10-0-15, .clear-10-0-20, .clear-10-0-30, .clear-10-10-n, .clear-10-10-0, .clear-10-10-15, .clear-10-10-20, .clear-10-10-30, .clear-10-15, .clear-10-15-n, .clear-10-15-0, .clear-10-15-10, .clear-10-15-20, .clear-10-15-30, .clear-10-20, .clear-10-20-n, .clear-10-20-0, .clear-10-20-10, .clear-10-20-15, .clear-10-20-30, .clear-10-30, .clear-10-30-n, .clear-10-30-0, .clear-10-30-10, .clear-10-30-15, .clear-10-30-20 {
+	clear:both;
+	height:10px;
+}
+.clear-15,
+.clear-15-n, .clear-15-n-0, .clear-15-n-10, .clear-15-n-15, .clear-15-n-20, .clear-15-n-30, .clear-15-0, .clear-15-0-n, .clear-15-0-10, .clear-15-0-15, .clear-15-0-20, .clear-15-0-30, .clear-15-10, .clear-15-10-n, .clear-15-10-0, .clear-15-10-15, .clear-15-10-20, .clear-15-10-30, .clear-15-15-n, .clear-15-15-0, .clear-15-15-10, .clear-15-15-20, .clear-15-15-30, .clear-15-20, .clear-15-20-n, .clear-15-20-0, .clear-15-20-10, .clear-15-20-15, .clear-15-20-30, .clear-15-30, .clear-15-30-n, .clear-15-30-0, .clear-15-30-10, .clear-15-30-15, .clear-15-30-20 {
+	clear:both;
+	height:15px;
+}
+.clear-20,
+.clear-20-n, .clear-20-n-0, .clear-20-n-10, .clear-20-n-15, .clear-20-n-20, .clear-20-n-30, .clear-20-0, .clear-20-0-n, .clear-20-0-10, .clear-20-0-15, .clear-20-0-20, .clear-20-0-30, .clear-20-10, .clear-20-10-n, .clear-20-10-0, .clear-20-10-15, .clear-20-10-20, .clear-20-10-30, .clear-20-15, .clear-20-15-n, .clear-20-15-0, .clear-20-15-10, .clear-20-15-20, .clear-20-15-30, .clear-20-20-n, .clear-20-20-0, .clear-20-20-10, .clear-20-20-15, .clear-20-20-30, .clear-20-30, .clear-20-30-n, .clear-20-30-0, .clear-20-30-10, .clear-20-30-15, .clear-20-30-20 {
+	clear:both;
+	height:20px;
+}
+.clear-30,
+.clear-30-n, .clear-30-n-0, .clear-30-n-10, .clear-30-n-15, .clear-30-n-20, .clear-30-n-30, .clear-30-0, .clear-30-0-n, .clear-30-0-10, .clear-30-0-15, .clear-30-0-20, .clear-30-0-30, .clear-30-10, .clear-30-10-n, .clear-30-10-0, .clear-30-10-15, .clear-30-10-20, .clear-30-10-30, .clear-30-15, .clear-30-15-n, .clear-30-15-0, .clear-30-15-10, .clear-30-15-20, .clear-30-15-30, .clear-30-20, .clear-30-20-n, .clear-30-20-0, .clear-30-20-10, .clear-30-20-15, .clear-30-20-30, .clear-30-30-n, .clear-30-30-0, .clear-30-30-10, .clear-30-30-15, .clear-30-30-20 {
+	clear:both;
+	height:30px;
+}
+
+
+/* Positioning
+*/
+.left, .pos-l,
+.pos-l-l-c, .pos-l-l-r, .pos-l-c, .pos-l-c-l, .pos-l-c-r, .pos-l-r, .pos-l-r-l, .pos-l-r-c {
+	float:left;
+}
+.center, .pos-c,
+.pos-c-l, .pos-c-l-c, .pos-c-l-r, .pos-c-c-l, .pos-c-c-r, .pos-c-r, .pos-c-r-l, .pos-c-r-c {
+	float:none;
+	margin-left:auto;
+	margin-right:auto;
+}
+.right, .pos-r,
+.pos-r-l, .pos-r-l-c, .pos-r-l-r, .pos-r-c, .pos-r-c-l, .pos-r-c-r, .pos-r-r-l, .pos-r-r-c {
+	float:right;
+}
+
+
+/* Sizes
+*/
+.ninesixty, .size-960, 
+.size-960-960-550, .size-960-960-100, .size-960-550, .size-960-550-960, .size-960-550-100, .size-960-100, .size-960-100-960, .size-960-100-550 {
+	width:960px;
+}
+.fivefifty, .size-550,
+.size-550-960, .size-550-960-550, .size-550-960-100, .size-550-550-960, .size-550-550-100, .size-550-100, .size-550-100-960, .size-550-100-550 {
+	width:550px;
+}
+/* */
+.one, .size-100,
+.size-100-960, .size-100-960-550, .size-100-960-100, .size-100-550, .size-100-550-960, .size-100-550-100, .size-100-100-960, .size-100-100-550,
+.size-100-100-50, .size-100-100-33, .size-100-100-66, .size-100-100-25, .size-100-100-75, .size-100-100-20, .size-100-100-40, .size-100-100-60, .size-100-100-80, .size-100-50, .size-100-50-100, .size-100-50-33, .size-100-50-66, .size-100-50-25, .size-100-50-75, .size-100-50-20, .size-100-50-40, .size-100-50-60, .size-100-50-80, .size-100-33, .size-100-33-100, .size-100-33-50, .size-100-33-66, .size-100-33-25, .size-100-33-75, .size-100-33-20, .size-100-33-40, .size-100-33-60, .size-100-33-80, .size-100-66, .size-100-66-100, .size-100-66-50, .size-100-66-33, .size-100-66-25, .size-100-66-75, .size-100-66-20, .size-100-66-40, .size-100-66-60, .size-100-66-80, .size-100-25, .size-100-25-100, .size-100-25-50, .size-100-25-33, .size-100-25-66, .size-100-25-75, .size-100-25-20, .size-100-25-40, .size-100-25-60, .size-100-25-80, .size-100-75, .size-100-75-100, .size-100-75-50, .size-100-75-33, .size-100-75-66, .size-100-75-25, .size-100-75-20, .size-100-75-40, .size-100-75-60, .size-100-75-80, .size-100-20, .size-100-20-100, .size-100-20-50, .size-100-20-33, .size-100-20-66, .size-100-20-25, .size-100-20-75, .size-100-20-40, .size-100-20-60, .size-100-20-80, .size-100-40, .size-100-40-100, .size-100-40-50, .size-100-40-33, .size-100-40-66, .size-100-40-25, .size-100-40-75, .size-100-40-20, .size-100-40-60, .size-100-40-80, .size-100-60, .size-100-60-100, .size-100-60-50, .size-100-60-33, .size-100-60-66, .size-100-60-25, .size-100-60-75, .size-100-60-20, .size-100-60-40, .size-100-60-80, .size-100-80, .size-100-80-100, .size-100-80-50, .size-100-80-33, .size-100-80-66, .size-100-80-25, .size-100-80-75, .size-100-80-20, .size-100-80-40, .size-100-80-60 {
+	width:100%;
+}
+.half, .size-50,
+.size-50-100, .size-50-100-50, .size-50-100-33, .size-50-100-66, .size-50-100-25, .size-50-100-75, .size-50-100-20, .size-50-100-40, .size-50-100-60, .size-50-100-80, .size-50-50-100, .size-50-50-33, .size-50-50-66, .size-50-50-25, .size-50-50-75, .size-50-50-20, .size-50-50-40, .size-50-50-60, .size-50-50-80, .size-50-33, .size-50-33-100, .size-50-33-50, .size-50-33-66, .size-50-33-25, .size-50-33-75, .size-50-33-20, .size-50-33-40, .size-50-33-60, .size-50-33-80, .size-50-66, .size-50-66-100, .size-50-66-50, .size-50-66-33, .size-50-66-25, .size-50-66-75, .size-50-66-20, .size-50-66-40, .size-50-66-60, .size-50-66-80, .size-50-25, .size-50-25-100, .size-50-25-50, .size-50-25-33, .size-50-25-66, .size-50-25-75, .size-50-25-20, .size-50-25-40, .size-50-25-60, .size-50-25-80, .size-50-75, .size-50-75-100, .size-50-75-50, .size-50-75-33, .size-50-75-66, .size-50-75-25, .size-50-75-20, .size-50-75-40, .size-50-75-60, .size-50-75-80, .size-50-20, .size-50-20-100, .size-50-20-50, .size-50-20-33, .size-50-20-66, .size-50-20-25, .size-50-20-75, .size-50-20-40, .size-50-20-60, .size-50-20-80, .size-50-40, .size-50-40-100, .size-50-40-50, .size-50-40-33, .size-50-40-66, .size-50-40-25, .size-50-40-75, .size-50-40-20, .size-50-40-60, .size-50-40-80, .size-50-60, .size-50-60-100, .size-50-60-50, .size-50-60-33, .size-50-60-66, .size-50-60-25, .size-50-60-75, .size-50-60-20, .size-50-60-40, .size-50-60-80, .size-50-80, .size-50-80-100, .size-50-80-50, .size-50-80-33, .size-50-80-66, .size-50-80-25, .size-50-80-75, .size-50-80-20, .size-50-80-40, .size-50-80-60 {
+	width:50%;
+}
+.third, .size-33,
+.size-33-100, .size-33-100-50, .size-33-100-33, .size-33-100-66, .size-33-100-25, .size-33-100-75, .size-33-100-20, .size-33-100-40, .size-33-100-60, .size-33-100-80, .size-33-50, .size-33-50-100, .size-33-50-33, .size-33-50-66, .size-33-50-25, .size-33-50-75, .size-33-50-20, .size-33-50-40, .size-33-50-60, .size-33-50-80, .size-33-33-100, .size-33-33-50, .size-33-33-66, .size-33-33-25, .size-33-33-75, .size-33-33-20, .size-33-33-40, .size-33-33-60, .size-33-33-80, .size-33-66, .size-33-66-100, .size-33-66-50, .size-33-66-33, .size-33-66-25, .size-33-66-75, .size-33-66-20, .size-33-66-40, .size-33-66-60, .size-33-66-80, .size-33-25, .size-33-25-100, .size-33-25-50, .size-33-25-33, .size-33-25-66, .size-33-25-75, .size-33-25-20, .size-33-25-40, .size-33-25-60, .size-33-25-80, .size-33-75, .size-33-75-100, .size-33-75-50, .size-33-75-33, .size-33-75-66, .size-33-75-25, .size-33-75-20, .size-33-75-40, .size-33-75-60, .size-33-75-80, .size-33-20, .size-33-20-100, .size-33-20-50, .size-33-20-33, .size-33-20-66, .size-33-20-25, .size-33-20-75, .size-33-20-40, .size-33-20-60, .size-33-20-80, .size-33-40, .size-33-40-100, .size-33-40-50, .size-33-40-33, .size-33-40-66, .size-33-40-25, .size-33-40-75, .size-33-40-20, .size-33-40-60, .size-33-40-80, .size-33-60, .size-33-60-100, .size-33-60-50, .size-33-60-33, .size-33-60-66, .size-33-60-25, .size-33-60-75, .size-33-60-20, .size-33-60-40, .size-33-60-80, .size-33-80, .size-33-80-100, .size-33-80-50, .size-33-80-33, .size-33-80-66, .size-33-80-25, .size-33-80-75, .size-33-80-20, .size-33-80-40, .size-33-80-60 {
+	width:33.333334%;
+}
+.twothird, .size-66,
+.size-66-100, .size-66-100-50, .size-66-100-33, .size-66-100-66, .size-66-100-25, .size-66-100-75, .size-66-100-20, .size-66-100-40, .size-66-100-60, .size-66-100-80, .size-66-50, .size-66-50-100, .size-66-50-33, .size-66-50-66, .size-66-50-25, .size-66-50-75, .size-66-50-20, .size-66-50-40, .size-66-50-60, .size-66-50-80, .size-66-33, .size-66-33-100, .size-66-33-50, .size-66-33-66, .size-66-33-25, .size-66-33-75, .size-66-33-20, .size-66-33-40, .size-66-33-60, .size-66-33-80, .size-66-66-100, .size-66-66-50, .size-66-66-33, .size-66-66-25, .size-66-66-75, .size-66-66-20, .size-66-66-40, .size-66-66-60, .size-66-66-80, .size-66-25, .size-66-25-100, .size-66-25-50, .size-66-25-33, .size-66-25-66, .size-66-25-75, .size-66-25-20, .size-66-25-40, .size-66-25-60, .size-66-25-80, .size-66-75, .size-66-75-100, .size-66-75-50, .size-66-75-33, .size-66-75-66, .size-66-75-25, .size-66-75-20, .size-66-75-40, .size-66-75-60, .size-66-75-80, .size-66-20, .size-66-20-100, .size-66-20-50, .size-66-20-33, .size-66-20-66, .size-66-20-25, .size-66-20-75, .size-66-20-40, .size-66-20-60, .size-66-20-80, .size-66-40, .size-66-40-100, .size-66-40-50, .size-66-40-33, .size-66-40-66, .size-66-40-25, .size-66-40-75, .size-66-40-20, .size-66-40-60, .size-66-40-80, .size-66-60, .size-66-60-100, .size-66-60-50, .size-66-60-33, .size-66-60-66, .size-66-60-25, .size-66-60-75, .size-66-60-20, .size-66-60-40, .size-66-60-80, .size-66-80, .size-66-80-100, .size-66-80-50, .size-66-80-33, .size-66-80-66, .size-66-80-25, .size-66-80-75, .size-66-80-20, .size-66-80-40, .size-66-80-60 {
+	width:66.666668%;
+}
+.forth, .size-25,
+.size-25-100, .size-25-100-50, .size-25-100-33, .size-25-100-66, .size-25-100-25, .size-25-100-75, .size-25-100-20, .size-25-100-40, .size-25-100-60, .size-25-100-80, .size-25-50, .size-25-50-100, .size-25-50-33, .size-25-50-66, .size-25-50-25, .size-25-50-75, .size-25-50-20, .size-25-50-40, .size-25-50-60, .size-25-50-80, .size-25-33, .size-25-33-100, .size-25-33-50, .size-25-33-66, .size-25-33-25, .size-25-33-75, .size-25-33-20, .size-25-33-40, .size-25-33-60, .size-25-33-80, .size-25-66, .size-25-66-100, .size-25-66-50, .size-25-66-33, .size-25-66-25, .size-25-66-75, .size-25-66-20, .size-25-66-40, .size-25-66-60, .size-25-66-80, .size-25-25-100, .size-25-25-50, .size-25-25-33, .size-25-25-66, .size-25-25-75, .size-25-25-20, .size-25-25-40, .size-25-25-60, .size-25-25-80, .size-25-75, .size-25-75-100, .size-25-75-50, .size-25-75-33, .size-25-75-66, .size-25-75-25, .size-25-75-20, .size-25-75-40, .size-25-75-60, .size-25-75-80, .size-25-20, .size-25-20-100, .size-25-20-50, .size-25-20-33, .size-25-20-66, .size-25-20-25, .size-25-20-75, .size-25-20-40, .size-25-20-60, .size-25-20-80, .size-25-40, .size-25-40-100, .size-25-40-50, .size-25-40-33, .size-25-40-66, .size-25-40-25, .size-25-40-75, .size-25-40-20, .size-25-40-60, .size-25-40-80, .size-25-60, .size-25-60-100, .size-25-60-50, .size-25-60-33, .size-25-60-66, .size-25-60-25, .size-25-60-75, .size-25-60-20, .size-25-60-40, .size-25-60-80, .size-25-80, .size-25-80-100, .size-25-80-50, .size-25-80-33, .size-25-80-66, .size-25-80-25, .size-25-80-75, .size-25-80-20, .size-25-80-40, .size-25-80-60 {
+	width:25%;
+}
+.threeforth, .size-75,
+.size-75-100, .size-75-100-50, .size-75-100-33, .size-75-100-66, .size-75-100-25, .size-75-100-75, .size-75-100-20, .size-75-100-40, .size-75-100-60, .size-75-100-80, .size-75-50, .size-75-50-100, .size-75-50-33, .size-75-50-66, .size-75-50-25, .size-75-50-75, .size-75-50-20, .size-75-50-40, .size-75-50-60, .size-75-50-80, .size-75-33, .size-75-33-100, .size-75-33-50, .size-75-33-66, .size-75-33-25, .size-75-33-75, .size-75-33-20, .size-75-33-40, .size-75-33-60, .size-75-33-80, .size-75-66, .size-75-66-100, .size-75-66-50, .size-75-66-33, .size-75-66-25, .size-75-66-75, .size-75-66-20, .size-75-66-40, .size-75-66-60, .size-75-66-80, .size-75-25, .size-75-25-100, .size-75-25-50, .size-75-25-33, .size-75-25-66, .size-75-25-75, .size-75-25-20, .size-75-25-40, .size-75-25-60, .size-75-25-80, .size-75-75-100, .size-75-75-50, .size-75-75-33, .size-75-75-66, .size-75-75-25, .size-75-75-20, .size-75-75-40, .size-75-75-60, .size-75-75-80, .size-75-20, .size-75-20-100, .size-75-20-50, .size-75-20-33, .size-75-20-66, .size-75-20-25, .size-75-20-75, .size-75-20-40, .size-75-20-60, .size-75-20-80, .size-75-40, .size-75-40-100, .size-75-40-50, .size-75-40-33, .size-75-40-66, .size-75-40-25, .size-75-40-75, .size-75-40-20, .size-75-40-60, .size-75-40-80, .size-75-60, .size-75-60-100, .size-75-60-50, .size-75-60-33, .size-75-60-66, .size-75-60-25, .size-75-60-75, .size-75-60-20, .size-75-60-40, .size-75-60-80, .size-75-80, .size-75-80-100, .size-75-80-50, .size-75-80-33, .size-75-80-66, .size-75-80-25, .size-75-80-75, .size-75-80-20, .size-75-80-40, .size-75-80-60 {
+	width:75%;
+}
+.fifth, .size-20,
+.size-20-100, .size-20-100-50, .size-20-100-33, .size-20-100-66, .size-20-100-25, .size-20-100-75, .size-20-100-20, .size-20-100-40, .size-20-100-60, .size-20-100-80, .size-20-50, .size-20-50-100, .size-20-50-33, .size-20-50-66, .size-20-50-25, .size-20-50-75, .size-20-50-20, .size-20-50-40, .size-20-50-60, .size-20-50-80, .size-20-33, .size-20-33-100, .size-20-33-50, .size-20-33-66, .size-20-33-25, .size-20-33-75, .size-20-33-20, .size-20-33-40, .size-20-33-60, .size-20-33-80, .size-20-66, .size-20-66-100, .size-20-66-50, .size-20-66-33, .size-20-66-25, .size-20-66-75, .size-20-66-20, .size-20-66-40, .size-20-66-60, .size-20-66-80, .size-20-25, .size-20-25-100, .size-20-25-50, .size-20-25-33, .size-20-25-66, .size-20-25-75, .size-20-25-20, .size-20-25-40, .size-20-25-60, .size-20-25-80, .size-20-75, .size-20-75-100, .size-20-75-50, .size-20-75-33, .size-20-75-66, .size-20-75-25, .size-20-75-20, .size-20-75-40, .size-20-75-60, .size-20-75-80, .size-20-20-100, .size-20-20-50, .size-20-20-33, .size-20-20-66, .size-20-20-25, .size-20-20-75, .size-20-20-40, .size-20-20-60, .size-20-20-80, .size-20-40, .size-20-40-100, .size-20-40-50, .size-20-40-33, .size-20-40-66, .size-20-40-25, .size-20-40-75, .size-20-40-20, .size-20-40-60, .size-20-40-80, .size-20-60, .size-20-60-100, .size-20-60-50, .size-20-60-33, .size-20-60-66, .size-20-60-25, .size-20-60-75, .size-20-60-20, .size-20-60-40, .size-20-60-80, .size-20-80, .size-20-80-100, .size-20-80-50, .size-20-80-33, .size-20-80-66, .size-20-80-25, .size-20-80-75, .size-20-80-20, .size-20-80-40, .size-20-80-60 {
+	width:20%;
+}
+.twofifth, .size-40,
+.size-40-100, .size-40-100-50, .size-40-100-33, .size-40-100-66, .size-40-100-25, .size-40-100-75, .size-40-100-20, .size-40-100-40, .size-40-100-60, .size-40-100-80, .size-40-50, .size-40-50-100, .size-40-50-33, .size-40-50-66, .size-40-50-25, .size-40-50-75, .size-40-50-20, .size-40-50-40, .size-40-50-60, .size-40-50-80, .size-40-33, .size-40-33-100, .size-40-33-50, .size-40-33-66, .size-40-33-25, .size-40-33-75, .size-40-33-20, .size-40-33-40, .size-40-33-60, .size-40-33-80, .size-40-66, .size-40-66-100, .size-40-66-50, .size-40-66-33, .size-40-66-25, .size-40-66-75, .size-40-66-20, .size-40-66-40, .size-40-66-60, .size-40-66-80, .size-40-25, .size-40-25-100, .size-40-25-50, .size-40-25-33, .size-40-25-66, .size-40-25-75, .size-40-25-20, .size-40-25-40, .size-40-25-60, .size-40-25-80, .size-40-75, .size-40-75-100, .size-40-75-50, .size-40-75-33, .size-40-75-66, .size-40-75-25, .size-40-75-20, .size-40-75-40, .size-40-75-60, .size-40-75-80, .size-40-20, .size-40-20-100, .size-40-20-50, .size-40-20-33, .size-40-20-66, .size-40-20-25, .size-40-20-75, .size-40-20-40, .size-40-20-60, .size-40-20-80, .size-40-40-100, .size-40-40-50, .size-40-40-33, .size-40-40-66, .size-40-40-25, .size-40-40-75, .size-40-40-20, .size-40-40-60, .size-40-40-80, .size-40-60, .size-40-60-100, .size-40-60-50, .size-40-60-33, .size-40-60-66, .size-40-60-25, .size-40-60-75, .size-40-60-20, .size-40-60-40, .size-40-60-80, .size-40-80, .size-40-80-100, .size-40-80-50, .size-40-80-33, .size-40-80-66, .size-40-80-25, .size-40-80-75, .size-40-80-20, .size-40-80-40, .size-40-80-60 {
+	width:40%;
+}
+.threefifth, .size-60,
+.size-60-100, .size-60-100-50, .size-60-100-33, .size-60-100-66, .size-60-100-25, .size-60-100-75, .size-60-100-20, .size-60-100-40, .size-60-100-60, .size-60-100-80, .size-60-50, .size-60-50-100, .size-60-50-33, .size-60-50-66, .size-60-50-25, .size-60-50-75, .size-60-50-20, .size-60-50-40, .size-60-50-60, .size-60-50-80, .size-60-33, .size-60-33-100, .size-60-33-50, .size-60-33-66, .size-60-33-25, .size-60-33-75, .size-60-33-20, .size-60-33-40, .size-60-33-60, .size-60-33-80, .size-60-66, .size-60-66-100, .size-60-66-50, .size-60-66-33, .size-60-66-25, .size-60-66-75, .size-60-66-20, .size-60-66-40, .size-60-66-60, .size-60-66-80, .size-60-25, .size-60-25-100, .size-60-25-50, .size-60-25-33, .size-60-25-66, .size-60-25-75, .size-60-25-20, .size-60-25-40, .size-60-25-60, .size-60-25-80, .size-60-75, .size-60-75-100, .size-60-75-50, .size-60-75-33, .size-60-75-66, .size-60-75-25, .size-60-75-20, .size-60-75-40, .size-60-75-60, .size-60-75-80, .size-60-20, .size-60-20-100, .size-60-20-50, .size-60-20-33, .size-60-20-66, .size-60-20-25, .size-60-20-75, .size-60-20-40, .size-60-20-60, .size-60-20-80, .size-60-40, .size-60-40-100, .size-60-40-50, .size-60-40-33, .size-60-40-66, .size-60-40-25, .size-60-40-75, .size-60-40-20, .size-60-40-60, .size-60-40-80, .size-60-60-100, .size-60-60-50, .size-60-60-33, .size-60-60-66, .size-60-60-25, .size-60-60-75, .size-60-60-20, .size-60-60-40, .size-60-60-80, .size-60-80, .size-60-80-100, .size-60-80-50, .size-60-80-33, .size-60-80-66, .size-60-80-25, .size-60-80-75, .size-60-80-20, .size-60-80-40, .size-60-80-60 {
+	width:60%;
+}
+.fourfifth, .size-80,
+.size-80-100, .size-80-100-50, .size-80-100-33, .size-80-100-66, .size-80-100-25, .size-80-100-75, .size-80-100-20, .size-80-100-40, .size-80-100-60, .size-80-100-80, .size-80-50, .size-80-50-100, .size-80-50-33, .size-80-50-66, .size-80-50-25, .size-80-50-75, .size-80-50-20, .size-80-50-40, .size-80-50-60, .size-80-50-80, .size-80-33, .size-80-33-100, .size-80-33-50, .size-80-33-66, .size-80-33-25, .size-80-33-75, .size-80-33-20, .size-80-33-40, .size-80-33-60, .size-80-33-80, .size-80-66, .size-80-66-100, .size-80-66-50, .size-80-66-33, .size-80-66-25, .size-80-66-75, .size-80-66-20, .size-80-66-40, .size-80-66-60, .size-80-66-80, .size-80-25, .size-80-25-100, .size-80-25-50, .size-80-25-33, .size-80-25-66, .size-80-25-75, .size-80-25-20, .size-80-25-40, .size-80-25-60, .size-80-25-80, .size-80-75, .size-80-75-100, .size-80-75-50, .size-80-75-33, .size-80-75-66, .size-80-75-25, .size-80-75-20, .size-80-75-40, .size-80-75-60, .size-80-75-80, .size-80-20, .size-80-20-100, .size-80-20-50, .size-80-20-33, .size-80-20-66, .size-80-20-25, .size-80-20-75, .size-80-20-40, .size-80-20-60, .size-80-20-80, .size-80-40, .size-80-40-100, .size-80-40-50, .size-80-40-33, .size-80-40-66, .size-80-40-25, .size-80-40-75, .size-80-40-20, .size-80-40-60, .size-80-40-80, .size-80-60, .size-80-60-100, .size-80-60-50, .size-80-60-33, .size-80-60-66, .size-80-60-25, .size-80-60-75, .size-80-60-20, .size-80-60-40, .size-80-60-80, .size-80-80-100, .size-80-80-50, .size-80-80-33, .size-80-80-66, .size-80-80-25, .size-80-80-75, .size-80-80-20, .size-80-80-40, .size-80-80-60 {
+	width:80%;
+}
+
+
+/* Padding
+*/
+.pad-0, .pad-0-0-5, .pad-0-0-10, .pad-0-0-15, .pad-0-0-20, .pad-0-5, .pad-0-5-0, .pad-0-5-10, .pad-0-5-15, .pad-0-5-20, .pad-0-10, .pad-0-10-0, .pad-0-10-5, .pad-0-10-15, .pad-0-10-20, .pad-0-15, .pad-0-15-0, .pad-0-15-5, .pad-0-15-10, .pad-0-15-20, .pad-0-20, .pad-0-20-0, .pad-0-20-5, .pad-0-20-10, .pad-0-20-15 {
+	padding:0px;
+}
+.pad-5, .pad-5-0, .pad-5-0-5, .pad-5-0-10, .pad-5-0-15, .pad-5-0-20, .pad-5-5-0, .pad-5-5-10, .pad-5-5-15, .pad-5-5-20, .pad-5-10, .pad-5-10-0, .pad-5-10-5, .pad-5-10-15, .pad-5-10-20, .pad-5-15, .pad-5-15-0, .pad-5-15-5, .pad-5-15-10, .pad-5-15-20, .pad-5-20, .pad-5-20-0, .pad-5-20-5, .pad-5-20-10, .pad-5-20-15 {
+	padding:5px;
+}
+.pad-10, .pad-10-0, .pad-10-0-5, .pad-10-0-10, .pad-10-0-15, .pad-10-0-20, .pad-10-5, .pad-10-5-0, .pad-10-5-10, .pad-10-5-15, .pad-10-5-20, .pad-10-10-0, .pad-10-10-5, .pad-10-10-15, .pad-10-10-20, .pad-10-15, .pad-10-15-0, .pad-10-15-5, .pad-10-15-10, .pad-10-15-20, .pad-10-20, .pad-10-20-0, .pad-10-20-5, .pad-10-20-10, .pad-10-20-15 {
+	padding:10px;
+}
+.pad-15, .pad-15-0, .pad-15-0-5, .pad-15-0-10, .pad-15-0-15, .pad-15-0-20, .pad-15-5, .pad-15-5-0, .pad-15-5-10, .pad-15-5-15, .pad-15-5-20, .pad-15-10, .pad-15-10-0, .pad-15-10-5, .pad-15-10-15, .pad-15-10-20, .pad-15-15-0, .pad-15-15-5, .pad-15-15-10, .pad-15-15-20, .pad-15-20, .pad-15-20-0, .pad-15-20-5, .pad-15-20-10, .pad-15-20-15 {
+	padding:15px;
+}
+.pad-20, .pad-20-0, .pad-20-0-5, .pad-20-0-10, .pad-20-0-15, .pad-20-0-20, .pad-20-5, .pad-20-5-0, .pad-20-5-10, .pad-20-5-15, .pad-20-5-20, .pad-20-10, .pad-20-10-0, .pad-20-10-5, .pad-20-10-15, .pad-20-10-20, .pad-20-15, .pad-20-15-0, .pad-20-15-5, .pad-20-15-10, .pad-20-15-20, .pad-20-20-0, .pad-20-20-5, .pad-20-20-10, .pad-20-20-15 {
+	padding:20px;
+}
+/* */
+.pad-tb-0, .pad-tb-0-0-5, .pad-tb-0-0-10, .pad-tb-0-0-15, .pad-tb-0-0-20, .pad-tb-0-5, .pad-tb-0-5-0, .pad-tb-0-5-10, .pad-tb-0-5-15, .pad-tb-0-5-20, .pad-tb-0-10, .pad-tb-0-10-0, .pad-tb-0-10-5, .pad-tb-0-10-15, .pad-tb-0-10-20, .pad-tb-0-15, .pad-tb-0-15-0, .pad-tb-0-15-5, .pad-tb-0-15-10, .pad-tb-0-15-20, .pad-tb-0-20, .pad-tb-0-20-0, .pad-tb-0-20-5, .pad-tb-0-20-10, .pad-tb-0-20-15{
+	padding-top:0px;
+	padding-bottom:0px;
+}
+.pad-tb-5, .pad-tb-5-0, .pad-tb-5-0-5, .pad-tb-5-0-10, .pad-tb-5-0-15, .pad-tb-5-0-20, .pad-tb-5-5-0, .pad-tb-5-5-10, .pad-tb-5-5-15, .pad-tb-5-5-20, .pad-tb-5-10, .pad-tb-5-10-0, .pad-tb-5-10-5, .pad-tb-5-10-15, .pad-tb-5-10-20, .pad-tb-5-15, .pad-tb-5-15-0, .pad-tb-5-15-5, .pad-tb-5-15-10, .pad-tb-5-15-20, .pad-tb-5-20, .pad-tb-5-20-0, .pad-tb-5-20-5, .pad-tb-5-20-10, .pad-tb-5-20-15 {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.pad-tb-10, .pad-tb-10-0, .pad-tb-10-0-5, .pad-tb-10-0-10, .pad-tb-10-0-15, .pad-tb-10-0-20, .pad-tb-10-5, .pad-tb-10-5-0, .pad-tb-10-5-10, .pad-tb-10-5-15, .pad-tb-10-5-20, .pad-tb-10-10-0, .pad-tb-10-10-5, .pad-tb-10-10-15, .pad-tb-10-10-20, .pad-tb-10-15, .pad-tb-10-15-0, .pad-tb-10-15-5, .pad-tb-10-15-10, .pad-tb-10-15-20, .pad-tb-10-20, .pad-tb-10-20-0, .pad-tb-10-20-5, .pad-tb-10-20-10, .pad-tb-10-20-15 {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.pad-tb-15, .pad-tb-15-0, .pad-tb-15-0-5, .pad-tb-15-0-10, .pad-tb-15-0-15, .pad-tb-15-0-20, .pad-tb-15-5, .pad-tb-15-5-0, .pad-tb-15-5-10, .pad-tb-15-5-15, .pad-tb-15-5-20, .pad-tb-15-10, .pad-tb-15-10-0, .pad-tb-15-10-5, .pad-tb-15-10-15, .pad-tb-15-10-20, .pad-tb-15-15-0, .pad-tb-15-15-5, .pad-tb-15-15-10, .pad-tb-15-15-20, .pad-tb-15-20, .pad-tb-15-20-0, .pad-tb-15-20-5, .pad-tb-15-20-10, .pad-tb-15-20-15 {
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.pad-tb-20, .pad-tb-20-0, .pad-tb-20-0-5, .pad-tb-20-0-10, .pad-tb-20-0-15, .pad-tb-20-0-20, .pad-tb-20-5, .pad-tb-20-5-0, .pad-tb-20-5-10, .pad-tb-20-5-15, .pad-tb-20-5-20, .pad-tb-20-10, .pad-tb-20-10-0, .pad-tb-20-10-5, .pad-tb-20-10-15, .pad-tb-20-10-20, .pad-tb-20-15, .pad-tb-20-15-0, .pad-tb-20-15-5, .pad-tb-20-15-10, .pad-tb-20-15-20, .pad-tb-20-20-0, .pad-tb-20-20-5, .pad-tb-20-20-10, .pad-tb-20-20-15 {
+	padding-top:20px;
+	padding-bottom:20px;
+}
+/* */
+.pad-lr-0, .pad-lr-0-0-5, .pad-lr-0-0-10, .pad-lr-0-0-15, .pad-lr-0-0-20, .pad-lr-0-5, .pad-lr-0-5-0, .pad-lr-0-5-10, .pad-lr-0-5-15, .pad-lr-0-5-20, .pad-lr-0-10, .pad-lr-0-10-0, .pad-lr-0-10-5, .pad-lr-0-10-15, .pad-lr-0-10-20, .pad-lr-0-15, .pad-lr-0-15-0, .pad-lr-0-15-5, .pad-lr-0-15-10, .pad-lr-0-15-20, .pad-lr-0-20, .pad-lr-0-20-0, .pad-lr-0-20-5, .pad-lr-0-20-10, .pad-lr-0-20-15 {
+	padding-left:0px;
+	padding-right:0px;
+}
+.pad-lr-5, .pad-lr-5-0, .pad-lr-5-0-5, .pad-lr-5-0-10, .pad-lr-5-0-15, .pad-lr-5-0-20, .pad-lr-5-5-0, .pad-lr-5-5-10, .pad-lr-5-5-15, .pad-lr-5-5-20, .pad-lr-5-10, .pad-lr-5-10-0, .pad-lr-5-10-5, .pad-lr-5-10-15, .pad-lr-5-10-20, .pad-lr-5-15, .pad-lr-5-15-0, .pad-lr-5-15-5, .pad-lr-5-15-10, .pad-lr-5-15-20, .pad-lr-5-20, .pad-lr-5-20-0, .pad-lr-5-20-5, .pad-lr-5-20-10, .pad-lr-5-20-15 {
+	padding-left:5px;
+	padding-right:5px;
+}
+.pad-lr-10, .pad-lr-10-0, .pad-lr-10-0-5, .pad-lr-10-0-10, .pad-lr-10-0-15, .pad-lr-10-0-20, .pad-lr-10-5, .pad-lr-10-5-0, .pad-lr-10-5-10, .pad-lr-10-5-15, .pad-lr-10-5-20, .pad-lr-10-10-0, .pad-lr-10-10-5, .pad-lr-10-10-15, .pad-lr-10-10-20, .pad-lr-10-15, .pad-lr-10-15-0, .pad-lr-10-15-5, .pad-lr-10-15-10, .pad-lr-10-15-20, .pad-lr-10-20, .pad-lr-10-20-0, .pad-lr-10-20-5, .pad-lr-10-20-10, .pad-lr-10-20-15 {
+	padding-left:10px;
+	padding-right:10px;
+}
+.pad-lr-15, .pad-lr-15-0, .pad-lr-15-0-5, .pad-lr-15-0-10, .pad-lr-15-0-15, .pad-lr-15-0-20, .pad-lr-15-5, .pad-lr-15-5-0, .pad-lr-15-5-10, .pad-lr-15-5-15, .pad-lr-15-5-20, .pad-lr-15-10, .pad-lr-15-10-0, .pad-lr-15-10-5, .pad-lr-15-10-15, .pad-lr-15-10-20, .pad-lr-15-15-0, .pad-lr-15-15-5, .pad-lr-15-15-10, .pad-lr-15-15-20, .pad-lr-15-20, .pad-lr-15-20-0, .pad-lr-15-20-5, .pad-lr-15-20-10, .pad-lr-15-20-15 {
+	padding-left:15px;
+	padding-right:15px;
+}
+.pad-lr-20, .pad-lr-20-0, .pad-lr-20-0-5, .pad-lr-20-0-10, .pad-lr-20-0-15, .pad-lr-20-0-20, .pad-lr-20-5, .pad-lr-20-5-0, .pad-lr-20-5-10, .pad-lr-20-5-15, .pad-lr-20-5-20, .pad-lr-20-10, .pad-lr-20-10-0, .pad-lr-20-10-5, .pad-lr-20-10-15, .pad-lr-20-10-20, .pad-lr-20-15, .pad-lr-20-15-0, .pad-lr-20-15-5, .pad-lr-20-15-10, .pad-lr-20-15-20, .pad-lr-20-20-0, .pad-lr-20-20-5, .pad-lr-20-20-10, .pad-lr-20-20-15 {
+	padding-left:20px;
+	padding-right:20px;
+}
+/* */
+.pad-t-0, .pad-t-0-0-5, .pad-t-0-0-10, .pad-t-0-0-15, .pad-t-0-0-20, .pad-t-0-5, .pad-t-0-5-0, .pad-t-0-5-10, .pad-t-0-5-15, .pad-t-0-5-20, .pad-t-0-10, .pad-t-0-10-0, .pad-t-0-10-5, .pad-t-0-10-15, .pad-t-0-10-20, .pad-t-0-15, .pad-t-0-15-0, .pad-t-0-15-5, .pad-t-0-15-10, .pad-t-0-15-20, .pad-t-0-20, .pad-t-0-20-0, .pad-t-0-20-5, .pad-t-0-20-10, .pad-t-0-20-15 {
+	padding-top:0px;
+}
+.pad-t-5, .pad-t-5-0, .pad-t-5-0-5, .pad-t-5-0-10, .pad-t-5-0-15, .pad-t-5-0-20, .pad-t-5-5-0, .pad-t-5-5-10, .pad-t-5-5-15, .pad-t-5-5-20, .pad-t-5-10, .pad-t-5-10-0, .pad-t-5-10-5, .pad-t-5-10-15, .pad-t-5-10-20, .pad-t-5-15, .pad-t-5-15-0, .pad-t-5-15-5, .pad-t-5-15-10, .pad-t-5-15-20, .pad-t-5-20, .pad-t-5-20-0, .pad-t-5-20-5, .pad-t-5-20-10, .pad-t-5-20-15 {
+	padding-top:5px;
+}
+.pad-t-10, .pad-t-10-0, .pad-t-10-0-5, .pad-t-10-0-10, .pad-t-10-0-15, .pad-t-10-0-20, .pad-t-10-5, .pad-t-10-5-0, .pad-t-10-5-10, .pad-t-10-5-15, .pad-t-10-5-20, .pad-t-10-10-0, .pad-t-10-10-5, .pad-t-10-10-15, .pad-t-10-10-20, .pad-t-10-15, .pad-t-10-15-0, .pad-t-10-15-5, .pad-t-10-15-10, .pad-t-10-15-20, .pad-t-10-20, .pad-t-10-20-0, .pad-t-10-20-5, .pad-t-10-20-10, .pad-t-10-20-15 {
+	padding-top:10px;
+}
+.pad-t-15, .pad-t-15-0, .pad-t-15-0-5, .pad-t-15-0-10, .pad-t-15-0-15, .pad-t-15-0-20, .pad-t-15-5, .pad-t-15-5-0, .pad-t-15-5-10, .pad-t-15-5-15, .pad-t-15-5-20, .pad-t-15-10, .pad-t-15-10-0, .pad-t-15-10-5, .pad-t-15-10-15, .pad-t-15-10-20, .pad-t-15-15-0, .pad-t-15-15-5, .pad-t-15-15-10, .pad-t-15-15-20, .pad-t-15-20, .pad-t-15-20-0, .pad-t-15-20-5, .pad-t-15-20-10, .pad-t-15-20-15 {
+	padding-top:15px;
+}
+.pad-t-20, .pad-t-20-0, .pad-t-20-0-5, .pad-t-20-0-10, .pad-t-20-0-15, .pad-t-20-0-20, .pad-t-20-5, .pad-t-20-5-0, .pad-t-20-5-10, .pad-t-20-5-15, .pad-t-20-5-20, .pad-t-20-10, .pad-t-20-10-0, .pad-t-20-10-5, .pad-t-20-10-15, .pad-t-20-10-20, .pad-t-20-15, .pad-t-20-15-0, .pad-t-20-15-5, .pad-t-20-15-10, .pad-t-20-15-20, .pad-t-20-20-0, .pad-t-20-20-5, .pad-t-20-20-10, .pad-t-20-20-15 {
+	padding-top:20px;
+}
+/* */
+.pad-r-0, .pad-r-0-0-5, .pad-r-0-0-10, .pad-r-0-0-15, .pad-r-0-0-20, .pad-r-0-5, .pad-r-0-5-0, .pad-r-0-5-10, .pad-r-0-5-15, .pad-r-0-5-20, .pad-r-0-10, .pad-r-0-10-0, .pad-r-0-10-5, .pad-r-0-10-15, .pad-r-0-10-20, .pad-r-0-15, .pad-r-0-15-0, .pad-r-0-15-5, .pad-r-0-15-10, .pad-r-0-15-20, .pad-r-0-20, .pad-r-0-20-0, .pad-r-0-20-5, .pad-r-0-20-10, .pad-r-0-20-15 {
+	padding-right:0px;
+}
+.pad-r-5, .pad-r-5-0, .pad-r-5-0-5, .pad-r-5-0-10, .pad-r-5-0-15, .pad-r-5-0-20, .pad-r-5-5-0, .pad-r-5-5-10, .pad-r-5-5-15, .pad-r-5-5-20, .pad-r-5-10, .pad-r-5-10-0, .pad-r-5-10-5, .pad-r-5-10-15, .pad-r-5-10-20, .pad-r-5-15, .pad-r-5-15-0, .pad-r-5-15-5, .pad-r-5-15-10, .pad-r-5-15-20, .pad-r-5-20, .pad-r-5-20-0, .pad-r-5-20-5, .pad-r-5-20-10, .pad-r-5-20-15 {
+	padding-right:5px;
+}
+.pad-r-10, .pad-r-10-0, .pad-r-10-0-5, .pad-r-10-0-10, .pad-r-10-0-15, .pad-r-10-0-20, .pad-r-10-5, .pad-r-10-5-0, .pad-r-10-5-10, .pad-r-10-5-15, .pad-r-10-5-20, .pad-r-10-10-0, .pad-r-10-10-5, .pad-r-10-10-15, .pad-r-10-10-20, .pad-r-10-15, .pad-r-10-15-0, .pad-r-10-15-5, .pad-r-10-15-10, .pad-r-10-15-20, .pad-r-10-20, .pad-r-10-20-0, .pad-r-10-20-5, .pad-r-10-20-10, .pad-r-10-20-15 {
+	padding-right:10px;
+}
+.pad-r-15, .pad-r-15-0, .pad-r-15-0-5, .pad-r-15-0-10, .pad-r-15-0-15, .pad-r-15-0-20, .pad-r-15-5, .pad-r-15-5-0, .pad-r-15-5-10, .pad-r-15-5-15, .pad-r-15-5-20, .pad-r-15-10, .pad-r-15-10-0, .pad-r-15-10-5, .pad-r-15-10-15, .pad-r-15-10-20, .pad-r-15-15-0, .pad-r-15-15-5, .pad-r-15-15-10, .pad-r-15-15-20, .pad-r-15-20, .pad-r-15-20-0, .pad-r-15-20-5, .pad-r-15-20-10, .pad-r-15-20-15 {
+	padding-right:15px;
+}
+.pad-r-20, .pad-r-20-0, .pad-r-20-0-5, .pad-r-20-0-10, .pad-r-20-0-15, .pad-r-20-0-20, .pad-r-20-5, .pad-r-20-5-0, .pad-r-20-5-10, .pad-r-20-5-15, .pad-r-20-5-20, .pad-r-20-10, .pad-r-20-10-0, .pad-r-20-10-5, .pad-r-20-10-15, .pad-r-20-10-20, .pad-r-20-15, .pad-r-20-15-0, .pad-r-20-15-5, .pad-r-20-15-10, .pad-r-20-15-20, .pad-r-20-20-0, .pad-r-20-20-5, .pad-r-20-20-10, .pad-r-20-20-15 {
+	padding-right:20px;
+}
+/* */
+.pad-b-0, .pad-b-0-0-5, .pad-b-0-0-10, .pad-b-0-0-15, .pad-b-0-0-20, .pad-b-0-5, .pad-b-0-5-0, .pad-b-0-5-10, .pad-b-0-5-15, .pad-b-0-5-20, .pad-b-0-10, .pad-b-0-10-0, .pad-b-0-10-5, .pad-b-0-10-15, .pad-b-0-10-20, .pad-b-0-15, .pad-b-0-15-0, .pad-b-0-15-5, .pad-b-0-15-10, .pad-b-0-15-20, .pad-b-0-20, .pad-b-0-20-0, .pad-b-0-20-5, .pad-b-0-20-10, .pad-b-0-20-15 {
+	padding-bottom:0px;
+}
+.pad-b-5, .pad-b-5-0, .pad-b-5-0-5, .pad-b-5-0-10, .pad-b-5-0-15, .pad-b-5-0-20, .pad-b-5-5-0, .pad-b-5-5-10, .pad-b-5-5-15, .pad-b-5-5-20, .pad-b-5-10, .pad-b-5-10-0, .pad-b-5-10-5, .pad-b-5-10-15, .pad-b-5-10-20, .pad-b-5-15, .pad-b-5-15-0, .pad-b-5-15-5, .pad-b-5-15-10, .pad-b-5-15-20, .pad-b-5-20, .pad-b-5-20-0, .pad-b-5-20-5, .pad-b-5-20-10, .pad-b-5-20-15 {
+	padding-bottom:5px;
+}
+.pad-b-10, .pad-b-10-0, .pad-b-10-0-5, .pad-b-10-0-10, .pad-b-10-0-15, .pad-b-10-0-20, .pad-b-10-5, .pad-b-10-5-0, .pad-b-10-5-10, .pad-b-10-5-15, .pad-b-10-5-20, .pad-b-10-10-0, .pad-b-10-10-5, .pad-b-10-10-15, .pad-b-10-10-20, .pad-b-10-15, .pad-b-10-15-0, .pad-b-10-15-5, .pad-b-10-15-10, .pad-b-10-15-20, .pad-b-10-20, .pad-b-10-20-0, .pad-b-10-20-5, .pad-b-10-20-10, .pad-b-10-20-15 {
+	padding-bottom:10px;
+}
+.pad-b-15, .pad-b-15-0, .pad-b-15-0-5, .pad-b-15-0-10, .pad-b-15-0-15, .pad-b-15-0-20, .pad-b-15-5, .pad-b-15-5-0, .pad-b-15-5-10, .pad-b-15-5-15, .pad-b-15-5-20, .pad-b-15-10, .pad-b-15-10-0, .pad-b-15-10-5, .pad-b-15-10-15, .pad-b-15-10-20, .pad-b-15-15-0, .pad-b-15-15-5, .pad-b-15-15-10, .pad-b-15-15-20, .pad-b-15-20, .pad-b-15-20-0, .pad-b-15-20-5, .pad-b-15-20-10, .pad-b-15-20-15 {
+	padding-bottom:15px;
+}
+.pad-b-20, .pad-b-20-0, .pad-b-20-0-5, .pad-b-20-0-10, .pad-b-20-0-15, .pad-b-20-0-20, .pad-b-20-5, .pad-b-20-5-0, .pad-b-20-5-10, .pad-b-20-5-15, .pad-b-20-5-20, .pad-b-20-10, .pad-b-20-10-0, .pad-b-20-10-5, .pad-b-20-10-15, .pad-b-20-10-20, .pad-b-20-15, .pad-b-20-15-0, .pad-b-20-15-5, .pad-b-20-15-10, .pad-b-20-15-20, .pad-b-20-20-0, .pad-b-20-20-5, .pad-b-20-20-10, .pad-b-20-20-15 {
+	padding-bottom:20px;
+}
+/* */
+.pad-l-0, .pad-l-0-0-5, .pad-l-0-0-10, .pad-l-0-0-15, .pad-l-0-0-20, .pad-l-0-5, .pad-l-0-5-0, .pad-l-0-5-10, .pad-l-0-5-15, .pad-l-0-5-20, .pad-l-0-10, .pad-l-0-10-0, .pad-l-0-10-5, .pad-l-0-10-15, .pad-l-0-10-20, .pad-l-0-15, .pad-l-0-15-0, .pad-l-0-15-5, .pad-l-0-15-10, .pad-l-0-15-20, .pad-l-0-20, .pad-l-0-20-0, .pad-l-0-20-5, .pad-l-0-20-10, .pad-l-0-20-15 {
+	padding-left:0px;
+}
+.pad-l-5, .pad-l-5-0, .pad-l-5-0-5, .pad-l-5-0-10, .pad-l-5-0-15, .pad-l-5-0-20, .pad-l-5-5-0, .pad-l-5-5-10, .pad-l-5-5-15, .pad-l-5-5-20, .pad-l-5-10, .pad-l-5-10-0, .pad-l-5-10-5, .pad-l-5-10-15, .pad-l-5-10-20, .pad-l-5-15, .pad-l-5-15-0, .pad-l-5-15-5, .pad-l-5-15-10, .pad-l-5-15-20, .pad-l-5-20, .pad-l-5-20-0, .pad-l-5-20-5, .pad-l-5-20-10, .pad-l-5-20-15 {
+	padding-left:5px;
+}
+.pad-l-10, .pad-l-10-0, .pad-l-10-0-5, .pad-l-10-0-10, .pad-l-10-0-15, .pad-l-10-0-20, .pad-l-10-5, .pad-l-10-5-0, .pad-l-10-5-10, .pad-l-10-5-15, .pad-l-10-5-20, .pad-l-10-10-0, .pad-l-10-10-5, .pad-l-10-10-15, .pad-l-10-10-20, .pad-l-10-15, .pad-l-10-15-0, .pad-l-10-15-5, .pad-l-10-15-10, .pad-l-10-15-20, .pad-l-10-20, .pad-l-10-20-0, .pad-l-10-20-5, .pad-l-10-20-10, .pad-l-10-20-15 {
+	padding-left:10px;
+}
+.pad-l-15, .pad-l-15-0, .pad-l-15-0-5, .pad-l-15-0-10, .pad-l-15-0-15, .pad-l-15-0-20, .pad-l-15-5, .pad-l-15-5-0, .pad-l-15-5-10, .pad-l-15-5-15, .pad-l-15-5-20, .pad-l-15-10, .pad-l-15-10-0, .pad-l-15-10-5, .pad-l-15-10-15, .pad-l-15-10-20, .pad-l-15-15-0, .pad-l-15-15-5, .pad-l-15-15-10, .pad-l-15-15-20, .pad-l-15-20, .pad-l-15-20-0, .pad-l-15-20-5, .pad-l-15-20-10, .pad-l-15-20-15 {
+	padding-left:15px;
+}
+.pad-l-20, .pad-l-20-0, .pad-l-20-0-5, .pad-l-20-0-10, .pad-l-20-0-15, .pad-l-20-0-20, .pad-l-20-5, .pad-l-20-5-0, .pad-l-20-5-10, .pad-l-20-5-15, .pad-l-20-5-20, .pad-l-20-10, .pad-l-20-10-0, .pad-l-20-10-5, .pad-l-20-10-15, .pad-l-20-10-20, .pad-l-20-15, .pad-l-20-15-0, .pad-l-20-15-5, .pad-l-20-15-10, .pad-l-20-15-20, .pad-l-20-20-0, .pad-l-20-20-5, .pad-l-20-20-10, .pad-l-20-20-15 {
+	padding-left:20px;
+}
+
+
+/* Pushing
+*/
+.push-0, .push-0-0-5, .push-0-0-10, .push-0-0-15, .push-0-0-20, .push-0-5, .push-0-5-0, .push-0-5-10, .push-0-5-15, .push-0-5-20, .push-0-10, .push-0-10-0, .push-0-10-5, .push-0-10-15, .push-0-10-20, .push-0-15, .push-0-15-0, .push-0-15-5, .push-0-15-10, .push-0-15-20, .push-0-20, .push-0-20-0, .push-0-20-5, .push-0-20-10, .push-0-20-15 {
+	border:0px solid transparent;
+}
+.push-5, .push-5-0, .push-5-0-5, .push-5-0-10, .push-5-0-15, .push-5-0-20, .push-5-5-0, .push-5-5-10, .push-5-5-15, .push-5-5-20, .push-5-10, .push-5-10-0, .push-5-10-5, .push-5-10-15, .push-5-10-20, .push-5-15, .push-5-15-0, .push-5-15-5, .push-5-15-10, .push-5-15-20, .push-5-20, .push-5-20-0, .push-5-20-5, .push-5-20-10, .push-5-20-15 {
+	border:5px solid transparent;
+}
+.push-10, .push-10-0, .push-10-0-5, .push-10-0-10, .push-10-0-15, .push-10-0-20, .push-10-5, .push-10-5-0, .push-10-5-10, .push-10-5-15, .push-10-5-20, .push-10-10-0, .push-10-10-5, .push-10-10-15, .push-10-10-20, .push-10-15, .push-10-15-0, .push-10-15-5, .push-10-15-10, .push-10-15-20, .push-10-20, .push-10-20-0, .push-10-20-5, .push-10-20-10, .push-10-20-15 {
+	border:10px solid transparent;
+}
+.push-15, .push-15-0, .push-15-0-5, .push-15-0-10, .push-15-0-15, .push-15-0-20, .push-15-5, .push-15-5-0, .push-15-5-10, .push-15-5-15, .push-15-5-20, .push-15-10, .push-15-10-0, .push-15-10-5, .push-15-10-15, .push-15-10-20, .push-15-15-0, .push-15-15-5, .push-15-15-10, .push-15-15-20, .push-15-20, .push-15-20-0, .push-15-20-5, .push-15-20-10, .push-15-20-15 {
+	border:15px solid transparent;
+}
+.push-20, .push-20-0, .push-20-0-5, .push-20-0-10, .push-20-0-15, .push-20-0-20, .push-20-5, .push-20-5-0, .push-20-5-10, .push-20-5-15, .push-20-5-20, .push-20-10, .push-20-10-0, .push-20-10-5, .push-20-10-15, .push-20-10-20, .push-20-15, .push-20-15-0, .push-20-15-5, .push-20-15-10, .push-20-15-20, .push-20-20-0, .push-20-20-5, .push-20-20-10, .push-20-20-15 {
+	border:20px solid transparent;
+}
+/* */
+.push-tb-0, .push-tb-0-0-5, .push-tb-0-0-10, .push-tb-0-0-15, .push-tb-0-0-20, .push-tb-0-5, .push-tb-0-5-0, .push-tb-0-5-10, .push-tb-0-5-15, .push-tb-0-5-20, .push-tb-0-10, .push-tb-0-10-0, .push-tb-0-10-5, .push-tb-0-10-15, .push-tb-0-10-20, .push-tb-0-15, .push-tb-0-15-0, .push-tb-0-15-5, .push-tb-0-15-10, .push-tb-0-15-20, .push-tb-0-20, .push-tb-0-20-0, .push-tb-0-20-5, .push-tb-0-20-10, .push-tb-0-20-15 {
+	border-top:0px solid transparent;
+	border-bottom:0px solid transparent;
+}
+.push-tb-5, .push-tb-5-0, .push-tb-5-0-5, .push-tb-5-0-10, .push-tb-5-0-15, .push-tb-5-0-20, .push-tb-5-5-0, .push-tb-5-5-10, .push-tb-5-5-15, .push-tb-5-5-20, .push-tb-5-10, .push-tb-5-10-0, .push-tb-5-10-5, .push-tb-5-10-15, .push-tb-5-10-20, .push-tb-5-15, .push-tb-5-15-0, .push-tb-5-15-5, .push-tb-5-15-10, .push-tb-5-15-20, .push-tb-5-20, .push-tb-5-20-0, .push-tb-5-20-5, .push-tb-5-20-10, .push-tb-5-20-15 {
+	border-top:5px solid transparent;
+	border-bottom:5px solid transparent;
+}
+.push-tb-10, .push-tb-10-0, .push-tb-10-0-5, .push-tb-10-0-10, .push-tb-10-0-15, .push-tb-10-0-20, .push-tb-10-5, .push-tb-10-5-0, .push-tb-10-5-10, .push-tb-10-5-15, .push-tb-10-5-20, .push-tb-10-10-0, .push-tb-10-10-5, .push-tb-10-10-15, .push-tb-10-10-20, .push-tb-10-15, .push-tb-10-15-0, .push-tb-10-15-5, .push-tb-10-15-10, .push-tb-10-15-20, .push-tb-10-20, .push-tb-10-20-0, .push-tb-10-20-5, .push-tb-10-20-10, .push-tb-10-20-15 {
+	border-top:10px solid transparent;
+	border-bottom:10px solid transparent;
+}
+.push-tb-15, .push-tb-15-0, .push-tb-15-0-5, .push-tb-15-0-10, .push-tb-15-0-15, .push-tb-15-0-20, .push-tb-15-5, .push-tb-15-5-0, .push-tb-15-5-10, .push-tb-15-5-15, .push-tb-15-5-20, .push-tb-15-10, .push-tb-15-10-0, .push-tb-15-10-5, .push-tb-15-10-15, .push-tb-15-10-20, .push-tb-15-15-0, .push-tb-15-15-5, .push-tb-15-15-10, .push-tb-15-15-20, .push-tb-15-20, .push-tb-15-20-0, .push-tb-15-20-5, .push-tb-15-20-10, .push-tb-15-20-15 {
+	border-top:15px solid transparent;
+	border-bottom:15px solid transparent;
+}
+.push-tb-20, .push-tb-20-0, .push-tb-20-0-5, .push-tb-20-0-10, .push-tb-20-0-15, .push-tb-20-0-20, .push-tb-20-5, .push-tb-20-5-0, .push-tb-20-5-10, .push-tb-20-5-15, .push-tb-20-5-20, .push-tb-20-10, .push-tb-20-10-0, .push-tb-20-10-5, .push-tb-20-10-15, .push-tb-20-10-20, .push-tb-20-15, .push-tb-20-15-0, .push-tb-20-15-5, .push-tb-20-15-10, .push-tb-20-15-20, .push-tb-20-20-0, .push-tb-20-20-5, .push-tb-20-20-10, .push-tb-20-20-15 {
+	border-top:20px solid transparent;
+	border-bottom:20px solid transparent;
+}
+/* */
+.push-lr-0, .push-lr-0-0-5, .push-lr-0-0-10, .push-lr-0-0-15, .push-lr-0-0-20, .push-lr-0-5, .push-lr-0-5-0, .push-lr-0-5-10, .push-lr-0-5-15, .push-lr-0-5-20, .push-lr-0-10, .push-lr-0-10-0, .push-lr-0-10-5, .push-lr-0-10-15, .push-lr-0-10-20, .push-lr-0-15, .push-lr-0-15-0, .push-lr-0-15-5, .push-lr-0-15-10, .push-lr-0-15-20, .push-lr-0-20, .push-lr-0-20-0, .push-lr-0-20-5, .push-lr-0-20-10, .push-lr-0-20-15 {
+	border-left:0px solid transparent;
+	border-right:0px solid transparent;
+}
+.push-lr-5, .push-lr-5-0, .push-lr-5-0-5, .push-lr-5-0-10, .push-lr-5-0-15, .push-lr-5-0-20, .push-lr-5-5-0, .push-lr-5-5-10, .push-lr-5-5-15, .push-lr-5-5-20, .push-lr-5-10, .push-lr-5-10-0, .push-lr-5-10-5, .push-lr-5-10-15, .push-lr-5-10-20, .push-lr-5-15, .push-lr-5-15-0, .push-lr-5-15-5, .push-lr-5-15-10, .push-lr-5-15-20, .push-lr-5-20, .push-lr-5-20-0, .push-lr-5-20-5, .push-lr-5-20-10, .push-lr-5-20-15 {
+	border-left:5px solid transparent;
+	border-right:5px solid transparent;
+}
+.push-lr-10, .push-lr-10-0, .push-lr-10-0-5, .push-lr-10-0-10, .push-lr-10-0-15, .push-lr-10-0-20, .push-lr-10-5, .push-lr-10-5-0, .push-lr-10-5-10, .push-lr-10-5-15, .push-lr-10-5-20, .push-lr-10-10-0, .push-lr-10-10-5, .push-lr-10-10-15, .push-lr-10-10-20, .push-lr-10-15, .push-lr-10-15-0, .push-lr-10-15-5, .push-lr-10-15-10, .push-lr-10-15-20, .push-lr-10-20, .push-lr-10-20-0, .push-lr-10-20-5, .push-lr-10-20-10, .push-lr-10-20-15 {
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+}
+.push-lr-15, .push-lr-15-0, .push-lr-15-0-5, .push-lr-15-0-10, .push-lr-15-0-15, .push-lr-15-0-20, .push-lr-15-5, .push-lr-15-5-0, .push-lr-15-5-10, .push-lr-15-5-15, .push-lr-15-5-20, .push-lr-15-10, .push-lr-15-10-0, .push-lr-15-10-5, .push-lr-15-10-15, .push-lr-15-10-20, .push-lr-15-15-0, .push-lr-15-15-5, .push-lr-15-15-10, .push-lr-15-15-20, .push-lr-15-20, .push-lr-15-20-0, .push-lr-15-20-5, .push-lr-15-20-10, .push-lr-15-20-15 {
+	border-left:15px solid transparent;
+	border-right:15px solid transparent;
+}
+.push-lr-20, .push-lr-20-0, .push-lr-20-0-5, .push-lr-20-0-10, .push-lr-20-0-15, .push-lr-20-0-20, .push-lr-20-5, .push-lr-20-5-0, .push-lr-20-5-10, .push-lr-20-5-15, .push-lr-20-5-20, .push-lr-20-10, .push-lr-20-10-0, .push-lr-20-10-5, .push-lr-20-10-15, .push-lr-20-10-20, .push-lr-20-15, .push-lr-20-15-0, .push-lr-20-15-5, .push-lr-20-15-10, .push-lr-20-15-20, .push-lr-20-20-0, .push-lr-20-20-5, .push-lr-20-20-10, .push-lr-20-20-15 {
+	border-left:20px solid transparent;
+	border-right:20px solid transparent;
+}
+/* */
+.push-t-0, .push-t-0-0-5, .push-t-0-0-10, .push-t-0-0-15, .push-t-0-0-20, .push-t-0-5, .push-t-0-5-0, .push-t-0-5-10, .push-t-0-5-15, .push-t-0-5-20, .push-t-0-10, .push-t-0-10-0, .push-t-0-10-5, .push-t-0-10-15, .push-t-0-10-20, .push-t-0-15, .push-t-0-15-0, .push-t-0-15-5, .push-t-0-15-10, .push-t-0-15-20, .push-t-0-20, .push-t-0-20-0, .push-t-0-20-5, .push-t-0-20-10, .push-t-0-20-15 {
+	border-top:0px solid transparent;
+}
+.push-t-5, .push-t-5-0, .push-t-5-0-5, .push-t-5-0-10, .push-t-5-0-15, .push-t-5-0-20, .push-t-5-5-0, .push-t-5-5-10, .push-t-5-5-15, .push-t-5-5-20, .push-t-5-10, .push-t-5-10-0, .push-t-5-10-5, .push-t-5-10-15, .push-t-5-10-20, .push-t-5-15, .push-t-5-15-0, .push-t-5-15-5, .push-t-5-15-10, .push-t-5-15-20, .push-t-5-20, .push-t-5-20-0, .push-t-5-20-5, .push-t-5-20-10, .push-t-5-20-15 {
+	border-top:5px solid transparent;
+}
+.push-t-10, .push-t-10-0, .push-t-10-0-5, .push-t-10-0-10, .push-t-10-0-15, .push-t-10-0-20, .push-t-10-5, .push-t-10-5-0, .push-t-10-5-10, .push-t-10-5-15, .push-t-10-5-20, .push-t-10-10-0, .push-t-10-10-5, .push-t-10-10-15, .push-t-10-10-20, .push-t-10-15, .push-t-10-15-0, .push-t-10-15-5, .push-t-10-15-10, .push-t-10-15-20, .push-t-10-20, .push-t-10-20-0, .push-t-10-20-5, .push-t-10-20-10, .push-t-10-20-15 {
+	border-top:10px solid transparent;
+}
+.push-t-15, .push-t-15-0, .push-t-15-0-5, .push-t-15-0-10, .push-t-15-0-15, .push-t-15-0-20, .push-t-15-5, .push-t-15-5-0, .push-t-15-5-10, .push-t-15-5-15, .push-t-15-5-20, .push-t-15-10, .push-t-15-10-0, .push-t-15-10-5, .push-t-15-10-15, .push-t-15-10-20, .push-t-15-15-0, .push-t-15-15-5, .push-t-15-15-10, .push-t-15-15-20, .push-t-15-20, .push-t-15-20-0, .push-t-15-20-5, .push-t-15-20-10, .push-t-15-20-15 {
+	border-top:15px solid transparent;
+}
+.push-t-20, .push-t-20-0, .push-t-20-0-5, .push-t-20-0-10, .push-t-20-0-15, .push-t-20-0-20, .push-t-20-5, .push-t-20-5-0, .push-t-20-5-10, .push-t-20-5-15, .push-t-20-5-20, .push-t-20-10, .push-t-20-10-0, .push-t-20-10-5, .push-t-20-10-15, .push-t-20-10-20, .push-t-20-15, .push-t-20-15-0, .push-t-20-15-5, .push-t-20-15-10, .push-t-20-15-20, .push-t-20-20-0, .push-t-20-20-5, .push-t-20-20-10, .push-t-20-20-15 {
+	border-top:20px solid transparent;
+}
+/* */
+.push-r-0, .push-r-0-0-5, .push-r-0-0-10, .push-r-0-0-15, .push-r-0-0-20, .push-r-0-5, .push-r-0-5-0, .push-r-0-5-10, .push-r-0-5-15, .push-r-0-5-20, .push-r-0-10, .push-r-0-10-0, .push-r-0-10-5, .push-r-0-10-15, .push-r-0-10-20, .push-r-0-15, .push-r-0-15-0, .push-r-0-15-5, .push-r-0-15-10, .push-r-0-15-20, .push-r-0-20, .push-r-0-20-0, .push-r-0-20-5, .push-r-0-20-10, .push-r-0-20-15 {
+	border-right:0px solid transparent;
+}
+.push-r-5, .push-r-5-0, .push-r-5-0-5, .push-r-5-0-10, .push-r-5-0-15, .push-r-5-0-20, .push-r-5-5-0, .push-r-5-5-10, .push-r-5-5-15, .push-r-5-5-20, .push-r-5-10, .push-r-5-10-0, .push-r-5-10-5, .push-r-5-10-15, .push-r-5-10-20, .push-r-5-15, .push-r-5-15-0, .push-r-5-15-5, .push-r-5-15-10, .push-r-5-15-20, .push-r-5-20, .push-r-5-20-0, .push-r-5-20-5, .push-r-5-20-10, .push-r-5-20-15 {
+	border-right:5px solid transparent;
+}
+.push-r-10, .push-r-10-0, .push-r-10-0-5, .push-r-10-0-10, .push-r-10-0-15, .push-r-10-0-20, .push-r-10-5, .push-r-10-5-0, .push-r-10-5-10, .push-r-10-5-15, .push-r-10-5-20, .push-r-10-10-0, .push-r-10-10-5, .push-r-10-10-15, .push-r-10-10-20, .push-r-10-15, .push-r-10-15-0, .push-r-10-15-5, .push-r-10-15-10, .push-r-10-15-20, .push-r-10-20, .push-r-10-20-0, .push-r-10-20-5, .push-r-10-20-10, .push-r-10-20-15 {
+	border-right:10px solid transparent;
+}
+.push-r-15, .push-r-15-0, .push-r-15-0-5, .push-r-15-0-10, .push-r-15-0-15, .push-r-15-0-20, .push-r-15-5, .push-r-15-5-0, .push-r-15-5-10, .push-r-15-5-15, .push-r-15-5-20, .push-r-15-10, .push-r-15-10-0, .push-r-15-10-5, .push-r-15-10-15, .push-r-15-10-20, .push-r-15-15-0, .push-r-15-15-5, .push-r-15-15-10, .push-r-15-15-20, .push-r-15-20, .push-r-15-20-0, .push-r-15-20-5, .push-r-15-20-10, .push-r-15-20-15 {
+	border-right:15px solid transparent;
+}
+.push-r-20, .push-r-20-0, .push-r-20-0-5, .push-r-20-0-10, .push-r-20-0-15, .push-r-20-0-20, .push-r-20-5, .push-r-20-5-0, .push-r-20-5-10, .push-r-20-5-15, .push-r-20-5-20, .push-r-20-10, .push-r-20-10-0, .push-r-20-10-5, .push-r-20-10-15, .push-r-20-10-20, .push-r-20-15, .push-r-20-15-0, .push-r-20-15-5, .push-r-20-15-10, .push-r-20-15-20, .push-r-20-20-0, .push-r-20-20-5, .push-r-20-20-10, .push-r-20-20-15 {
+	border-right:20px solid transparent;
+}
+/* */
+.push-b-0, .push-b-0-0-5, .push-b-0-0-10, .push-b-0-0-15, .push-b-0-0-20, .push-b-0-5, .push-b-0-5-0, .push-b-0-5-10, .push-b-0-5-15, .push-b-0-5-20, .push-b-0-10, .push-b-0-10-0, .push-b-0-10-5, .push-b-0-10-15, .push-b-0-10-20, .push-b-0-15, .push-b-0-15-0, .push-b-0-15-5, .push-b-0-15-10, .push-b-0-15-20, .push-b-0-20, .push-b-0-20-0, .push-b-0-20-5, .push-b-0-20-10, .push-b-0-20-15 {
+	border-bottom:0px solid transparent;
+}
+.push-b-5, .push-b-5-0, .push-b-5-0-5, .push-b-5-0-10, .push-b-5-0-15, .push-b-5-0-20, .push-b-5-5-0, .push-b-5-5-10, .push-b-5-5-15, .push-b-5-5-20, .push-b-5-10, .push-b-5-10-0, .push-b-5-10-5, .push-b-5-10-15, .push-b-5-10-20, .push-b-5-15, .push-b-5-15-0, .push-b-5-15-5, .push-b-5-15-10, .push-b-5-15-20, .push-b-5-20, .push-b-5-20-0, .push-b-5-20-5, .push-b-5-20-10, .push-b-5-20-15 {
+	border-bottom:5px solid transparent;
+}
+.push-b-10, .push-b-10-0, .push-b-10-0-5, .push-b-10-0-10, .push-b-10-0-15, .push-b-10-0-20, .push-b-10-5, .push-b-10-5-0, .push-b-10-5-10, .push-b-10-5-15, .push-b-10-5-20, .push-b-10-10-0, .push-b-10-10-5, .push-b-10-10-15, .push-b-10-10-20, .push-b-10-15, .push-b-10-15-0, .push-b-10-15-5, .push-b-10-15-10, .push-b-10-15-20, .push-b-10-20, .push-b-10-20-0, .push-b-10-20-5, .push-b-10-20-10, .push-b-10-20-15 {
+	border-bottom:10px solid transparent;
+}
+.push-b-15, .push-b-15-0, .push-b-15-0-5, .push-b-15-0-10, .push-b-15-0-15, .push-b-15-0-20, .push-b-15-5, .push-b-15-5-0, .push-b-15-5-10, .push-b-15-5-15, .push-b-15-5-20, .push-b-15-10, .push-b-15-10-0, .push-b-15-10-5, .push-b-15-10-15, .push-b-15-10-20, .push-b-15-15-0, .push-b-15-15-5, .push-b-15-15-10, .push-b-15-15-20, .push-b-15-20, .push-b-15-20-0, .push-b-15-20-5, .push-b-15-20-10, .push-b-15-20-15 {
+	border-bottom:15px solid transparent;
+}
+.push-b-20, .push-b-20-0, .push-b-20-0-5, .push-b-20-0-10, .push-b-20-0-15, .push-b-20-0-20, .push-b-20-5, .push-b-20-5-0, .push-b-20-5-10, .push-b-20-5-15, .push-b-20-5-20, .push-b-20-10, .push-b-20-10-0, .push-b-20-10-5, .push-b-20-10-15, .push-b-20-10-20, .push-b-20-15, .push-b-20-15-0, .push-b-20-15-5, .push-b-20-15-10, .push-b-20-15-20, .push-b-20-20-0, .push-b-20-20-5, .push-b-20-20-10, .push-b-20-20-15 {
+	border-bottom:20px solid transparent;
+}
+/* */
+.push-l-0, .push-l-0-0-5, .push-l-0-0-10, .push-l-0-0-15, .push-l-0-0-20, .push-l-0-5, .push-l-0-5-0, .push-l-0-5-10, .push-l-0-5-15, .push-l-0-5-20, .push-l-0-10, .push-l-0-10-0, .push-l-0-10-5, .push-l-0-10-15, .push-l-0-10-20, .push-l-0-15, .push-l-0-15-0, .push-l-0-15-5, .push-l-0-15-10, .push-l-0-15-20, .push-l-0-20, .push-l-0-20-0, .push-l-0-20-5, .push-l-0-20-10, .push-l-0-20-15 {
+	border-left:0px solid transparent;
+}
+.push-l-5, .push-l-5-0, .push-l-5-0-5, .push-l-5-0-10, .push-l-5-0-15, .push-l-5-0-20, .push-l-5-5-0, .push-l-5-5-10, .push-l-5-5-15, .push-l-5-5-20, .push-l-5-10, .push-l-5-10-0, .push-l-5-10-5, .push-l-5-10-15, .push-l-5-10-20, .push-l-5-15, .push-l-5-15-0, .push-l-5-15-5, .push-l-5-15-10, .push-l-5-15-20, .push-l-5-20, .push-l-5-20-0, .push-l-5-20-5, .push-l-5-20-10, .push-l-5-20-15 {
+	border-left:5px solid transparent;
+}
+.push-l-10, .push-l-10-0, .push-l-10-0-5, .push-l-10-0-10, .push-l-10-0-15, .push-l-10-0-20, .push-l-10-5, .push-l-10-5-0, .push-l-10-5-10, .push-l-10-5-15, .push-l-10-5-20, .push-l-10-10-0, .push-l-10-10-5, .push-l-10-10-15, .push-l-10-10-20, .push-l-10-15, .push-l-10-15-0, .push-l-10-15-5, .push-l-10-15-10, .push-l-10-15-20, .push-l-10-20, .push-l-10-20-0, .push-l-10-20-5, .push-l-10-20-10, .push-l-10-20-15 {
+	border-left:10px solid transparent;
+}
+.push-l-15, .push-l-15-0, .push-l-15-0-5, .push-l-15-0-10, .push-l-15-0-15, .push-l-15-0-20, .push-l-15-5, .push-l-15-5-0, .push-l-15-5-10, .push-l-15-5-15, .push-l-15-5-20, .push-l-15-10, .push-l-15-10-0, .push-l-15-10-5, .push-l-15-10-15, .push-l-15-10-20, .push-l-15-15-0, .push-l-15-15-5, .push-l-15-15-10, .push-l-15-15-20, .push-l-15-20, .push-l-15-20-0, .push-l-15-20-5, .push-l-15-20-10, .push-l-15-20-15 {
+	border-left:15px solid transparent;
+}
+.push-l-20, .push-l-20-0, .push-l-20-0-5, .push-l-20-0-10, .push-l-20-0-15, .push-l-20-0-20, .push-l-20-5, .push-l-20-5-0, .push-l-20-5-10, .push-l-20-5-15, .push-l-20-5-20, .push-l-20-10, .push-l-20-10-0, .push-l-20-10-5, .push-l-20-10-15, .push-l-20-10-20, .push-l-20-15, .push-l-20-15-0, .push-l-20-15-5, .push-l-20-15-10, .push-l-20-15-20, .push-l-20-20-0, .push-l-20-20-5, .push-l-20-20-10, .push-l-20-20-15 {
+	border-left:20px solid transparent;
+}
+
+
+
+/***
+**** Tablet
+***/
+@media screen and (max-width:960px) {
+	
+	
+	/* Clearing
+	*/
+	.clear-n-n-0, .clear-n-n-10, .clear-n-n-15, .clear-n-n-20, .clear-n-n-30, .clear-0-n, .clear-0-n-0, .clear-0-n-10, .clear-0-n-15, .clear-0-n-20, .clear-0-n-30, .clear-10-n, .clear-10-n-0, .clear-10-n-10, .clear-10-n-15, .clear-10-n-20, .clear-10-n-30, .clear-15-n, .clear-15-n-0, .clear-15-n-10, .clear-15-n-15, .clear-15-n-20, .clear-15-n-30, .clear-20-n, .clear-20-n-0, .clear-20-n-10, .clear-20-n-15, .clear-20-n-20, .clear-20-n-30, .clear-30-n, .clear-30-n-0, .clear-30-n-10, .clear-30-n-15, .clear-30-n-20, .clear-30-n-30 {
+		clear:none;
+		height:0px;
+	}
+	.clear-n-0, .clear-n-0-n, .clear-n-0-10, .clear-n-0-15, .clear-n-0-20, .clear-n-0-30, .clear-0-0-n, .clear-0-0-10, .clear-0-0-15, .clear-0-0-20, .clear-0-0-30, .clear-10-0, .clear-10-0-n, .clear-10-0-10, .clear-10-0-15, .clear-10-0-20, .clear-10-0-30, .clear-15-0, .clear-15-0-n, .clear-15-0-10, .clear-15-0-15, .clear-15-0-20, .clear-15-0-30, .clear-20-0, .clear-20-0-n, .clear-20-0-10, .clear-20-0-15, .clear-20-0-20, .clear-20-0-30, .clear-30-0, .clear-30-0-n, .clear-30-0-10, .clear-30-0-15, .clear-30-0-20, .clear-30-0-30 {
+		clear:both;
+		height:0px;
+	}
+	.clear-n-10, .clear-n-10-n, .clear-n-10-0, .clear-n-10-15, .clear-n-10-20, .clear-n-10-30, .clear-0-10, .clear-0-10-n, .clear-0-10-0, .clear-0-10-15, .clear-0-10-20, .clear-0-10-30, .clear-10-10-n, .clear-10-10-0, .clear-10-10-15, .clear-10-10-20, .clear-10-10-30, .clear-15-10, .clear-15-10-n, .clear-15-10-0, .clear-15-10-15, .clear-15-10-20, .clear-15-10-30, .clear-20-10, .clear-20-10-n, .clear-20-10-0, .clear-20-10-15, .clear-20-10-20, .clear-20-10-30, .clear-30-10, .clear-30-10-n, .clear-30-10-0, .clear-30-10-15, .clear-30-10-20, .clear-30-10-30 {
+		clear:both;
+		height:10px;
+	}
+	.clear-n-15, .clear-n-15-n, .clear-n-15-0, .clear-n-15-10, .clear-n-15-20, .clear-n-15-30, .clear-0-15, .clear-0-15-n, .clear-0-15-0, .clear-0-15-10, .clear-0-15-20, .clear-0-15-30, .clear-10-15, .clear-10-15-n, .clear-10-15-0, .clear-10-15-10, .clear-10-15-20, .clear-10-15-30, .clear-15-15-n, .clear-15-15-0, .clear-15-15-10, .clear-15-15-20, .clear-15-15-30, .clear-20-15, .clear-20-15-n, .clear-20-15-0, .clear-20-15-10, .clear-20-15-20, .clear-20-15-30, .clear-30-15, .clear-30-15-n, .clear-30-15-0, .clear-30-15-10, .clear-30-15-20, .clear-30-15-30 {
+		clear:both;
+		height:15px;
+	}
+	.clear-n-20, .clear-n-20-n, .clear-n-20-0, .clear-n-20-10, .clear-n-20-15, .clear-n-20-30, .clear-0-20, .clear-0-20-n, .clear-0-20-0, .clear-0-20-10, .clear-0-20-15, .clear-0-20-30, .clear-10-20, .clear-10-20-n, .clear-10-20-0, .clear-10-20-10, .clear-10-20-15, .clear-10-20-30, .clear-15-20, .clear-15-20-n, .clear-15-20-0, .clear-15-20-10, .clear-15-20-15, .clear-15-20-30, .clear-20-20-n, .clear-20-20-0, .clear-20-20-10, .clear-20-20-15, .clear-20-20-30, .clear-30-20, .clear-30-20-n, .clear-30-20-0, .clear-30-20-10, .clear-30-20-15, .clear-30-20-30 {
+		clear:both;
+		height:20px;
+	}
+	.clear-n-30, .clear-n-30-n, .clear-n-30-0, .clear-n-30-10, .clear-n-30-15, .clear-n-30-20, .clear-0-30, .clear-0-30-n, .clear-0-30-0, .clear-0-30-10, .clear-0-30-15, .clear-0-30-20, .clear-10-30, .clear-10-30-n, .clear-10-30-0, .clear-10-30-10, .clear-10-30-15, .clear-10-30-20, .clear-15-30, .clear-15-30-n, .clear-15-30-0, .clear-15-30-10, .clear-15-30-15, .clear-15-30-20, .clear-20-30, .clear-20-30-n, .clear-20-30-0, .clear-20-30-10, .clear-20-30-15, .clear-20-30-20, .clear-30-30-n, .clear-30-30-0, .clear-30-30-10, .clear-30-30-15, .clear-30-30-20 {
+		clear:both;
+		height:30px;
+	}
+	
+	
+	/* Positioning
+	*/
+	.pos-l-l-c, .pos-l-l-r, .pos-c-l, .pos-c-l-c, .pos-c-l-r, .pos-r-l, .pos-r-l-c, .pos-r-l-r {
+		float:left;
+	}
+	.pos-l-c, .pos-l-c-l, .pos-l-c-r, .pos-c-c-l, .pos-c-c-r, .pos-r-c, .pos-r-c-l, .pos-r-c-r {
+		float:none;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.pos-l-r, .pos-l-r-l, .pos-l-r-c, .pos-c-r, .pos-c-r-l, .pos-c-r-c, .pos-r-r-l, .pos-r-r-c {
+		float:right;
+	}
+	
+	
+	/* Sizes
+	*/
+	.size-960-960-550, .size-960-960-100, .size-550-960, .size-550-960-550, .size-550-960-100, .size-100-960, .size-100-960-550, .size-100-960-100 {
+		width:960px;
+	}
+	.size-960-550, .size-960-550-960, .size-960-550-100, .size-550-550-960, .size-550-550-100, .size-100-550, .size-100-550-960, .size-100-550-100 {
+		width:550px;
+	}
+	/* */
+	.ninesixty,
+	.size-960-100, .size-960-100-960, .size-960-100-550, .size-550-100, .size-550-100-960, .size-550-100-550, .size-100-100-960, .size-100-100-550,
+	.size-100-100-50, .size-100-100-33, .size-100-100-66, .size-100-100-25, .size-100-100-75, .size-100-100-20, .size-100-100-40, .size-100-100-60, .size-100-100-80, .size-50-100, .size-50-100-50, .size-50-100-33, .size-50-100-66, .size-50-100-25, .size-50-100-75, .size-50-100-20, .size-50-100-40, .size-50-100-60, .size-50-100-80, .size-33-100, .size-33-100-50, .size-33-100-33, .size-33-100-66, .size-33-100-25, .size-33-100-75, .size-33-100-20, .size-33-100-40, .size-33-100-60, .size-33-100-80, .size-66-100, .size-66-100-50, .size-66-100-33, .size-66-100-66, .size-66-100-25, .size-66-100-75, .size-66-100-20, .size-66-100-40, .size-66-100-60, .size-66-100-80, .size-25-100, .size-25-100-50, .size-25-100-33, .size-25-100-66, .size-25-100-25, .size-25-100-75, .size-25-100-20, .size-25-100-40, .size-25-100-60, .size-25-100-80, .size-75-100, .size-75-100-50, .size-75-100-33, .size-75-100-66, .size-75-100-25, .size-75-100-75, .size-75-100-20, .size-75-100-40, .size-75-100-60, .size-75-100-80, .size-20-100, .size-20-100-50, .size-20-100-33, .size-20-100-66, .size-20-100-25, .size-20-100-75, .size-20-100-20, .size-20-100-40, .size-20-100-60, .size-20-100-80, .size-40-100, .size-40-100-50, .size-40-100-33, .size-40-100-66, .size-40-100-25, .size-40-100-75, .size-40-100-20, .size-40-100-40, .size-40-100-60, .size-40-100-80, .size-60-100, .size-60-100-50, .size-60-100-33, .size-60-100-66, .size-60-100-25, .size-60-100-75, .size-60-100-20, .size-60-100-40, .size-60-100-60, .size-60-100-80, .size-80-100, .size-80-100-50, .size-80-100-33, .size-80-100-66, .size-80-100-25, .size-80-100-75, .size-80-100-20, .size-80-100-40, .size-80-100-60, .size-80-100-80 {
+		width:100%;
+	}
+	.forth, .threeforth,
+	.size-100-50, .size-100-50-100, .size-100-50-33, .size-100-50-66, .size-100-50-25, .size-100-50-75, .size-100-50-20, .size-100-50-40, .size-100-50-60, .size-100-50-80, .size-50-50-100, .size-50-50-33, .size-50-50-66, .size-50-50-25, .size-50-50-75, .size-50-50-20, .size-50-50-40, .size-50-50-60, .size-50-50-80, .size-33-50, .size-33-50-100, .size-33-50-33, .size-33-50-66, .size-33-50-25, .size-33-50-75, .size-33-50-20, .size-33-50-40, .size-33-50-60, .size-33-50-80, .size-66-50, .size-66-50-100, .size-66-50-33, .size-66-50-66, .size-66-50-25, .size-66-50-75, .size-66-50-20, .size-66-50-40, .size-66-50-60, .size-66-50-80, .size-25-50, .size-25-50-100, .size-25-50-33, .size-25-50-66, .size-25-50-25, .size-25-50-75, .size-25-50-20, .size-25-50-40, .size-25-50-60, .size-25-50-80, .size-75-50, .size-75-50-100, .size-75-50-33, .size-75-50-66, .size-75-50-25, .size-75-50-75, .size-75-50-20, .size-75-50-40, .size-75-50-60, .size-75-50-80, .size-20-50, .size-20-50-100, .size-20-50-33, .size-20-50-66, .size-20-50-25, .size-20-50-75, .size-20-50-20, .size-20-50-40, .size-20-50-60, .size-20-50-80, .size-40-50, .size-40-50-100, .size-40-50-33, .size-40-50-66, .size-40-50-25, .size-40-50-75, .size-40-50-20, .size-40-50-40, .size-40-50-60, .size-40-50-80, .size-60-50, .size-60-50-100, .size-60-50-33, .size-60-50-66, .size-60-50-25, .size-60-50-75, .size-60-50-20, .size-60-50-40, .size-60-50-60, .size-60-50-80, .size-80-50, .size-80-50-100, .size-80-50-33, .size-80-50-66, .size-80-50-25, .size-80-50-75, .size-80-50-20, .size-80-50-40, .size-80-50-60, .size-80-50-80 {
+		width:50%;
+	}
+	.fifth, .twofifth, .threefifth, .fourfifth,
+	.size-100-33, .size-100-33-100, .size-100-33-50, .size-100-33-66, .size-100-33-25, .size-100-33-75, .size-100-33-20, .size-100-33-40, .size-100-33-60, .size-100-33-80, .size-50-33, .size-50-33-100, .size-50-33-50, .size-50-33-66, .size-50-33-25, .size-50-33-75, .size-50-33-20, .size-50-33-40, .size-50-33-60, .size-50-33-80, .size-33-33-100, .size-33-33-50, .size-33-33-66, .size-33-33-25, .size-33-33-75, .size-33-33-20, .size-33-33-40, .size-33-33-60, .size-33-33-80, .size-66-33, .size-66-33-100, .size-66-33-50, .size-66-33-66, .size-66-33-25, .size-66-33-75, .size-66-33-20, .size-66-33-40, .size-66-33-60, .size-66-33-80, .size-25-33, .size-25-33-100, .size-25-33-50, .size-25-33-66, .size-25-33-25, .size-25-33-75, .size-25-33-20, .size-25-33-40, .size-25-33-60, .size-25-33-80, .size-75-33, .size-75-33-100, .size-75-33-50, .size-75-33-66, .size-75-33-25, .size-75-33-75, .size-75-33-20, .size-75-33-40, .size-75-33-60, .size-75-33-80, .size-20-33, .size-20-33-100, .size-20-33-50, .size-20-33-66, .size-20-33-25, .size-20-33-75, .size-20-33-20, .size-20-33-40, .size-20-33-60, .size-20-33-80, .size-40-33, .size-40-33-100, .size-40-33-50, .size-40-33-66, .size-40-33-25, .size-40-33-75, .size-40-33-20, .size-40-33-40, .size-40-33-60, .size-40-33-80, .size-60-33, .size-60-33-100, .size-60-33-50, .size-60-33-66, .size-60-33-25, .size-60-33-75, .size-60-33-20, .size-60-33-40, .size-60-33-60, .size-60-33-80, .size-80-33, .size-80-33-100, .size-80-33-50, .size-80-33-66, .size-80-33-25, .size-80-33-75, .size-80-33-20, .size-80-33-40, .size-80-33-60, .size-80-33-80 {
+		width:33.333334%;
+	}
+	.size-100-66, .size-100-66-100, .size-100-66-50, .size-100-66-33, .size-100-66-25, .size-100-66-75, .size-100-66-20, .size-100-66-40, .size-100-66-60, .size-100-66-80, .size-50-66, .size-50-66-100, .size-50-66-50, .size-50-66-33, .size-50-66-25, .size-50-66-75, .size-50-66-20, .size-50-66-40, .size-50-66-60, .size-50-66-80, .size-33-66, .size-33-66-100, .size-33-66-50, .size-33-66-33, .size-33-66-25, .size-33-66-75, .size-33-66-20, .size-33-66-40, .size-33-66-60, .size-33-66-80, .size-66-66-100, .size-66-66-50, .size-66-66-33, .size-66-66-25, .size-66-66-75, .size-66-66-20, .size-66-66-40, .size-66-66-60, .size-66-66-80, .size-25-66, .size-25-66-100, .size-25-66-50, .size-25-66-33, .size-25-66-25, .size-25-66-75, .size-25-66-20, .size-25-66-40, .size-25-66-60, .size-25-66-80, .size-75-66, .size-75-66-100, .size-75-66-50, .size-75-66-33, .size-75-66-25, .size-75-66-75, .size-75-66-20, .size-75-66-40, .size-75-66-60, .size-75-66-80, .size-20-66, .size-20-66-100, .size-20-66-50, .size-20-66-33, .size-20-66-25, .size-20-66-75, .size-20-66-20, .size-20-66-40, .size-20-66-60, .size-20-66-80, .size-40-66, .size-40-66-100, .size-40-66-50, .size-40-66-33, .size-40-66-25, .size-40-66-75, .size-40-66-20, .size-40-66-40, .size-40-66-60, .size-40-66-80, .size-60-66, .size-60-66-100, .size-60-66-50, .size-60-66-33, .size-60-66-25, .size-60-66-75, .size-60-66-20, .size-60-66-40, .size-60-66-60, .size-60-66-80, .size-80-66, .size-80-66-100, .size-80-66-50, .size-80-66-33, .size-80-66-25, .size-80-66-75, .size-80-66-20, .size-80-66-40, .size-80-66-60, .size-80-66-80 {
+		width:66.666668%;
+	}
+	.size-100-25, .size-100-25-100, .size-100-25-50, .size-100-25-33, .size-100-25-66, .size-100-25-75, .size-100-25-20, .size-100-25-40, .size-100-25-60, .size-100-25-80, .size-50-25, .size-50-25-100, .size-50-25-50, .size-50-25-33, .size-50-25-66, .size-50-25-75, .size-50-25-20, .size-50-25-40, .size-50-25-60, .size-50-25-80, .size-33-25, .size-33-25-100, .size-33-25-50, .size-33-25-33, .size-33-25-66, .size-33-25-75, .size-33-25-20, .size-33-25-40, .size-33-25-60, .size-33-25-80, .size-66-25, .size-66-25-100, .size-66-25-50, .size-66-25-33, .size-66-25-66, .size-66-25-75, .size-66-25-20, .size-66-25-40, .size-66-25-60, .size-66-25-80, .size-25-25-100, .size-25-25-50, .size-25-25-33, .size-25-25-66, .size-25-25-75, .size-25-25-20, .size-25-25-40, .size-25-25-60, .size-25-25-80, .size-75-25, .size-75-25-100, .size-75-25-50, .size-75-25-33, .size-75-25-66, .size-75-25-75, .size-75-25-20, .size-75-25-40, .size-75-25-60, .size-75-25-80, .size-20-25, .size-20-25-100, .size-20-25-50, .size-20-25-33, .size-20-25-66, .size-20-25-75, .size-20-25-20, .size-20-25-40, .size-20-25-60, .size-20-25-80, .size-40-25, .size-40-25-100, .size-40-25-50, .size-40-25-33, .size-40-25-66, .size-40-25-75, .size-40-25-20, .size-40-25-40, .size-40-25-60, .size-40-25-80, .size-60-25, .size-60-25-100, .size-60-25-50, .size-60-25-33, .size-60-25-66, .size-60-25-75, .size-60-25-20, .size-60-25-40, .size-60-25-60, .size-60-25-80, .size-80-25, .size-80-25-100, .size-80-25-50, .size-80-25-33, .size-80-25-66, .size-80-25-75, .size-80-25-20, .size-80-25-40, .size-80-25-60, .size-80-25-80 {
+		width:25%;
+	}
+	.size-100-75, .size-100-75-100, .size-100-75-50, .size-100-75-33, .size-100-75-66, .size-100-75-25, .size-100-75-20, .size-100-75-40, .size-100-75-60, .size-100-75-80, .size-50-75, .size-50-75-100, .size-50-75-50, .size-50-75-33, .size-50-75-66, .size-50-75-25, .size-50-75-20, .size-50-75-40, .size-50-75-60, .size-50-75-80, .size-33-75, .size-33-75-100, .size-33-75-50, .size-33-75-33, .size-33-75-66, .size-33-75-25, .size-33-75-20, .size-33-75-40, .size-33-75-60, .size-33-75-80, .size-66-75, .size-66-75-100, .size-66-75-50, .size-66-75-33, .size-66-75-66, .size-66-75-25, .size-66-75-20, .size-66-75-40, .size-66-75-60, .size-66-75-80, .size-25-75, .size-25-75-100, .size-25-75-50, .size-25-75-33, .size-25-75-66, .size-25-75-25, .size-25-75-20, .size-25-75-40, .size-25-75-60, .size-25-75-80, .size-75-75-100, .size-75-75-50, .size-75-75-33, .size-75-75-66, .size-75-75-25, .size-75-75-20, .size-75-75-40, .size-75-75-60, .size-75-75-80, .size-20-75, .size-20-75-100, .size-20-75-50, .size-20-75-33, .size-20-75-66, .size-20-75-25, .size-20-75-20, .size-20-75-40, .size-20-75-60, .size-20-75-80, .size-40-75, .size-40-75-100, .size-40-75-50, .size-40-75-33, .size-40-75-66, .size-40-75-25, .size-40-75-20, .size-40-75-40, .size-40-75-60, .size-40-75-80, .size-60-75, .size-60-75-100, .size-60-75-50, .size-60-75-33, .size-60-75-66, .size-60-75-25, .size-60-75-20, .size-60-75-40, .size-60-75-60, .size-60-75-80, .size-80-75, .size-80-75-100, .size-80-75-50, .size-80-75-33, .size-80-75-66, .size-80-75-25, .size-80-75-20, .size-80-75-40, .size-80-75-60, .size-80-75-80 {
+		width:75%;
+	}
+	.size-100-20, .size-100-20-100, .size-100-20-50, .size-100-20-33, .size-100-20-66, .size-100-20-25, .size-100-20-75, .size-100-20-40, .size-100-20-60, .size-100-20-80, .size-50-20, .size-50-20-100, .size-50-20-50, .size-50-20-33, .size-50-20-66, .size-50-20-25, .size-50-20-75, .size-50-20-40, .size-50-20-60, .size-50-20-80, .size-33-20, .size-33-20-100, .size-33-20-50, .size-33-20-33, .size-33-20-66, .size-33-20-25, .size-33-20-75, .size-33-20-40, .size-33-20-60, .size-33-20-80, .size-66-20, .size-66-20-100, .size-66-20-50, .size-66-20-33, .size-66-20-66, .size-66-20-25, .size-66-20-75, .size-66-20-40, .size-66-20-60, .size-66-20-80, .size-25-20, .size-25-20-100, .size-25-20-50, .size-25-20-33, .size-25-20-66, .size-25-20-25, .size-25-20-75, .size-25-20-40, .size-25-20-60, .size-25-20-80, .size-75-20, .size-75-20-100, .size-75-20-50, .size-75-20-33, .size-75-20-66, .size-75-20-25, .size-75-20-75, .size-75-20-40, .size-75-20-60, .size-75-20-80, .size-20-20-100, .size-20-20-50, .size-20-20-33, .size-20-20-66, .size-20-20-25, .size-20-20-75, .size-20-20-40, .size-20-20-60, .size-20-20-80, .size-40-20, .size-40-20-100, .size-40-20-50, .size-40-20-33, .size-40-20-66, .size-40-20-25, .size-40-20-75, .size-40-20-40, .size-40-20-60, .size-40-20-80, .size-60-20, .size-60-20-100, .size-60-20-50, .size-60-20-33, .size-60-20-66, .size-60-20-25, .size-60-20-75, .size-60-20-40, .size-60-20-60, .size-60-20-80, .size-80-20, .size-80-20-100, .size-80-20-50, .size-80-20-33, .size-80-20-66, .size-80-20-25, .size-80-20-75, .size-80-20-40, .size-80-20-60, .size-80-20-80 {
+		width:20%;
+	}
+	.size-100-40, .size-100-40-100, .size-100-40-50, .size-100-40-33, .size-100-40-66, .size-100-40-25, .size-100-40-75, .size-100-40-20, .size-100-40-60, .size-100-40-80, .size-50-40, .size-50-40-100, .size-50-40-50, .size-50-40-33, .size-50-40-66, .size-50-40-25, .size-50-40-75, .size-50-40-20, .size-50-40-60, .size-50-40-80, .size-33-40, .size-33-40-100, .size-33-40-50, .size-33-40-33, .size-33-40-66, .size-33-40-25, .size-33-40-75, .size-33-40-20, .size-33-40-60, .size-33-40-80, .size-66-40, .size-66-40-100, .size-66-40-50, .size-66-40-33, .size-66-40-66, .size-66-40-25, .size-66-40-75, .size-66-40-20, .size-66-40-60, .size-66-40-80, .size-25-40, .size-25-40-100, .size-25-40-50, .size-25-40-33, .size-25-40-66, .size-25-40-25, .size-25-40-75, .size-25-40-20, .size-25-40-60, .size-25-40-80, .size-75-40, .size-75-40-100, .size-75-40-50, .size-75-40-33, .size-75-40-66, .size-75-40-25, .size-75-40-75, .size-75-40-20, .size-75-40-60, .size-75-40-80, .size-20-40, .size-20-40-100, .size-20-40-50, .size-20-40-33, .size-20-40-66, .size-20-40-25, .size-20-40-75, .size-20-40-20, .size-20-40-60, .size-20-40-80, .size-40-40-100, .size-40-40-50, .size-40-40-33, .size-40-40-66, .size-40-40-25, .size-40-40-75, .size-40-40-20, .size-40-40-60, .size-40-40-80, .size-60-40, .size-60-40-100, .size-60-40-50, .size-60-40-33, .size-60-40-66, .size-60-40-25, .size-60-40-75, .size-60-40-20, .size-60-40-60, .size-60-40-80, .size-80-40, .size-80-40-100, .size-80-40-50, .size-80-40-33, .size-80-40-66, .size-80-40-25, .size-80-40-75, .size-80-40-20, .size-80-40-60, .size-80-40-80 {
+		width:40%;
+	}
+	.size-100-60, .size-100-60-100, .size-100-60-50, .size-100-60-33, .size-100-60-66, .size-100-60-25, .size-100-60-75, .size-100-60-20, .size-100-60-40, .size-100-60-80, .size-50-60, .size-50-60-100, .size-50-60-50, .size-50-60-33, .size-50-60-66, .size-50-60-25, .size-50-60-75, .size-50-60-20, .size-50-60-40, .size-50-60-80, .size-33-60, .size-33-60-100, .size-33-60-50, .size-33-60-33, .size-33-60-66, .size-33-60-25, .size-33-60-75, .size-33-60-20, .size-33-60-40, .size-33-60-80, .size-66-60, .size-66-60-100, .size-66-60-50, .size-66-60-33, .size-66-60-66, .size-66-60-25, .size-66-60-75, .size-66-60-20, .size-66-60-40, .size-66-60-80, .size-25-60, .size-25-60-100, .size-25-60-50, .size-25-60-33, .size-25-60-66, .size-25-60-25, .size-25-60-75, .size-25-60-20, .size-25-60-40, .size-25-60-80, .size-75-60, .size-75-60-100, .size-75-60-50, .size-75-60-33, .size-75-60-66, .size-75-60-25, .size-75-60-75, .size-75-60-20, .size-75-60-40, .size-75-60-80, .size-20-60, .size-20-60-100, .size-20-60-50, .size-20-60-33, .size-20-60-66, .size-20-60-25, .size-20-60-75, .size-20-60-20, .size-20-60-40, .size-20-60-80, .size-40-60, .size-40-60-100, .size-40-60-50, .size-40-60-33, .size-40-60-66, .size-40-60-25, .size-40-60-75, .size-40-60-20, .size-40-60-40, .size-40-60-80, .size-60-60-100, .size-60-60-50, .size-60-60-33, .size-60-60-66, .size-60-60-25, .size-60-60-75, .size-60-60-20, .size-60-60-40, .size-60-60-80, .size-80-60, .size-80-60-100, .size-80-60-50, .size-80-60-33, .size-80-60-66, .size-80-60-25, .size-80-60-75, .size-80-60-20, .size-80-60-40, .size-80-60-80 {
+		width:60%;
+	}
+	.size-100-80, .size-100-80-100, .size-100-80-50, .size-100-80-33, .size-100-80-66, .size-100-80-25, .size-100-80-75, .size-100-80-20, .size-100-80-40, .size-100-80-60, .size-50-80, .size-50-80-100, .size-50-80-50, .size-50-80-33, .size-50-80-66, .size-50-80-25, .size-50-80-75, .size-50-80-20, .size-50-80-40, .size-50-80-60, .size-33-80, .size-33-80-100, .size-33-80-50, .size-33-80-33, .size-33-80-66, .size-33-80-25, .size-33-80-75, .size-33-80-20, .size-33-80-40, .size-33-80-60, .size-66-80, .size-66-80-100, .size-66-80-50, .size-66-80-33, .size-66-80-66, .size-66-80-25, .size-66-80-75, .size-66-80-20, .size-66-80-40, .size-66-80-60, .size-25-80, .size-25-80-100, .size-25-80-50, .size-25-80-33, .size-25-80-66, .size-25-80-25, .size-25-80-75, .size-25-80-20, .size-25-80-40, .size-25-80-60, .size-75-80, .size-75-80-100, .size-75-80-50, .size-75-80-33, .size-75-80-66, .size-75-80-25, .size-75-80-75, .size-75-80-20, .size-75-80-40, .size-75-80-60, .size-20-80, .size-20-80-100, .size-20-80-50, .size-20-80-33, .size-20-80-66, .size-20-80-25, .size-20-80-75, .size-20-80-20, .size-20-80-40, .size-20-80-60, .size-40-80, .size-40-80-100, .size-40-80-50, .size-40-80-33, .size-40-80-66, .size-40-80-25, .size-40-80-75, .size-40-80-20, .size-40-80-40, .size-40-80-60, .size-60-80, .size-60-80-100, .size-60-80-50, .size-60-80-33, .size-60-80-66, .size-60-80-25, .size-60-80-75, .size-60-80-20, .size-60-80-40, .size-60-80-60, .size-80-80-100, .size-80-80-50, .size-80-80-33, .size-80-80-66, .size-80-80-25, .size-80-80-75, .size-80-80-20, .size-80-80-40, .size-80-80-60 {
+		width:80%;
+	}
+	
+	
+	/* Padding
+	*/
+	.pad-0-0-5, .pad-0-0-10, .pad-0-0-15, .pad-0-0-20, .pad-5-0, .pad-5-0-5, .pad-5-0-10, .pad-5-0-15, .pad-5-0-20, .pad-10-0, .pad-10-0-5, .pad-10-0-10, .pad-10-0-15, .pad-10-0-20, .pad-15-0, .pad-15-0-5, .pad-15-0-10, .pad-15-0-15, .pad-15-0-20, .pad-20-0, .pad-20-0-5, .pad-20-0-10, .pad-20-0-15, .pad-20-0-20 {
+		padding:0px;
+	}
+	.pad-0-5, .pad-0-5-0, .pad-0-5-10, .pad-0-5-15, .pad-0-5-20, .pad-5-5-0, .pad-5-5-10, .pad-5-5-15, .pad-5-5-20, .pad-10-5, .pad-10-5-0, .pad-10-5-10, .pad-10-5-15, .pad-10-5-20, .pad-15-5, .pad-15-5-0, .pad-15-5-10, .pad-15-5-15, .pad-15-5-20, .pad-20-5, .pad-20-5-0, .pad-20-5-10, .pad-20-5-15, .pad-20-5-20{
+		padding:5px;
+	}
+	.pad-0-10, .pad-0-10-0, .pad-0-10-5, .pad-0-10-15, .pad-0-10-20, .pad-5-10, .pad-5-10-0, .pad-5-10-5, .pad-5-10-15, .pad-5-10-20, .pad-10-10-0, .pad-10-10-5, .pad-10-10-15, .pad-10-10-20, .pad-15-10, .pad-15-10-0, .pad-15-10-5, .pad-15-10-15, .pad-15-10-20, .pad-20-10, .pad-20-10-0, .pad-20-10-5, .pad-20-10-15, .pad-20-10-20 {
+		padding:10px;
+	}
+	.pad-0-15, .pad-0-15-0, .pad-0-15-5, .pad-0-15-10, .pad-0-15-20, .pad-5-15, .pad-5-15-0, .pad-5-15-5, .pad-5-15-10, .pad-5-15-20, .pad-10-15, .pad-10-15-0, .pad-10-15-5, .pad-10-15-10, .pad-10-15-20, .pad-15-15-0, .pad-15-15-5, .pad-15-15-10, .pad-15-15-20, .pad-20-15, .pad-20-15-0, .pad-20-15-5, .pad-20-15-10, .pad-20-15-20 {
+		padding:15px;
+	}
+	.pad-0-20, .pad-0-20-0, .pad-0-20-5, .pad-0-20-10, .pad-0-20-15, .pad-5-20, .pad-5-20-0, .pad-5-20-5, .pad-5-20-10, .pad-5-20-15, .pad-10-20, .pad-10-20-0, .pad-10-20-5, .pad-10-20-10, .pad-10-20-15, .pad-15-20, .pad-15-20-0, .pad-15-20-5, .pad-15-20-10, .pad-15-20-15, .pad-20-20-0, .pad-20-20-5, .pad-20-20-10, .pad-20-20-15 {
+		padding:20px;
+	}
+	/* */
+	.pad-tb-0-0-5, .pad-tb-0-0-10, .pad-tb-0-0-15, .pad-tb-0-0-20, .pad-tb-5-0, .pad-tb-5-0-5, .pad-tb-5-0-10, .pad-tb-5-0-15, .pad-tb-5-0-20, .pad-tb-10-0, .pad-tb-10-0-5, .pad-tb-10-0-10, .pad-tb-10-0-15, .pad-tb-10-0-20, .pad-tb-15-0, .pad-tb-15-0-5, .pad-tb-15-0-10, .pad-tb-15-0-15, .pad-tb-15-0-20, .pad-tb-20-0, .pad-tb-20-0-5, .pad-tb-20-0-10, .pad-tb-20-0-15, .pad-tb-20-0-20 {
+		padding-top:0px;
+		padding-bottom:0px;
+	}
+	.pad-tb-0-5, .pad-tb-0-5-0, .pad-tb-0-5-10, .pad-tb-0-5-15, .pad-tb-0-5-20, .pad-tb-5-5-0, .pad-tb-5-5-10, .pad-tb-5-5-15, .pad-tb-5-5-20, .pad-tb-10-5, .pad-tb-10-5-0, .pad-tb-10-5-10, .pad-tb-10-5-15, .pad-tb-10-5-20, .pad-tb-15-5, .pad-tb-15-5-0, .pad-tb-15-5-10, .pad-tb-15-5-15, .pad-tb-15-5-20, .pad-tb-20-5, .pad-tb-20-5-0, .pad-tb-20-5-10, .pad-tb-20-5-15, .pad-tb-20-5-20 {
+		padding-top:5px;
+		padding-bottom:5px;
+	}
+	.pad-tb-0-10, .pad-tb-0-10-0, .pad-tb-0-10-5, .pad-tb-0-10-15, .pad-tb-0-10-20, .pad-tb-5-10, .pad-tb-5-10-0, .pad-tb-5-10-5, .pad-tb-5-10-15, .pad-tb-5-10-20, .pad-tb-10-10-0, .pad-tb-10-10-5, .pad-tb-10-10-15, .pad-tb-10-10-20, .pad-tb-15-10, .pad-tb-15-10-0, .pad-tb-15-10-5, .pad-tb-15-10-15, .pad-tb-15-10-20, .pad-tb-20-10, .pad-tb-20-10-0, .pad-tb-20-10-5, .pad-tb-20-10-15, .pad-tb-20-10-20 {
+		padding-top:10px;
+		padding-bottom:10px;
+	}
+	.pad-tb-0-15, .pad-tb-0-15-0, .pad-tb-0-15-5, .pad-tb-0-15-10, .pad-tb-0-15-20, .pad-tb-5-15, .pad-tb-5-15-0, .pad-tb-5-15-5, .pad-tb-5-15-10, .pad-tb-5-15-20, .pad-tb-10-15, .pad-tb-10-15-0, .pad-tb-10-15-5, .pad-tb-10-15-10, .pad-tb-10-15-20, .pad-tb-15-15-0, .pad-tb-15-15-5, .pad-tb-15-15-10, .pad-tb-15-15-20, .pad-tb-20-15, .pad-tb-20-15-0, .pad-tb-20-15-5, .pad-tb-20-15-10, .pad-tb-20-15-20 {
+		padding-top:15px;
+		padding-bottom:15px;
+	}
+	.pad-tb-0-20, .pad-tb-0-20-0, .pad-tb-0-20-5, .pad-tb-0-20-10, .pad-tb-0-20-15, .pad-tb-5-20, .pad-tb-5-20-0, .pad-tb-5-20-5, .pad-tb-5-20-10, .pad-tb-5-20-15, .pad-tb-10-20, .pad-tb-10-20-0, .pad-tb-10-20-5, .pad-tb-10-20-10, .pad-tb-10-20-15, .pad-tb-15-20, .pad-tb-15-20-0, .pad-tb-15-20-5, .pad-tb-15-20-10, .pad-tb-15-20-15, .pad-tb-20-20-0, .pad-tb-20-20-5, .pad-tb-20-20-10, .pad-tb-20-20-15 {
+		padding-top:20px;
+		padding-bottom:20px;
+	}
+	/* */
+	.pad-lr-0-0-5, .pad-lr-0-0-10, .pad-lr-0-0-15, .pad-lr-0-0-20, .pad-lr-5-0, .pad-lr-5-0-5, .pad-lr-5-0-10, .pad-lr-5-0-15, .pad-lr-5-0-20, .pad-lr-10-0, .pad-lr-10-0-5, .pad-lr-10-0-10, .pad-lr-10-0-15, .pad-lr-10-0-20, .pad-lr-15-0, .pad-lr-15-0-5, .pad-lr-15-0-10, .pad-lr-15-0-15, .pad-lr-15-0-20, .pad-lr-20-0, .pad-lr-20-0-5, .pad-lr-20-0-10, .pad-lr-20-0-15, .pad-lr-20-0-20 {
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.pad-lr-0-5, .pad-lr-0-5-0, .pad-lr-0-5-10, .pad-lr-0-5-15, .pad-lr-0-5-20, .pad-lr-5-5-0, .pad-lr-5-5-10, .pad-lr-5-5-15, .pad-lr-5-5-20, .pad-lr-10-5, .pad-lr-10-5-0, .pad-lr-10-5-10, .pad-lr-10-5-15, .pad-lr-10-5-20, .pad-lr-15-5, .pad-lr-15-5-0, .pad-lr-15-5-10, .pad-lr-15-5-15, .pad-lr-15-5-20, .pad-lr-20-5, .pad-lr-20-5-0, .pad-lr-20-5-10, .pad-lr-20-5-15, .pad-lr-20-5-20 {
+		padding-left:5px;
+		padding-right:5px;
+	}
+	.pad-lr-0-10, .pad-lr-0-10-0, .pad-lr-0-10-5, .pad-lr-0-10-15, .pad-lr-0-10-20, .pad-lr-5-10, .pad-lr-5-10-0, .pad-lr-5-10-5, .pad-lr-5-10-15, .pad-lr-5-10-20, .pad-lr-10-10-0, .pad-lr-10-10-5, .pad-lr-10-10-15, .pad-lr-10-10-20, .pad-lr-15-10, .pad-lr-15-10-0, .pad-lr-15-10-5, .pad-lr-15-10-15, .pad-lr-15-10-20, .pad-lr-20-10, .pad-lr-20-10-0, .pad-lr-20-10-5, .pad-lr-20-10-15, .pad-lr-20-10-20 {
+		padding-left:10px;
+		padding-right:10px;
+	}
+	.pad-lr-0-15, .pad-lr-0-15-0, .pad-lr-0-15-5, .pad-lr-0-15-10, .pad-lr-0-15-20, .pad-lr-5-15, .pad-lr-5-15-0, .pad-lr-5-15-5, .pad-lr-5-15-10, .pad-lr-5-15-20, .pad-lr-10-15, .pad-lr-10-15-0, .pad-lr-10-15-5, .pad-lr-10-15-10, .pad-lr-10-15-20, .pad-lr-15-15-0, .pad-lr-15-15-5, .pad-lr-15-15-10, .pad-lr-15-15-20, .pad-lr-20-15, .pad-lr-20-15-0, .pad-lr-20-15-5, .pad-lr-20-15-10, .pad-lr-20-15-20 {
+		padding-left:15px;
+		padding-right:15px;
+	}
+	.pad-lr-0-20, .pad-lr-0-20-0, .pad-lr-0-20-5, .pad-lr-0-20-10, .pad-lr-0-20-15, .pad-lr-5-20, .pad-lr-5-20-0, .pad-lr-5-20-5, .pad-lr-5-20-10, .pad-lr-5-20-15, .pad-lr-10-20, .pad-lr-10-20-0, .pad-lr-10-20-5, .pad-lr-10-20-10, .pad-lr-10-20-15, .pad-lr-15-20, .pad-lr-15-20-0, .pad-lr-15-20-5, .pad-lr-15-20-10, .pad-lr-15-20-15, .pad-lr-20-20-0, .pad-lr-20-20-5, .pad-lr-20-20-10, .pad-lr-20-20-15 {
+		padding-left:20px;
+		padding-right:20px;
+	}
+	/* */
+	.pad-t-0-0-5, .pad-t-0-0-10, .pad-t-0-0-15, .pad-t-0-0-20, .pad-t-5-0, .pad-t-5-0-5, .pad-t-5-0-10, .pad-t-5-0-15, .pad-t-5-0-20, .pad-t-10-0, .pad-t-10-0-5, .pad-t-10-0-10, .pad-t-10-0-15, .pad-t-10-0-20, .pad-t-15-0, .pad-t-15-0-5, .pad-t-15-0-10, .pad-t-15-0-15, .pad-t-15-0-20, .pad-t-20-0, .pad-t-20-0-5, .pad-t-20-0-10, .pad-t-20-0-15, .pad-t-20-0-20 {
+		padding-top:0px;
+	}
+	.pad-t-0-5, .pad-t-0-5-0, .pad-t-0-5-10, .pad-t-0-5-15, .pad-t-0-5-20, .pad-t-5-5-0, .pad-t-5-5-10, .pad-t-5-5-15, .pad-t-5-5-20, .pad-t-10-5, .pad-t-10-5-0, .pad-t-10-5-10, .pad-t-10-5-15, .pad-t-10-5-20, .pad-t-15-5, .pad-t-15-5-0, .pad-t-15-5-10, .pad-t-15-5-15, .pad-t-15-5-20, .pad-t-20-5, .pad-t-20-5-0, .pad-t-20-5-10, .pad-t-20-5-15, .pad-t-20-5-20 {
+		padding-top:5px;
+	}
+	.pad-t-0-10, .pad-t-0-10-0, .pad-t-0-10-5, .pad-t-0-10-15, .pad-t-0-10-20, .pad-t-5-10, .pad-t-5-10-0, .pad-t-5-10-5, .pad-t-5-10-15, .pad-t-5-10-20, .pad-t-10-10-0, .pad-t-10-10-5, .pad-t-10-10-15, .pad-t-10-10-20, .pad-t-15-10, .pad-t-15-10-0, .pad-t-15-10-5, .pad-t-15-10-15, .pad-t-15-10-20, .pad-t-20-10, .pad-t-20-10-0, .pad-t-20-10-5, .pad-t-20-10-15, .pad-t-20-10-20 {
+		padding-top:10px;
+	}
+	.pad-t-0-15, .pad-t-0-15-0, .pad-t-0-15-5, .pad-t-0-15-10, .pad-t-0-15-20, .pad-t-5-15, .pad-t-5-15-0, .pad-t-5-15-5, .pad-t-5-15-10, .pad-t-5-15-20, .pad-t-10-15, .pad-t-10-15-0, .pad-t-10-15-5, .pad-t-10-15-10, .pad-t-10-15-20, .pad-t-15-15-0, .pad-t-15-15-5, .pad-t-15-15-10, .pad-t-15-15-20, .pad-t-20-15, .pad-t-20-15-0, .pad-t-20-15-5, .pad-t-20-15-10, .pad-t-20-15-20 {
+		padding-top:15px;
+	}
+	.pad-t-0-20, .pad-t-0-20-0, .pad-t-0-20-5, .pad-t-0-20-10, .pad-t-0-20-15, .pad-t-5-20, .pad-t-5-20-0, .pad-t-5-20-5, .pad-t-5-20-10, .pad-t-5-20-15, .pad-t-10-20, .pad-t-10-20-0, .pad-t-10-20-5, .pad-t-10-20-10, .pad-t-10-20-15, .pad-t-15-20, .pad-t-15-20-0, .pad-t-15-20-5, .pad-t-15-20-10, .pad-t-15-20-15, .pad-t-20-20-0, .pad-t-20-20-5, .pad-t-20-20-10, .pad-t-20-20-15 {
+		padding-top:20px;
+	}
+	/* */
+	.pad-r-0-0-5, .pad-r-0-0-10, .pad-r-0-0-15, .pad-r-0-0-20, .pad-r-5-0, .pad-r-5-0-5, .pad-r-5-0-10, .pad-r-5-0-15, .pad-r-5-0-20, .pad-r-10-0, .pad-r-10-0-5, .pad-r-10-0-10, .pad-r-10-0-15, .pad-r-10-0-20, .pad-r-15-0, .pad-r-15-0-5, .pad-r-15-0-10, .pad-r-15-0-15, .pad-r-15-0-20, .pad-r-20-0, .pad-r-20-0-5, .pad-r-20-0-10, .pad-r-20-0-15, .pad-r-20-0-20 {
+		padding-right:0px;
+	}
+	.pad-r-0-5, .pad-r-0-5-0, .pad-r-0-5-10, .pad-r-0-5-15, .pad-r-0-5-20, .pad-r-5-5-0, .pad-r-5-5-10, .pad-r-5-5-15, .pad-r-5-5-20, .pad-r-10-5, .pad-r-10-5-0, .pad-r-10-5-10, .pad-r-10-5-15, .pad-r-10-5-20, .pad-r-15-5, .pad-r-15-5-0, .pad-r-15-5-10, .pad-r-15-5-15, .pad-r-15-5-20, .pad-r-20-5, .pad-r-20-5-0, .pad-r-20-5-10, .pad-r-20-5-15, .pad-r-20-5-20 {
+		padding-right:5px;
+	}
+	.pad-r-0-10, .pad-r-0-10-0, .pad-r-0-10-5, .pad-r-0-10-15, .pad-r-0-10-20, .pad-r-5-10, .pad-r-5-10-0, .pad-r-5-10-5, .pad-r-5-10-15, .pad-r-5-10-20, .pad-r-10-10-0, .pad-r-10-10-5, .pad-r-10-10-15, .pad-r-10-10-20, .pad-r-15-10, .pad-r-15-10-0, .pad-r-15-10-5, .pad-r-15-10-15, .pad-r-15-10-20, .pad-r-20-10, .pad-r-20-10-0, .pad-r-20-10-5, .pad-r-20-10-15, .pad-r-20-10-20 {
+		padding-right:10px;
+	}
+	.pad-r-0-15, .pad-r-0-15-0, .pad-r-0-15-5, .pad-r-0-15-10, .pad-r-0-15-20, .pad-r-5-15, .pad-r-5-15-0, .pad-r-5-15-5, .pad-r-5-15-10, .pad-r-5-15-20, .pad-r-10-15, .pad-r-10-15-0, .pad-r-10-15-5, .pad-r-10-15-10, .pad-r-10-15-20, .pad-r-15-15-0, .pad-r-15-15-5, .pad-r-15-15-10, .pad-r-15-15-20, .pad-r-20-15, .pad-r-20-15-0, .pad-r-20-15-5, .pad-r-20-15-10, .pad-r-20-15-20 {
+		padding-right:15px;
+	}
+	.pad-r-0-20, .pad-r-0-20-0, .pad-r-0-20-5, .pad-r-0-20-10, .pad-r-0-20-15, .pad-r-5-20, .pad-r-5-20-0, .pad-r-5-20-5, .pad-r-5-20-10, .pad-r-5-20-15, .pad-r-10-20, .pad-r-10-20-0, .pad-r-10-20-5, .pad-r-10-20-10, .pad-r-10-20-15, .pad-r-15-20, .pad-r-15-20-0, .pad-r-15-20-5, .pad-r-15-20-10, .pad-r-15-20-15, .pad-r-20-20-0, .pad-r-20-20-5, .pad-r-20-20-10, .pad-r-20-20-15 {
+		padding-right:20px;
+	}
+	/* */
+	.pad-b-0-0-5, .pad-b-0-0-10, .pad-b-0-0-15, .pad-b-0-0-20, .pad-b-5-0, .pad-b-5-0-5, .pad-b-5-0-10, .pad-b-5-0-15, .pad-b-5-0-20, .pad-b-10-0, .pad-b-10-0-5, .pad-b-10-0-10, .pad-b-10-0-15, .pad-b-10-0-20, .pad-b-15-0, .pad-b-15-0-5, .pad-b-15-0-10, .pad-b-15-0-15, .pad-b-15-0-20, .pad-b-20-0, .pad-b-20-0-5, .pad-b-20-0-10, .pad-b-20-0-15, .pad-b-20-0-20 {
+		padding-bottom:0px;
+	}
+	.pad-b-0-5, .pad-b-0-5-0, .pad-b-0-5-10, .pad-b-0-5-15, .pad-b-0-5-20, .pad-b-5-5-0, .pad-b-5-5-10, .pad-b-5-5-15, .pad-b-5-5-20, .pad-b-10-5, .pad-b-10-5-0, .pad-b-10-5-10, .pad-b-10-5-15, .pad-b-10-5-20, .pad-b-15-5, .pad-b-15-5-0, .pad-b-15-5-10, .pad-b-15-5-15, .pad-b-15-5-20, .pad-b-20-5, .pad-b-20-5-0, .pad-b-20-5-10, .pad-b-20-5-15, .pad-b-20-5-20 {
+		padding-bottom:5px;
+	}
+	.pad-b-0-10, .pad-b-0-10-0, .pad-b-0-10-5, .pad-b-0-10-15, .pad-b-0-10-20, .pad-b-5-10, .pad-b-5-10-0, .pad-b-5-10-5, .pad-b-5-10-15, .pad-b-5-10-20, .pad-b-10-10-0, .pad-b-10-10-5, .pad-b-10-10-15, .pad-b-10-10-20, .pad-b-15-10, .pad-b-15-10-0, .pad-b-15-10-5, .pad-b-15-10-15, .pad-b-15-10-20, .pad-b-20-10, .pad-b-20-10-0, .pad-b-20-10-5, .pad-b-20-10-15, .pad-b-20-10-20 {
+		padding-bottom:10px;
+	}
+	.pad-b-0-15, .pad-b-0-15-0, .pad-b-0-15-5, .pad-b-0-15-10, .pad-b-0-15-20, .pad-b-5-15, .pad-b-5-15-0, .pad-b-5-15-5, .pad-b-5-15-10, .pad-b-5-15-20, .pad-b-10-15, .pad-b-10-15-0, .pad-b-10-15-5, .pad-b-10-15-10, .pad-b-10-15-20, .pad-b-15-15-0, .pad-b-15-15-5, .pad-b-15-15-10, .pad-b-15-15-20, .pad-b-20-15, .pad-b-20-15-0, .pad-b-20-15-5, .pad-b-20-15-10, .pad-b-20-15-20 {
+		padding-bottom:15px;
+	}
+	.pad-b-0-20, .pad-b-0-20-0, .pad-b-0-20-5, .pad-b-0-20-10, .pad-b-0-20-15, .pad-b-5-20, .pad-b-5-20-0, .pad-b-5-20-5, .pad-b-5-20-10, .pad-b-5-20-15, .pad-b-10-20, .pad-b-10-20-0, .pad-b-10-20-5, .pad-b-10-20-10, .pad-b-10-20-15, .pad-b-15-20, .pad-b-15-20-0, .pad-b-15-20-5, .pad-b-15-20-10, .pad-b-15-20-15, .pad-b-20-20-0, .pad-b-20-20-5, .pad-b-20-20-10, .pad-b-20-20-15 {
+		padding-bottom:20px;
+	}
+	/* */
+	.pad-l-0-0-5, .pad-l-0-0-10, .pad-l-0-0-15, .pad-l-0-0-20, .pad-l-5-0, .pad-l-5-0-5, .pad-l-5-0-10, .pad-l-5-0-15, .pad-l-5-0-20, .pad-l-10-0, .pad-l-10-0-5, .pad-l-10-0-10, .pad-l-10-0-15, .pad-l-10-0-20, .pad-l-15-0, .pad-l-15-0-5, .pad-l-15-0-10, .pad-l-15-0-15, .pad-l-15-0-20, .pad-l-20-0, .pad-l-20-0-5, .pad-l-20-0-10, .pad-l-20-0-15, .pad-l-20-0-20 {
+		padding-left:0px;
+	}
+	.pad-l-0-5, .pad-l-0-5-0, .pad-l-0-5-10, .pad-l-0-5-15, .pad-l-0-5-20, .pad-l-5-5-0, .pad-l-5-5-10, .pad-l-5-5-15, .pad-l-5-5-20, .pad-l-10-5, .pad-l-10-5-0, .pad-l-10-5-10, .pad-l-10-5-15, .pad-l-10-5-20, .pad-l-15-5, .pad-l-15-5-0, .pad-l-15-5-10, .pad-l-15-5-15, .pad-l-15-5-20, .pad-l-20-5, .pad-l-20-5-0, .pad-l-20-5-10, .pad-l-20-5-15, .pad-l-20-5-20 {
+		padding-left:5px;
+	}
+	.pad-l-0-10, .pad-l-0-10-0, .pad-l-0-10-5, .pad-l-0-10-15, .pad-l-0-10-20, .pad-l-5-10, .pad-l-5-10-0, .pad-l-5-10-5, .pad-l-5-10-15, .pad-l-5-10-20, .pad-l-10-10-0, .pad-l-10-10-5, .pad-l-10-10-15, .pad-l-10-10-20, .pad-l-15-10, .pad-l-15-10-0, .pad-l-15-10-5, .pad-l-15-10-15, .pad-l-15-10-20, .pad-l-20-10, .pad-l-20-10-0, .pad-l-20-10-5, .pad-l-20-10-15, .pad-l-20-10-20 {
+		padding-left:10px;
+	}
+	.pad-l-0-15, .pad-l-0-15-0, .pad-l-0-15-5, .pad-l-0-15-10, .pad-l-0-15-20, .pad-l-5-15, .pad-l-5-15-0, .pad-l-5-15-5, .pad-l-5-15-10, .pad-l-5-15-20, .pad-l-10-15, .pad-l-10-15-0, .pad-l-10-15-5, .pad-l-10-15-10, .pad-l-10-15-20, .pad-l-15-15-0, .pad-l-15-15-5, .pad-l-15-15-10, .pad-l-15-15-20, .pad-l-20-15, .pad-l-20-15-0, .pad-l-20-15-5, .pad-l-20-15-10, .pad-l-20-15-20 {
+		padding-left:15px;
+	}
+	.pad-l-0-20, .pad-l-0-20-0, .pad-l-0-20-5, .pad-l-0-20-10, .pad-l-0-20-15, .pad-l-5-20, .pad-l-5-20-0, .pad-l-5-20-5, .pad-l-5-20-10, .pad-l-5-20-15, .pad-l-10-20, .pad-l-10-20-0, .pad-l-10-20-5, .pad-l-10-20-10, .pad-l-10-20-15, .pad-l-15-20, .pad-l-15-20-0, .pad-l-15-20-5, .pad-l-15-20-10, .pad-l-15-20-15, .pad-l-20-20-0, .pad-l-20-20-5, .pad-l-20-20-10, .pad-l-20-20-15 {
+		padding-left:20px;
+	}
+	
+	
+	/* Pushing
+	*/
+	.push-0-0-5, .push-0-0-10, .push-0-0-15, .push-0-0-20, .push-5-0, .push-5-0-5, .push-5-0-10, .push-5-0-15, .push-5-0-20, .push-10-0, .push-10-0-5, .push-10-0-10, .push-10-0-15, .push-10-0-20, .push-15-0, .push-15-0-5, .push-15-0-10, .push-15-0-15, .push-15-0-20, .push-20-0, .push-20-0-5, .push-20-0-10, .push-20-0-15, .push-20-0-20 {
+		border:0px solid transparent;
+	}
+	.push-0-5, .push-0-5-0, .push-0-5-10, .push-0-5-15, .push-0-5-20, .push-5-5-0, .push-5-5-10, .push-5-5-15, .push-5-5-20, .push-10-5, .push-10-5-0, .push-10-5-10, .push-10-5-15, .push-10-5-20, .push-15-5, .push-15-5-0, .push-15-5-10, .push-15-5-15, .push-15-5-20, .push-20-5, .push-20-5-0, .push-20-5-10, .push-20-5-15, .push-20-5-20 {
+		border:5px solid transparent;
+	}
+	.push-0-10, .push-0-10-0, .push-0-10-5, .push-0-10-15, .push-0-10-20, .push-5-10, .push-5-10-0, .push-5-10-5, .push-5-10-15, .push-5-10-20, .push-10-10-0, .push-10-10-5, .push-10-10-15, .push-10-10-20, .push-15-10, .push-15-10-0, .push-15-10-5, .push-15-10-15, .push-15-10-20, .push-20-10, .push-20-10-0, .push-20-10-5, .push-20-10-15, .push-20-10-20 {
+		border:10px solid transparent;
+	}
+	.push-0-15, .push-0-15-0, .push-0-15-5, .push-0-15-10, .push-0-15-20, .push-5-15, .push-5-15-0, .push-5-15-5, .push-5-15-10, .push-5-15-20, .push-10-15, .push-10-15-0, .push-10-15-5, .push-10-15-10, .push-10-15-20, .push-15-15-0, .push-15-15-5, .push-15-15-10, .push-15-15-20, .push-20-15, .push-20-15-0, .push-20-15-5, .push-20-15-10, .push-20-15-20 {
+		border:15px solid transparent;
+	}
+	.push-0-20, .push-0-20-0, .push-0-20-5, .push-0-20-10, .push-0-20-15, .push-5-20, .push-5-20-0, .push-5-20-5, .push-5-20-10, .push-5-20-15, .push-10-20, .push-10-20-0, .push-10-20-5, .push-10-20-10, .push-10-20-15, .push-15-20, .push-15-20-0, .push-15-20-5, .push-15-20-10, .push-15-20-15, .push-20-20-0, .push-20-20-5, .push-20-20-10, .push-20-20-15 {
+		border:20px solid transparent;
+	}
+	/* */
+	.push-tb-0-0-5, .push-tb-0-0-10, .push-tb-0-0-15, .push-tb-0-0-20, .push-tb-5-0, .push-tb-5-0-5, .push-tb-5-0-10, .push-tb-5-0-15, .push-tb-5-0-20, .push-tb-10-0, .push-tb-10-0-5, .push-tb-10-0-10, .push-tb-10-0-15, .push-tb-10-0-20, .push-tb-15-0, .push-tb-15-0-5, .push-tb-15-0-10, .push-tb-15-0-15, .push-tb-15-0-20, .push-tb-20-0, .push-tb-20-0-5, .push-tb-20-0-10, .push-tb-20-0-15, .push-tb-20-0-20 {
+		border-top:0px solid transparent;
+		border-bottom:0px solid transparent;
+	}
+	.push-tb-0-5, .push-tb-0-5-0, .push-tb-0-5-10, .push-tb-0-5-15, .push-tb-0-5-20, .push-tb-5-5-0, .push-tb-5-5-10, .push-tb-5-5-15, .push-tb-5-5-20, .push-tb-10-5, .push-tb-10-5-0, .push-tb-10-5-10, .push-tb-10-5-15, .push-tb-10-5-20, .push-tb-15-5, .push-tb-15-5-0, .push-tb-15-5-10, .push-tb-15-5-15, .push-tb-15-5-20, .push-tb-20-5, .push-tb-20-5-0, .push-tb-20-5-10, .push-tb-20-5-15, .push-tb-20-5-20 {
+		border-top:5px solid transparent;
+		border-bottom:5px solid transparent;
+	}
+	.push-tb-0-10, .push-tb-0-10-0, .push-tb-0-10-5, .push-tb-0-10-15, .push-tb-0-10-20, .push-tb-5-10, .push-tb-5-10-0, .push-tb-5-10-5, .push-tb-5-10-15, .push-tb-5-10-20, .push-tb-10-10-0, .push-tb-10-10-5, .push-tb-10-10-15, .push-tb-10-10-20, .push-tb-15-10, .push-tb-15-10-0, .push-tb-15-10-5, .push-tb-15-10-15, .push-tb-15-10-20, .push-tb-20-10, .push-tb-20-10-0, .push-tb-20-10-5, .push-tb-20-10-15, .push-tb-20-10-20 {
+		border-top:10px solid transparent;
+		border-bottom:10px solid transparent;
+	}
+	.push-tb-0-15, .push-tb-0-15-0, .push-tb-0-15-5, .push-tb-0-15-10, .push-tb-0-15-20, .push-tb-5-15, .push-tb-5-15-0, .push-tb-5-15-5, .push-tb-5-15-10, .push-tb-5-15-20, .push-tb-10-15, .push-tb-10-15-0, .push-tb-10-15-5, .push-tb-10-15-10, .push-tb-10-15-20, .push-tb-15-15-0, .push-tb-15-15-5, .push-tb-15-15-10, .push-tb-15-15-20, .push-tb-20-15, .push-tb-20-15-0, .push-tb-20-15-5, .push-tb-20-15-10, .push-tb-20-15-20 {
+		border-top:15px solid transparent;
+		border-bottom:15px solid transparent;
+	}
+	.push-tb-0-20, .push-tb-0-20-0, .push-tb-0-20-5, .push-tb-0-20-10, .push-tb-0-20-15, .push-tb-5-20, .push-tb-5-20-0, .push-tb-5-20-5, .push-tb-5-20-10, .push-tb-5-20-15, .push-tb-10-20, .push-tb-10-20-0, .push-tb-10-20-5, .push-tb-10-20-10, .push-tb-10-20-15, .push-tb-15-20, .push-tb-15-20-0, .push-tb-15-20-5, .push-tb-15-20-10, .push-tb-15-20-15, .push-tb-20-20-0, .push-tb-20-20-5, .push-tb-20-20-10, .push-tb-20-20-15 {
+		border-top:20px solid transparent;
+		border-bottom:20px solid transparent;
+	}
+	/* */
+	.push-lr-0-0-5, .push-lr-0-0-10, .push-lr-0-0-15, .push-lr-0-0-20, .push-lr-5-0, .push-lr-5-0-5, .push-lr-5-0-10, .push-lr-5-0-15, .push-lr-5-0-20, .push-lr-10-0, .push-lr-10-0-5, .push-lr-10-0-10, .push-lr-10-0-15, .push-lr-10-0-20, .push-lr-15-0, .push-lr-15-0-5, .push-lr-15-0-10, .push-lr-15-0-15, .push-lr-15-0-20, .push-lr-20-0, .push-lr-20-0-5, .push-lr-20-0-10, .push-lr-20-0-15, .push-lr-20-0-20 {
+		border-left:0px solid transparent;
+		border-right:0px solid transparent;
+	}
+	.push-lr-0-5, .push-lr-0-5-0, .push-lr-0-5-10, .push-lr-0-5-15, .push-lr-0-5-20, .push-lr-5-5-0, .push-lr-5-5-10, .push-lr-5-5-15, .push-lr-5-5-20, .push-lr-10-5, .push-lr-10-5-0, .push-lr-10-5-10, .push-lr-10-5-15, .push-lr-10-5-20, .push-lr-15-5, .push-lr-15-5-0, .push-lr-15-5-10, .push-lr-15-5-15, .push-lr-15-5-20, .push-lr-20-5, .push-lr-20-5-0, .push-lr-20-5-10, .push-lr-20-5-15, .push-lr-20-5-20 {
+		border-left:5px solid transparent;
+		border-right:5px solid transparent;
+	}
+	.push-lr-0-10, .push-lr-0-10-0, .push-lr-0-10-5, .push-lr-0-10-15, .push-lr-0-10-20, .push-lr-5-10, .push-lr-5-10-0, .push-lr-5-10-5, .push-lr-5-10-15, .push-lr-5-10-20, .push-lr-10-10-0, .push-lr-10-10-5, .push-lr-10-10-15, .push-lr-10-10-20, .push-lr-15-10, .push-lr-15-10-0, .push-lr-15-10-5, .push-lr-15-10-15, .push-lr-15-10-20, .push-lr-20-10, .push-lr-20-10-0, .push-lr-20-10-5, .push-lr-20-10-15, .push-lr-20-10-20 {
+		border-left:10px solid transparent;
+		border-right:10px solid transparent;
+	}
+	.push-lr-0-15, .push-lr-0-15-0, .push-lr-0-15-5, .push-lr-0-15-10, .push-lr-0-15-20, .push-lr-5-15, .push-lr-5-15-0, .push-lr-5-15-5, .push-lr-5-15-10, .push-lr-5-15-20, .push-lr-10-15, .push-lr-10-15-0, .push-lr-10-15-5, .push-lr-10-15-10, .push-lr-10-15-20, .push-lr-15-15-0, .push-lr-15-15-5, .push-lr-15-15-10, .push-lr-15-15-20, .push-lr-20-15, .push-lr-20-15-0, .push-lr-20-15-5, .push-lr-20-15-10, .push-lr-20-15-20 {
+		border-left:15px solid transparent;
+		border-right:15px solid transparent;
+	}
+	.push-lr-0-20, .push-lr-0-20-0, .push-lr-0-20-5, .push-lr-0-20-10, .push-lr-0-20-15, .push-lr-5-20, .push-lr-5-20-0, .push-lr-5-20-5, .push-lr-5-20-10, .push-lr-5-20-15, .push-lr-10-20, .push-lr-10-20-0, .push-lr-10-20-5, .push-lr-10-20-10, .push-lr-10-20-15, .push-lr-15-20, .push-lr-15-20-0, .push-lr-15-20-5, .push-lr-15-20-10, .push-lr-15-20-15, .push-lr-20-20-0, .push-lr-20-20-5, .push-lr-20-20-10, .push-lr-20-20-15 {
+		border-left:20px solid transparent;
+		border-right:20px solid transparent;
+	}
+	/* */
+	.push-t-0-0-5, .push-t-0-0-10, .push-t-0-0-15, .push-t-0-0-20, .push-t-5-0, .push-t-5-0-5, .push-t-5-0-10, .push-t-5-0-15, .push-t-5-0-20, .push-t-10-0, .push-t-10-0-5, .push-t-10-0-10, .push-t-10-0-15, .push-t-10-0-20, .push-t-15-0, .push-t-15-0-5, .push-t-15-0-10, .push-t-15-0-15, .push-t-15-0-20, .push-t-20-0, .push-t-20-0-5, .push-t-20-0-10, .push-t-20-0-15, .push-t-20-0-20 {
+		border-top:0px solid transparent;
+	}
+	.push-t-0-5, .push-t-0-5-0, .push-t-0-5-10, .push-t-0-5-15, .push-t-0-5-20, .push-t-5-5-0, .push-t-5-5-10, .push-t-5-5-15, .push-t-5-5-20, .push-t-10-5, .push-t-10-5-0, .push-t-10-5-10, .push-t-10-5-15, .push-t-10-5-20, .push-t-15-5, .push-t-15-5-0, .push-t-15-5-10, .push-t-15-5-15, .push-t-15-5-20, .push-t-20-5, .push-t-20-5-0, .push-t-20-5-10, .push-t-20-5-15, .push-t-20-5-20 {
+		border-top:5px solid transparent;
+	}
+	.push-t-0-10, .push-t-0-10-0, .push-t-0-10-5, .push-t-0-10-15, .push-t-0-10-20, .push-t-5-10, .push-t-5-10-0, .push-t-5-10-5, .push-t-5-10-15, .push-t-5-10-20, .push-t-10-10-0, .push-t-10-10-5, .push-t-10-10-15, .push-t-10-10-20, .push-t-15-10, .push-t-15-10-0, .push-t-15-10-5, .push-t-15-10-15, .push-t-15-10-20, .push-t-20-10, .push-t-20-10-0, .push-t-20-10-5, .push-t-20-10-15, .push-t-20-10-20 {
+		border-top:10px solid transparent;
+	}
+	.push-t-0-15, .push-t-0-15-0, .push-t-0-15-5, .push-t-0-15-10, .push-t-0-15-20, .push-t-5-15, .push-t-5-15-0, .push-t-5-15-5, .push-t-5-15-10, .push-t-5-15-20, .push-t-10-15, .push-t-10-15-0, .push-t-10-15-5, .push-t-10-15-10, .push-t-10-15-20, .push-t-15-15-0, .push-t-15-15-5, .push-t-15-15-10, .push-t-15-15-20, .push-t-20-15, .push-t-20-15-0, .push-t-20-15-5, .push-t-20-15-10, .push-t-20-15-20 {
+		border-top:15px solid transparent;
+	}
+	.push-t-0-20, .push-t-0-20-0, .push-t-0-20-5, .push-t-0-20-10, .push-t-0-20-15, .push-t-5-20, .push-t-5-20-0, .push-t-5-20-5, .push-t-5-20-10, .push-t-5-20-15, .push-t-10-20, .push-t-10-20-0, .push-t-10-20-5, .push-t-10-20-10, .push-t-10-20-15, .push-t-15-20, .push-t-15-20-0, .push-t-15-20-5, .push-t-15-20-10, .push-t-15-20-15, .push-t-20-20-0, .push-t-20-20-5, .push-t-20-20-10, .push-t-20-20-15 {
+		border-top:20px solid transparent;
+	}
+	/* */
+	.push-r-0-0-5, .push-r-0-0-10, .push-r-0-0-15, .push-r-0-0-20, .push-r-5-0, .push-r-5-0-5, .push-r-5-0-10, .push-r-5-0-15, .push-r-5-0-20, .push-r-10-0, .push-r-10-0-5, .push-r-10-0-10, .push-r-10-0-15, .push-r-10-0-20, .push-r-15-0, .push-r-15-0-5, .push-r-15-0-10, .push-r-15-0-15, .push-r-15-0-20, .push-r-20-0, .push-r-20-0-5, .push-r-20-0-10, .push-r-20-0-15, .push-r-20-0-20 {
+		border-right:0px solid transparent;
+	}
+	.push-r-0-5, .push-r-0-5-0, .push-r-0-5-10, .push-r-0-5-15, .push-r-0-5-20, .push-r-5-5-0, .push-r-5-5-10, .push-r-5-5-15, .push-r-5-5-20, .push-r-10-5, .push-r-10-5-0, .push-r-10-5-10, .push-r-10-5-15, .push-r-10-5-20, .push-r-15-5, .push-r-15-5-0, .push-r-15-5-10, .push-r-15-5-15, .push-r-15-5-20, .push-r-20-5, .push-r-20-5-0, .push-r-20-5-10, .push-r-20-5-15, .push-r-20-5-20 {
+		border-right:5px solid transparent;
+	}
+	.push-r-0-10, .push-r-0-10-0, .push-r-0-10-5, .push-r-0-10-15, .push-r-0-10-20, .push-r-5-10, .push-r-5-10-0, .push-r-5-10-5, .push-r-5-10-15, .push-r-5-10-20, .push-r-10-10-0, .push-r-10-10-5, .push-r-10-10-15, .push-r-10-10-20, .push-r-15-10, .push-r-15-10-0, .push-r-15-10-5, .push-r-15-10-15, .push-r-15-10-20, .push-r-20-10, .push-r-20-10-0, .push-r-20-10-5, .push-r-20-10-15, .push-r-20-10-20 {
+		border-right:10px solid transparent;
+	}
+	.push-r-0-15, .push-r-0-15-0, .push-r-0-15-5, .push-r-0-15-10, .push-r-0-15-20, .push-r-5-15, .push-r-5-15-0, .push-r-5-15-5, .push-r-5-15-10, .push-r-5-15-20, .push-r-10-15, .push-r-10-15-0, .push-r-10-15-5, .push-r-10-15-10, .push-r-10-15-20, .push-r-15-15-0, .push-r-15-15-5, .push-r-15-15-10, .push-r-15-15-20, .push-r-20-15, .push-r-20-15-0, .push-r-20-15-5, .push-r-20-15-10, .push-r-20-15-20 {
+		border-right:15px solid transparent;
+	}
+	.push-r-0-20, .push-r-0-20-0, .push-r-0-20-5, .push-r-0-20-10, .push-r-0-20-15, .push-r-5-20, .push-r-5-20-0, .push-r-5-20-5, .push-r-5-20-10, .push-r-5-20-15, .push-r-10-20, .push-r-10-20-0, .push-r-10-20-5, .push-r-10-20-10, .push-r-10-20-15, .push-r-15-20, .push-r-15-20-0, .push-r-15-20-5, .push-r-15-20-10, .push-r-15-20-15, .push-r-20-20-0, .push-r-20-20-5, .push-r-20-20-10, .push-r-20-20-15 {
+		border-right:20px solid transparent;
+	}
+	/* */
+	.push-b-0-0-5, .push-b-0-0-10, .push-b-0-0-15, .push-b-0-0-20, .push-b-5-0, .push-b-5-0-5, .push-b-5-0-10, .push-b-5-0-15, .push-b-5-0-20, .push-b-10-0, .push-b-10-0-5, .push-b-10-0-10, .push-b-10-0-15, .push-b-10-0-20, .push-b-15-0, .push-b-15-0-5, .push-b-15-0-10, .push-b-15-0-15, .push-b-15-0-20, .push-b-20-0, .push-b-20-0-5, .push-b-20-0-10, .push-b-20-0-15, .push-b-20-0-20 {
+		border-bottom:0px solid transparent;
+	}
+	.push-b-0-5, .push-b-0-5-0, .push-b-0-5-10, .push-b-0-5-15, .push-b-0-5-20, .push-b-5-5-0, .push-b-5-5-10, .push-b-5-5-15, .push-b-5-5-20, .push-b-10-5, .push-b-10-5-0, .push-b-10-5-10, .push-b-10-5-15, .push-b-10-5-20, .push-b-15-5, .push-b-15-5-0, .push-b-15-5-10, .push-b-15-5-15, .push-b-15-5-20, .push-b-20-5, .push-b-20-5-0, .push-b-20-5-10, .push-b-20-5-15, .push-b-20-5-20 {
+		border-bottom:5px solid transparent;
+	}
+	.push-b-0-10, .push-b-0-10-0, .push-b-0-10-5, .push-b-0-10-15, .push-b-0-10-20, .push-b-5-10, .push-b-5-10-0, .push-b-5-10-5, .push-b-5-10-15, .push-b-5-10-20, .push-b-10-10-0, .push-b-10-10-5, .push-b-10-10-15, .push-b-10-10-20, .push-b-15-10, .push-b-15-10-0, .push-b-15-10-5, .push-b-15-10-15, .push-b-15-10-20, .push-b-20-10, .push-b-20-10-0, .push-b-20-10-5, .push-b-20-10-15, .push-b-20-10-20 {
+		border-bottom:10px solid transparent;
+	}
+	.push-b-0-15, .push-b-0-15-0, .push-b-0-15-5, .push-b-0-15-10, .push-b-0-15-20, .push-b-5-15, .push-b-5-15-0, .push-b-5-15-5, .push-b-5-15-10, .push-b-5-15-20, .push-b-10-15, .push-b-10-15-0, .push-b-10-15-5, .push-b-10-15-10, .push-b-10-15-20, .push-b-15-15-0, .push-b-15-15-5, .push-b-15-15-10, .push-b-15-15-20, .push-b-20-15, .push-b-20-15-0, .push-b-20-15-5, .push-b-20-15-10, .push-b-20-15-20 {
+		border-bottom:15px solid transparent;
+	}
+	.push-b-0-20, .push-b-0-20-0, .push-b-0-20-5, .push-b-0-20-10, .push-b-0-20-15, .push-b-5-20, .push-b-5-20-0, .push-b-5-20-5, .push-b-5-20-10, .push-b-5-20-15, .push-b-10-20, .push-b-10-20-0, .push-b-10-20-5, .push-b-10-20-10, .push-b-10-20-15, .push-b-15-20, .push-b-15-20-0, .push-b-15-20-5, .push-b-15-20-10, .push-b-15-20-15, .push-b-20-20-0, .push-b-20-20-5, .push-b-20-20-10, .push-b-20-20-15 {
+		border-bottom:20px solid transparent;
+	}
+	/* */
+	.push-l-0-0-5, .push-l-0-0-10, .push-l-0-0-15, .push-l-0-0-20, .push-l-5-0, .push-l-5-0-5, .push-l-5-0-10, .push-l-5-0-15, .push-l-5-0-20, .push-l-10-0, .push-l-10-0-5, .push-l-10-0-10, .push-l-10-0-15, .push-l-10-0-20, .push-l-15-0, .push-l-15-0-5, .push-l-15-0-10, .push-l-15-0-15, .push-l-15-0-20, .push-l-20-0, .push-l-20-0-5, .push-l-20-0-10, .push-l-20-0-15, .push-l-20-0-20 {
+		border-left:0px solid transparent;
+	}
+	.push-l-0-5, .push-l-0-5-0, .push-l-0-5-10, .push-l-0-5-15, .push-l-0-5-20, .push-l-5-5-0, .push-l-5-5-10, .push-l-5-5-15, .push-l-5-5-20, .push-l-10-5, .push-l-10-5-0, .push-l-10-5-10, .push-l-10-5-15, .push-l-10-5-20, .push-l-15-5, .push-l-15-5-0, .push-l-15-5-10, .push-l-15-5-15, .push-l-15-5-20, .push-l-20-5, .push-l-20-5-0, .push-l-20-5-10, .push-l-20-5-15, .push-l-20-5-20 {
+		border-left:5px solid transparent;
+	}
+	.push-l-0-10, .push-l-0-10-0, .push-l-0-10-5, .push-l-0-10-15, .push-l-0-10-20, .push-l-5-10, .push-l-5-10-0, .push-l-5-10-5, .push-l-5-10-15, .push-l-5-10-20, .push-l-10-10-0, .push-l-10-10-5, .push-l-10-10-15, .push-l-10-10-20, .push-l-15-10, .push-l-15-10-0, .push-l-15-10-5, .push-l-15-10-15, .push-l-15-10-20, .push-l-20-10, .push-l-20-10-0, .push-l-20-10-5, .push-l-20-10-15, .push-l-20-10-20 {
+		border-left:10px solid transparent;
+	}
+	.push-l-0-15, .push-l-0-15-0, .push-l-0-15-5, .push-l-0-15-10, .push-l-0-15-20, .push-l-5-15, .push-l-5-15-0, .push-l-5-15-5, .push-l-5-15-10, .push-l-5-15-20, .push-l-10-15, .push-l-10-15-0, .push-l-10-15-5, .push-l-10-15-10, .push-l-10-15-20, .push-l-15-15-0, .push-l-15-15-5, .push-l-15-15-10, .push-l-15-15-20, .push-l-20-15, .push-l-20-15-0, .push-l-20-15-5, .push-l-20-15-10, .push-l-20-15-20 {
+		border-left:15px solid transparent;
+	}
+	.push-l-0-20, .push-l-0-20-0, .push-l-0-20-5, .push-l-0-20-10, .push-l-0-20-15, .push-l-5-20, .push-l-5-20-0, .push-l-5-20-5, .push-l-5-20-10, .push-l-5-20-15, .push-l-10-20, .push-l-10-20-0, .push-l-10-20-5, .push-l-10-20-10, .push-l-10-20-15, .push-l-15-20, .push-l-15-20-0, .push-l-15-20-5, .push-l-15-20-10, .push-l-15-20-15, .push-l-20-20-0, .push-l-20-20-5, .push-l-20-20-10, .push-l-20-20-15 {
+		border-left:20px solid transparent;
+	}
+	
+	
+}
+
+
+
+/***
+**** Phone
+***/
+@media screen and (max-width:550px) {
+	
+	
+	/* Clearing
+	*/
+	.clear-n-0-n, .clear-n-10-n, .clear-n-15-n, .clear-n-20-n, .clear-n-30-n, .clear-0-0-n, .clear-0-10-n, .clear-0-15-n, .clear-0-20-n, .clear-0-30-n, .clear-10-0-n, .clear-10-10-n, .clear-10-15-n, .clear-10-20-n, .clear-10-30-n, .clear-15-0-n, .clear-15-10-n, .clear-15-15-n, .clear-15-20-n, .clear-15-30-n, .clear-20-0-n, .clear-20-10-n, .clear-20-15-n, .clear-20-20-n, .clear-20-30-n, .clear-30-0-n, .clear-30-10-n, .clear-30-15-n, .clear-30-20-n, .clear-30-30-n {
+		clear:none;
+		height:0px;
+	}
+	.clear-n-n-0, .clear-n-10-0, .clear-n-15-0, .clear-n-20-0, .clear-n-30-0, .clear-0-n-0, .clear-0-10-0, .clear-0-15-0, .clear-0-20-0, .clear-0-30-0, .clear-10-n-0, .clear-10-10-0, .clear-10-15-0, .clear-10-20-0, .clear-10-30-0, .clear-15-n-0, .clear-15-10-0, .clear-15-15-0, .clear-15-20-0, .clear-15-30-0, .clear-20-n-0, .clear-20-10-0, .clear-20-15-0, .clear-20-20-0, .clear-20-30-0, .clear-30-n-0, .clear-30-10-0, .clear-30-15-0, .clear-30-20-0, .clear-30-30-0 {
+		clear:both;
+		height:0px;
+	}
+	.clear-n-n-10, .clear-n-0-10, .clear-n-15-10, .clear-n-20-10, .clear-n-30-10, .clear-0-n-10, .clear-0-0-10, .clear-0-15-10, .clear-0-20-10, .clear-0-30-10, .clear-10-n-10, .clear-10-0-10, .clear-10-15-10, .clear-10-20-10, .clear-10-30-10, .clear-15-n-10, .clear-15-0-10, .clear-15-15-10, .clear-15-20-10, .clear-15-30-10, .clear-20-n-10, .clear-20-0-10, .clear-20-15-10, .clear-20-20-10, .clear-20-30-10, .clear-30-n-10, .clear-30-0-10, .clear-30-15-10, .clear-30-20-10, .clear-30-30-10 {
+		clear:both;
+		height:10px;
+	}
+	.clear-n-n-15, .clear-n-0-15, .clear-n-10-15, .clear-n-20-15, .clear-n-30-15, .clear-0-n-15, .clear-0-0-15, .clear-0-10-15, .clear-0-20-15, .clear-0-30-15, .clear-10-n-15, .clear-10-0-15, .clear-10-10-15, .clear-10-20-15, .clear-10-30-15, .clear-15-n-15, .clear-15-0-15, .clear-15-10-15, .clear-15-20-15, .clear-15-30-15, .clear-20-n-15, .clear-20-0-15, .clear-20-10-15, .clear-20-20-15, .clear-20-30-15, .clear-30-n-15, .clear-30-0-15, .clear-30-10-15, .clear-30-20-15, .clear-30-30-15 {
+		clear:both;
+		height:15px;
+	}
+	.clear-n-n-20, .clear-n-0-20, .clear-n-10-20, .clear-n-15-20, .clear-n-30-20, .clear-0-n-20, .clear-0-0-20, .clear-0-10-20, .clear-0-15-20, .clear-0-30-20, .clear-10-n-20, .clear-10-0-20, .clear-10-10-20, .clear-10-15-20, .clear-10-30-20, .clear-15-n-20, .clear-15-0-20, .clear-15-10-20, .clear-15-15-20, .clear-15-30-20, .clear-20-n-20, .clear-20-0-20, .clear-20-10-20, .clear-20-15-20, .clear-20-30-20, .clear-30-n-20, .clear-30-0-20, .clear-30-10-20, .clear-30-15-20, .clear-30-30-20 {
+		clear:both;
+		height:20px;
+	}
+	.clear-n-n-30, .clear-n-0-30, .clear-n-10-30, .clear-n-15-30, .clear-n-20-30, .clear-0-n-30, .clear-0-0-30, .clear-0-10-30, .clear-0-15-30, .clear-0-20-30, .clear-10-n-30, .clear-10-0-30, .clear-10-10-30, .clear-10-15-30, .clear-10-20-30, .clear-15-n-30, .clear-15-0-30, .clear-15-10-30, .clear-15-15-30, .clear-15-20-30, .clear-20-n-30, .clear-20-0-30, .clear-20-10-30, .clear-20-15-30, .clear-20-20-30, .clear-30-n-30, .clear-30-0-30, .clear-30-10-30, .clear-30-15-30, .clear-30-20-30 {
+		clear:both;
+		height:30px;
+	}
+	
+	
+	/* Positioning
+	*/
+	.left, .center, .right,
+	.pos-l-c-l, .pos-l-r-l, .pos-c-c-l, .pos-c-r-l, .pos-r-c-l, .pos-r-r-l {
+		float:left;
+	}
+	.pos-l-l-c, .pos-l-r-c, .pos-c-l-c, .pos-c-r-c, .pos-r-l-c, .pos-r-r-c {
+		float:none;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.pos-l-l-r, .pos-l-c-r, .pos-c-l-r, .pos-c-c-r, .pos-r-l-r, .pos-r-c-r {
+		float:right;
+	}
+	
+	
+	/* Sizes
+	*/
+	.size-960-550-960, .size-960-100-960, .size-550-550-960, .size-550-100-960, .size-100-550-960, .size-100-100-960 {
+		width:960px;
+	}
+	.size-960-960-550, .size-960-100-550, .size-550-960-550, .size-550-100-550, .size-100-960-550, .size-100-100-550 {
+		width:550px;
+	}
+	/* */
+	.fivefifty, .half, .third, .twothird, .forth, .threeforth,
+	.fifth, .twofifth, .threefifth, .fourfifth,
+	.size-960-960-100, .size-960-550-100, .size-550-960-100, .size-550-550-100, .size-100-960-100, .size-100-550-100,
+	.size-100-50-100, .size-100-33-100, .size-100-66-100, .size-100-25-100, .size-100-75-100, .size-100-20-100, .size-100-40-100, .size-100-60-100, .size-100-80-100, .size-50-50-100, .size-50-33-100, .size-50-66-100, .size-50-25-100, .size-50-75-100, .size-50-20-100, .size-50-40-100, .size-50-60-100, .size-50-80-100, .size-33-50-100, .size-33-33-100, .size-33-66-100, .size-33-25-100, .size-33-75-100, .size-33-20-100, .size-33-40-100, .size-33-60-100, .size-33-80-100, .size-66-50-100, .size-66-33-100, .size-66-66-100, .size-66-25-100, .size-66-75-100, .size-66-20-100, .size-66-40-100, .size-66-60-100, .size-66-80-100, .size-25-50-100, .size-25-33-100, .size-25-66-100, .size-25-25-100, .size-25-75-100, .size-25-20-100, .size-25-40-100, .size-25-60-100, .size-25-80-100, .size-75-50-100, .size-75-33-100, .size-75-66-100, .size-75-25-100, .size-75-75-100, .size-75-20-100, .size-75-40-100, .size-75-60-100, .size-75-80-100, .size-20-50-100, .size-20-33-100, .size-20-66-100, .size-20-25-100, .size-20-75-100, .size-20-20-100, .size-20-40-100, .size-20-60-100, .size-20-80-100, .size-40-50-100, .size-40-33-100, .size-40-66-100, .size-40-25-100, .size-40-75-100, .size-40-20-100, .size-40-40-100, .size-40-60-100, .size-40-80-100, .size-60-50-100, .size-60-33-100, .size-60-66-100, .size-60-25-100, .size-60-75-100, .size-60-20-100, .size-60-40-100, .size-60-60-100, .size-60-80-100, .size-80-50-100, .size-80-33-100, .size-80-66-100, .size-80-25-100, .size-80-75-100, .size-80-20-100, .size-80-40-100, .size-80-60-100, .size-80-80-100 {
+		width:100%;
+	}
+	.size-100-100-50, .size-100-33-50, .size-100-66-50, .size-100-25-50, .size-100-75-50, .size-100-20-50, .size-100-40-50, .size-100-60-50, .size-100-80-50, .size-50-100-50, .size-50-33-50, .size-50-66-50, .size-50-25-50, .size-50-75-50, .size-50-20-50, .size-50-40-50, .size-50-60-50, .size-50-80-50, .size-33-100-50, .size-33-33-50, .size-33-66-50, .size-33-25-50, .size-33-75-50, .size-33-20-50, .size-33-40-50, .size-33-60-50, .size-33-80-50, .size-66-100-50, .size-66-33-50, .size-66-66-50, .size-66-25-50, .size-66-75-50, .size-66-20-50, .size-66-40-50, .size-66-60-50, .size-66-80-50, .size-25-100-50, .size-25-33-50, .size-25-66-50, .size-25-25-50, .size-25-75-50, .size-25-20-50, .size-25-40-50, .size-25-60-50, .size-25-80-50, .size-75-100-50, .size-75-33-50, .size-75-66-50, .size-75-25-50, .size-75-75-50, .size-75-20-50, .size-75-40-50, .size-75-60-50, .size-75-80-50, .size-20-100-50, .size-20-33-50, .size-20-66-50, .size-20-25-50, .size-20-75-50, .size-20-20-50, .size-20-40-50, .size-20-60-50, .size-20-80-50, .size-40-100-50, .size-40-33-50, .size-40-66-50, .size-40-25-50, .size-40-75-50, .size-40-20-50, .size-40-40-50, .size-40-60-50, .size-40-80-50, .size-60-100-50, .size-60-33-50, .size-60-66-50, .size-60-25-50, .size-60-75-50, .size-60-20-50, .size-60-40-50, .size-60-60-50, .size-60-80-50, .size-80-100-50, .size-80-33-50, .size-80-66-50, .size-80-25-50, .size-80-75-50, .size-80-20-50, .size-80-40-50, .size-80-60-50, .size-80-80-50 {
+		 width:50%;
+	}
+	.size-100-100-33, .size-100-50-33, .size-100-66-33, .size-100-25-33, .size-100-75-33, .size-100-20-33, .size-100-40-33, .size-100-60-33, .size-100-80-33, .size-50-100-33, .size-50-50-33, .size-50-66-33, .size-50-25-33, .size-50-75-33, .size-50-20-33, .size-50-40-33, .size-50-60-33, .size-50-80-33, .size-33-100-33, .size-33-50-33, .size-33-66-33, .size-33-25-33, .size-33-75-33, .size-33-20-33, .size-33-40-33, .size-33-60-33, .size-33-80-33, .size-66-100-33, .size-66-50-33, .size-66-66-33, .size-66-25-33, .size-66-75-33, .size-66-20-33, .size-66-40-33, .size-66-60-33, .size-66-80-33, .size-25-100-33, .size-25-50-33, .size-25-66-33, .size-25-25-33, .size-25-75-33, .size-25-20-33, .size-25-40-33, .size-25-60-33, .size-25-80-33, .size-75-100-33, .size-75-50-33, .size-75-66-33, .size-75-25-33, .size-75-75-33, .size-75-20-33, .size-75-40-33, .size-75-60-33, .size-75-80-33, .size-20-100-33, .size-20-50-33, .size-20-66-33, .size-20-25-33, .size-20-75-33, .size-20-20-33, .size-20-40-33, .size-20-60-33, .size-20-80-33, .size-40-100-33, .size-40-50-33, .size-40-66-33, .size-40-25-33, .size-40-75-33, .size-40-20-33, .size-40-40-33, .size-40-60-33, .size-40-80-33, .size-60-100-33, .size-60-50-33, .size-60-66-33, .size-60-25-33, .size-60-75-33, .size-60-20-33, .size-60-40-33, .size-60-60-33, .size-60-80-33, .size-80-100-33, .size-80-50-33, .size-80-66-33, .size-80-25-33, .size-80-75-33, .size-80-20-33, .size-80-40-33, .size-80-60-33, .size-80-80-33 {
+		width:33.333334%;
+	}
+	.size-100-100-66, .size-100-50-66, .size-100-33-66, .size-100-25-66, .size-100-75-66, .size-100-20-66, .size-100-40-66, .size-100-60-66, .size-100-80-66, .size-50-100-66, .size-50-50-66, .size-50-33-66, .size-50-25-66, .size-50-75-66, .size-50-20-66, .size-50-40-66, .size-50-60-66, .size-50-80-66, .size-33-100-66, .size-33-50-66, .size-33-33-66, .size-33-25-66, .size-33-75-66, .size-33-20-66, .size-33-40-66, .size-33-60-66, .size-33-80-66, .size-66-100-66, .size-66-50-66, .size-66-33-66, .size-66-25-66, .size-66-75-66, .size-66-20-66, .size-66-40-66, .size-66-60-66, .size-66-80-66, .size-25-100-66, .size-25-50-66, .size-25-33-66, .size-25-25-66, .size-25-75-66, .size-25-20-66, .size-25-40-66, .size-25-60-66, .size-25-80-66, .size-75-100-66, .size-75-50-66, .size-75-33-66, .size-75-25-66, .size-75-75-66, .size-75-20-66, .size-75-40-66, .size-75-60-66, .size-75-80-66, .size-20-100-66, .size-20-50-66, .size-20-33-66, .size-20-25-66, .size-20-75-66, .size-20-20-66, .size-20-40-66, .size-20-60-66, .size-20-80-66, .size-40-100-66, .size-40-50-66, .size-40-33-66, .size-40-25-66, .size-40-75-66, .size-40-20-66, .size-40-40-66, .size-40-60-66, .size-40-80-66, .size-60-100-66, .size-60-50-66, .size-60-33-66, .size-60-25-66, .size-60-75-66, .size-60-20-66, .size-60-40-66, .size-60-60-66, .size-60-80-66, .size-80-100-66, .size-80-50-66, .size-80-33-66, .size-80-25-66, .size-80-75-66, .size-80-20-66, .size-80-40-66, .size-80-60-66, .size-80-80-66 {
+		width:66.666668%;
+	}
+	.size-100-100-25, .size-100-50-25, .size-100-33-25, .size-100-66-25, .size-100-75-25, .size-100-20-25, .size-100-40-25, .size-100-60-25, .size-100-80-25, .size-50-100-25, .size-50-50-25, .size-50-33-25, .size-50-66-25, .size-50-75-25, .size-50-20-25, .size-50-40-25, .size-50-60-25, .size-50-80-25, .size-33-100-25, .size-33-50-25, .size-33-33-25, .size-33-66-25, .size-33-75-25, .size-33-20-25, .size-33-40-25, .size-33-60-25, .size-33-80-25, .size-66-100-25, .size-66-50-25, .size-66-33-25, .size-66-66-25, .size-66-75-25, .size-66-20-25, .size-66-40-25, .size-66-60-25, .size-66-80-25, .size-25-100-25, .size-25-50-25, .size-25-33-25, .size-25-66-25, .size-25-75-25, .size-25-20-25, .size-25-40-25, .size-25-60-25, .size-25-80-25, .size-75-100-25, .size-75-50-25, .size-75-33-25, .size-75-66-25, .size-75-75-25, .size-75-20-25, .size-75-40-25, .size-75-60-25, .size-75-80-25, .size-20-100-25, .size-20-50-25, .size-20-33-25, .size-20-66-25, .size-20-75-25, .size-20-20-25, .size-20-40-25, .size-20-60-25, .size-20-80-25, .size-40-100-25, .size-40-50-25, .size-40-33-25, .size-40-66-25, .size-40-75-25, .size-40-20-25, .size-40-40-25, .size-40-60-25, .size-40-80-25, .size-60-100-25, .size-60-50-25, .size-60-33-25, .size-60-66-25, .size-60-75-25, .size-60-20-25, .size-60-40-25, .size-60-60-25, .size-60-80-25, .size-80-100-25, .size-80-50-25, .size-80-33-25, .size-80-66-25, .size-80-75-25, .size-80-20-25, .size-80-40-25, .size-80-60-25, .size-80-80-25 {
+		width:25%;
+	}
+	.size-100-100-75, .size-100-50-75, .size-100-33-75, .size-100-66-75, .size-100-25-75, .size-100-20-75, .size-100-40-75, .size-100-60-75, .size-100-80-75, .size-50-100-75, .size-50-50-75, .size-50-33-75, .size-50-66-75, .size-50-25-75, .size-50-20-75, .size-50-40-75, .size-50-60-75, .size-50-80-75, .size-33-100-75, .size-33-50-75, .size-33-33-75, .size-33-66-75, .size-33-25-75, .size-33-20-75, .size-33-40-75, .size-33-60-75, .size-33-80-75, .size-66-100-75, .size-66-50-75, .size-66-33-75, .size-66-66-75, .size-66-25-75, .size-66-20-75, .size-66-40-75, .size-66-60-75, .size-66-80-75, .size-25-100-75, .size-25-50-75, .size-25-33-75, .size-25-66-75, .size-25-25-75, .size-25-20-75, .size-25-40-75, .size-25-60-75, .size-25-80-75, .size-75-100-75, .size-75-50-75, .size-75-33-75, .size-75-66-75, .size-75-25-75, .size-75-20-75, .size-75-40-75, .size-75-60-75, .size-75-80-75, .size-20-100-75, .size-20-50-75, .size-20-33-75, .size-20-66-75, .size-20-25-75, .size-20-20-75, .size-20-40-75, .size-20-60-75, .size-20-80-75, .size-40-100-75, .size-40-50-75, .size-40-33-75, .size-40-66-75, .size-40-25-75, .size-40-20-75, .size-40-40-75, .size-40-60-75, .size-40-80-75, .size-60-100-75, .size-60-50-75, .size-60-33-75, .size-60-66-75, .size-60-25-75, .size-60-20-75, .size-60-40-75, .size-60-60-75, .size-60-80-75, .size-80-100-75, .size-80-50-75, .size-80-33-75, .size-80-66-75, .size-80-25-75, .size-80-20-75, .size-80-40-75, .size-80-60-75, .size-80-80-75 {
+		width:75%;
+	}
+	.size-100-100-20, .size-100-50-20, .size-100-33-20, .size-100-66-20, .size-100-25-20, .size-100-75-20, .size-100-40-20, .size-100-60-20, .size-100-80-20, .size-50-100-20, .size-50-50-20, .size-50-33-20, .size-50-66-20, .size-50-25-20, .size-50-75-20, .size-50-40-20, .size-50-60-20, .size-50-80-20, .size-33-100-20, .size-33-50-20, .size-33-33-20, .size-33-66-20, .size-33-25-20, .size-33-75-20, .size-33-40-20, .size-33-60-20, .size-33-80-20, .size-66-100-20, .size-66-50-20, .size-66-33-20, .size-66-66-20, .size-66-25-20, .size-66-75-20, .size-66-40-20, .size-66-60-20, .size-66-80-20, .size-25-100-20, .size-25-50-20, .size-25-33-20, .size-25-66-20, .size-25-25-20, .size-25-75-20, .size-25-40-20, .size-25-60-20, .size-25-80-20, .size-75-100-20, .size-75-50-20, .size-75-33-20, .size-75-66-20, .size-75-25-20, .size-75-75-20, .size-75-40-20, .size-75-60-20, .size-75-80-20, .size-20-100-20, .size-20-50-20, .size-20-33-20, .size-20-66-20, .size-20-25-20, .size-20-75-20, .size-20-40-20, .size-20-60-20, .size-20-80-20, .size-40-100-20, .size-40-50-20, .size-40-33-20, .size-40-66-20, .size-40-25-20, .size-40-75-20, .size-40-40-20, .size-40-60-20, .size-40-80-20, .size-60-100-20, .size-60-50-20, .size-60-33-20, .size-60-66-20, .size-60-25-20, .size-60-75-20, .size-60-40-20, .size-60-60-20, .size-60-80-20, .size-80-100-20, .size-80-50-20, .size-80-33-20, .size-80-66-20, .size-80-25-20, .size-80-75-20, .size-80-40-20, .size-80-60-20, .size-80-80-20 {
+		width:20%;
+	}
+	.size-100-100-40, .size-100-50-40, .size-100-33-40, .size-100-66-40, .size-100-25-40, .size-100-75-40, .size-100-20-40, .size-100-60-40, .size-100-80-40, .size-50-100-40, .size-50-50-40, .size-50-33-40, .size-50-66-40, .size-50-25-40, .size-50-75-40, .size-50-20-40, .size-50-60-40, .size-50-80-40, .size-33-100-40, .size-33-50-40, .size-33-33-40, .size-33-66-40, .size-33-25-40, .size-33-75-40, .size-33-20-40, .size-33-60-40, .size-33-80-40, .size-66-100-40, .size-66-50-40, .size-66-33-40, .size-66-66-40, .size-66-25-40, .size-66-75-40, .size-66-20-40, .size-66-60-40, .size-66-80-40, .size-25-100-40, .size-25-50-40, .size-25-33-40, .size-25-66-40, .size-25-25-40, .size-25-75-40, .size-25-20-40, .size-25-60-40, .size-25-80-40, .size-75-100-40, .size-75-50-40, .size-75-33-40, .size-75-66-40, .size-75-25-40, .size-75-75-40, .size-75-20-40, .size-75-60-40, .size-75-80-40, .size-20-100-40, .size-20-50-40, .size-20-33-40, .size-20-66-40, .size-20-25-40, .size-20-75-40, .size-20-20-40, .size-20-60-40, .size-20-80-40, .size-40-100-40, .size-40-50-40, .size-40-33-40, .size-40-66-40, .size-40-25-40, .size-40-75-40, .size-40-20-40, .size-40-60-40, .size-40-80-40, .size-60-100-40, .size-60-50-40, .size-60-33-40, .size-60-66-40, .size-60-25-40, .size-60-75-40, .size-60-20-40, .size-60-60-40, .size-60-80-40, .size-80-100-40, .size-80-50-40, .size-80-33-40, .size-80-66-40, .size-80-25-40, .size-80-75-40, .size-80-20-40, .size-80-60-40, .size-80-80-40 {
+		width:40%;
+	}
+	.size-100-100-60, .size-100-50-60, .size-100-33-60, .size-100-66-60, .size-100-25-60, .size-100-75-60, .size-100-20-60, .size-100-40-60, .size-100-80-60, .size-50-100-60, .size-50-50-60, .size-50-33-60, .size-50-66-60, .size-50-25-60, .size-50-75-60, .size-50-20-60, .size-50-40-60, .size-50-80-60, .size-33-100-60, .size-33-50-60, .size-33-33-60, .size-33-66-60, .size-33-25-60, .size-33-75-60, .size-33-20-60, .size-33-40-60, .size-33-80-60, .size-66-100-60, .size-66-50-60, .size-66-33-60, .size-66-66-60, .size-66-25-60, .size-66-75-60, .size-66-20-60, .size-66-40-60, .size-66-80-60, .size-25-100-60, .size-25-50-60, .size-25-33-60, .size-25-66-60, .size-25-25-60, .size-25-75-60, .size-25-20-60, .size-25-40-60, .size-25-80-60, .size-75-100-60, .size-75-50-60, .size-75-33-60, .size-75-66-60, .size-75-25-60, .size-75-75-60, .size-75-20-60, .size-75-40-60, .size-75-80-60, .size-20-100-60, .size-20-50-60, .size-20-33-60, .size-20-66-60, .size-20-25-60, .size-20-75-60, .size-20-20-60, .size-20-40-60, .size-20-80-60, .size-40-100-60, .size-40-50-60, .size-40-33-60, .size-40-66-60, .size-40-25-60, .size-40-75-60, .size-40-20-60, .size-40-40-60, .size-40-80-60, .size-60-100-60, .size-60-50-60, .size-60-33-60, .size-60-66-60, .size-60-25-60, .size-60-75-60, .size-60-20-60, .size-60-40-60, .size-60-80-60, .size-80-100-60, .size-80-50-60, .size-80-33-60, .size-80-66-60, .size-80-25-60, .size-80-75-60, .size-80-20-60, .size-80-40-60, .size-80-80-60 {
+		width:60%;
+	}
+	.size-100-100-80, .size-100-50-80, .size-100-33-80, .size-100-66-80, .size-100-25-80, .size-100-75-80, .size-100-20-80, .size-100-40-80, .size-100-60-80, .size-50-100-80, .size-50-50-80, .size-50-33-80, .size-50-66-80, .size-50-25-80, .size-50-75-80, .size-50-20-80, .size-50-40-80, .size-50-60-80, .size-33-100-80, .size-33-50-80, .size-33-33-80, .size-33-66-80, .size-33-25-80, .size-33-75-80, .size-33-20-80, .size-33-40-80, .size-33-60-80, .size-66-100-80, .size-66-50-80, .size-66-33-80, .size-66-66-80, .size-66-25-80, .size-66-75-80, .size-66-20-80, .size-66-40-80, .size-66-60-80, .size-25-100-80, .size-25-50-80, .size-25-33-80, .size-25-66-80, .size-25-25-80, .size-25-75-80, .size-25-20-80, .size-25-40-80, .size-25-60-80, .size-75-100-80, .size-75-50-80, .size-75-33-80, .size-75-66-80, .size-75-25-80, .size-75-75-80, .size-75-20-80, .size-75-40-80, .size-75-60-80, .size-20-100-80, .size-20-50-80, .size-20-33-80, .size-20-66-80, .size-20-25-80, .size-20-75-80, .size-20-20-80, .size-20-40-80, .size-20-60-80, .size-40-100-80, .size-40-50-80, .size-40-33-80, .size-40-66-80, .size-40-25-80, .size-40-75-80, .size-40-20-80, .size-40-40-80, .size-40-60-80, .size-60-100-80, .size-60-50-80, .size-60-33-80, .size-60-66-80, .size-60-25-80, .size-60-75-80, .size-60-20-80, .size-60-40-80, .size-60-60-80, .size-80-100-80, .size-80-50-80, .size-80-33-80, .size-80-66-80, .size-80-25-80, .size-80-75-80, .size-80-20-80, .size-80-40-80, .size-80-60-80 {
+		width:80%;
+	}
+	
+	
+	/* Padding
+	*/
+	.pad-0-5-0, .pad-0-10-0, .pad-0-15-0, .pad-0-20-0, .pad-5-5-0, .pad-5-10-0, .pad-5-15-0, .pad-5-20-0, .pad-10-5-0, .pad-10-10-0, .pad-10-15-0, .pad-10-20-0, .pad-15-5-0, .pad-15-10-0, .pad-15-15-0, .pad-15-20-0, .pad-20-5-0, .pad-20-10-0, .pad-20-15-0, .pad-20-20-0 {
+		padding:0px;
+	}
+	.pad-0-0-5, .pad-0-10-5, .pad-0-15-5, .pad-0-20-5, .pad-5-0-5, .pad-5-10-5, .pad-5-15-5, .pad-5-20-5, .pad-10-0-5, .pad-10-10-5, .pad-10-15-5, .pad-10-20-5, .pad-15-0-5, .pad-15-10-5, .pad-15-15-5, .pad-15-20-5, .pad-20-0-5, .pad-20-10-5, .pad-20-15-5, .pad-20-20-5 {
+		padding:5px;
+	}
+	.pad-0-0-10, .pad-0-5-10, .pad-0-15-10, .pad-0-20-10, .pad-5-0-10, .pad-5-5-10, .pad-5-15-10, .pad-5-20-10, .pad-10-0-10, .pad-10-5-10, .pad-10-15-10, .pad-10-20-10, .pad-15-0-10, .pad-15-5-10, .pad-15-15-10, .pad-15-20-10, .pad-20-0-10, .pad-20-5-10, .pad-20-15-10, .pad-20-20-10 {
+		padding:10px;
+	}
+	.pad-0-0-15, .pad-0-5-15, .pad-0-10-15, .pad-0-20-15, .pad-5-0-15, .pad-5-5-15, .pad-5-10-15, .pad-5-20-15, .pad-10-0-15, .pad-10-5-15, .pad-10-10-15, .pad-10-20-15, .pad-15-0-15, .pad-15-5-15, .pad-15-10-15, .pad-15-20-15, .pad-20-0-15, .pad-20-5-15, .pad-20-10-15, .pad-20-20-15 {
+		padding:15px;
+	}
+	.pad-0-0-20, .pad-0-5-20, .pad-0-10-20, .pad-0-15-20, .pad-5-0-20, .pad-5-5-20, .pad-5-10-20, .pad-5-15-20, .pad-10-0-20, .pad-10-5-20, .pad-10-10-20, .pad-10-15-20, .pad-15-0-20, .pad-15-5-20, .pad-15-10-20, .pad-15-15-20, .pad-20-0-20, .pad-20-5-20, .pad-20-10-20, .pad-20-15-20 {
+		padding:20px;
+	}
+	/* */
+	.pad-tb-0-5-0, .pad-tb-0-10-0, .pad-tb-0-15-0, .pad-tb-0-20-0, .pad-tb-5-5-0, .pad-tb-5-10-0, .pad-tb-5-15-0, .pad-tb-5-20-0, .pad-tb-10-5-0, .pad-tb-10-10-0, .pad-tb-10-15-0, .pad-tb-10-20-0, .pad-tb-15-5-0, .pad-tb-15-10-0, .pad-tb-15-15-0, .pad-tb-15-20-0, .pad-tb-20-5-0, .pad-tb-20-10-0, .pad-tb-20-15-0, .pad-tb-20-20-0 {
+		padding-top:0px;
+		padding-bottom:0px;
+	}
+	.pad-tb-0-0-5, .pad-tb-0-10-5, .pad-tb-0-15-5, .pad-tb-0-20-5, .pad-tb-5-0-5, .pad-tb-5-10-5, .pad-tb-5-15-5, .pad-tb-5-20-5, .pad-tb-10-0-5, .pad-tb-10-10-5, .pad-tb-10-15-5, .pad-tb-10-20-5, .pad-tb-15-0-5, .pad-tb-15-10-5, .pad-tb-15-15-5, .pad-tb-15-20-5, .pad-tb-20-0-5, .pad-tb-20-10-5, .pad-tb-20-15-5, .pad-tb-20-20-5 {
+		padding-top:5px;
+		padding-bottom:5px;
+	}
+	.pad-tb-0-0-10, .pad-tb-0-5-10, .pad-tb-0-15-10, .pad-tb-0-20-10, .pad-tb-5-0-10, .pad-tb-5-5-10, .pad-tb-5-15-10, .pad-tb-5-20-10, .pad-tb-10-0-10, .pad-tb-10-5-10, .pad-tb-10-15-10, .pad-tb-10-20-10, .pad-tb-15-0-10, .pad-tb-15-5-10, .pad-tb-15-15-10, .pad-tb-15-20-10, .pad-tb-20-0-10, .pad-tb-20-5-10, .pad-tb-20-15-10, .pad-tb-20-20-10 {
+		padding-top:10px;
+		padding-bottom:10px;
+	}
+	.pad-tb-0-0-15, .pad-tb-0-5-15, .pad-tb-0-10-15, .pad-tb-0-20-15, .pad-tb-5-0-15, .pad-tb-5-5-15, .pad-tb-5-10-15, .pad-tb-5-20-15, .pad-tb-10-0-15, .pad-tb-10-5-15, .pad-tb-10-10-15, .pad-tb-10-20-15, .pad-tb-15-0-15, .pad-tb-15-5-15, .pad-tb-15-10-15, .pad-tb-15-20-15, .pad-tb-20-0-15, .pad-tb-20-5-15, .pad-tb-20-10-15, .pad-tb-20-20-15 {
+		padding-top:15px;
+		padding-bottom:15px;
+	}
+	.pad-tb-0-0-20, .pad-tb-0-5-20, .pad-tb-0-10-20, .pad-tb-0-15-20, .pad-tb-5-0-20, .pad-tb-5-5-20, .pad-tb-5-10-20, .pad-tb-5-15-20, .pad-tb-10-0-20, .pad-tb-10-5-20, .pad-tb-10-10-20, .pad-tb-10-15-20, .pad-tb-15-0-20, .pad-tb-15-5-20, .pad-tb-15-10-20, .pad-tb-15-15-20, .pad-tb-20-0-20, .pad-tb-20-5-20, .pad-tb-20-10-20, .pad-tb-20-15-20 {
+		padding-top:20px;
+		padding-bottom:20px;
+	}
+	/* */
+	.pad-lr-0-5-0, .pad-lr-0-10-0, .pad-lr-0-15-0, .pad-lr-0-20-0, .pad-lr-5-5-0, .pad-lr-5-10-0, .pad-lr-5-15-0, .pad-lr-5-20-0, .pad-lr-10-5-0, .pad-lr-10-10-0, .pad-lr-10-15-0, .pad-lr-10-20-0, .pad-lr-15-5-0, .pad-lr-15-10-0, .pad-lr-15-15-0, .pad-lr-15-20-0, .pad-lr-20-5-0, .pad-lr-20-10-0, .pad-lr-20-15-0, .pad-lr-20-20-0 {
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.pad-lr-0-0-5, .pad-lr-0-10-5, .pad-lr-0-15-5, .pad-lr-0-20-5, .pad-lr-5-0-5, .pad-lr-5-10-5, .pad-lr-5-15-5, .pad-lr-5-20-5, .pad-lr-10-0-5, .pad-lr-10-10-5, .pad-lr-10-15-5, .pad-lr-10-20-5, .pad-lr-15-0-5, .pad-lr-15-10-5, .pad-lr-15-15-5, .pad-lr-15-20-5, .pad-lr-20-0-5, .pad-lr-20-10-5, .pad-lr-20-15-5, .pad-lr-20-20-5 {
+		padding-left:5px;
+		padding-right:5px;
+	}
+	.pad-lr-0-0-10, .pad-lr-0-5-10, .pad-lr-0-15-10, .pad-lr-0-20-10, .pad-lr-5-0-10, .pad-lr-5-5-10, .pad-lr-5-15-10, .pad-lr-5-20-10, .pad-lr-10-0-10, .pad-lr-10-5-10, .pad-lr-10-15-10, .pad-lr-10-20-10, .pad-lr-15-0-10, .pad-lr-15-5-10, .pad-lr-15-15-10, .pad-lr-15-20-10, .pad-lr-20-0-10, .pad-lr-20-5-10, .pad-lr-20-15-10, .pad-lr-20-20-10 {
+		padding-left:10px;
+		padding-right:10px;
+	}
+	.pad-lr-0-0-15, .pad-lr-0-5-15, .pad-lr-0-10-15, .pad-lr-0-20-15, .pad-lr-5-0-15, .pad-lr-5-5-15, .pad-lr-5-10-15, .pad-lr-5-20-15, .pad-lr-10-0-15, .pad-lr-10-5-15, .pad-lr-10-10-15, .pad-lr-10-20-15, .pad-lr-15-0-15, .pad-lr-15-5-15, .pad-lr-15-10-15, .pad-lr-15-20-15, .pad-lr-20-0-15, .pad-lr-20-5-15, .pad-lr-20-10-15, .pad-lr-20-20-15 {
+		padding-left:15px;
+		padding-right:15px;
+	}
+	.pad-lr-0-0-20, .pad-lr-0-5-20, .pad-lr-0-10-20, .pad-lr-0-15-20, .pad-lr-5-0-20, .pad-lr-5-5-20, .pad-lr-5-10-20, .pad-lr-5-15-20, .pad-lr-10-0-20, .pad-lr-10-5-20, .pad-lr-10-10-20, .pad-lr-10-15-20, .pad-lr-15-0-20, .pad-lr-15-5-20, .pad-lr-15-10-20, .pad-lr-15-15-20, .pad-lr-20-0-20, .pad-lr-20-5-20, .pad-lr-20-10-20, .pad-lr-20-15-20 {
+		padding-left:20px;
+		padding-right:20px;
+	}
+	/* */
+	.pad-t-0-5-0, .pad-t-0-10-0, .pad-t-0-15-0, .pad-t-0-20-0, .pad-t-5-5-0, .pad-t-5-10-0, .pad-t-5-15-0, .pad-t-5-20-0, .pad-t-10-5-0, .pad-t-10-10-0, .pad-t-10-15-0, .pad-t-10-20-0, .pad-t-15-5-0, .pad-t-15-10-0, .pad-t-15-15-0, .pad-t-15-20-0, .pad-t-20-5-0, .pad-t-20-10-0, .pad-t-20-15-0, .pad-t-20-20-0 {
+		padding-top:0px;
+	}
+	.pad-t-0-0-5, .pad-t-0-10-5, .pad-t-0-15-5, .pad-t-0-20-5, .pad-t-5-0-5, .pad-t-5-10-5, .pad-t-5-15-5, .pad-t-5-20-5, .pad-t-10-0-5, .pad-t-10-10-5, .pad-t-10-15-5, .pad-t-10-20-5, .pad-t-15-0-5, .pad-t-15-10-5, .pad-t-15-15-5, .pad-t-15-20-5, .pad-t-20-0-5, .pad-t-20-10-5, .pad-t-20-15-5, .pad-t-20-20-5 {
+		padding-top:5px;
+	}
+	.pad-t-0-0-10, .pad-t-0-5-10, .pad-t-0-15-10, .pad-t-0-20-10, .pad-t-5-0-10, .pad-t-5-5-10, .pad-t-5-15-10, .pad-t-5-20-10, .pad-t-10-0-10, .pad-t-10-5-10, .pad-t-10-15-10, .pad-t-10-20-10, .pad-t-15-0-10, .pad-t-15-5-10, .pad-t-15-15-10, .pad-t-15-20-10, .pad-t-20-0-10, .pad-t-20-5-10, .pad-t-20-15-10, .pad-t-20-20-10 {
+		padding-top:10px;
+	}
+	.pad-t-0-0-15, .pad-t-0-5-15, .pad-t-0-10-15, .pad-t-0-20-15, .pad-t-5-0-15, .pad-t-5-5-15, .pad-t-5-10-15, .pad-t-5-20-15, .pad-t-10-0-15, .pad-t-10-5-15, .pad-t-10-10-15, .pad-t-10-20-15, .pad-t-15-0-15, .pad-t-15-5-15, .pad-t-15-10-15, .pad-t-15-20-15, .pad-t-20-0-15, .pad-t-20-5-15, .pad-t-20-10-15, .pad-t-20-20-15 {
+		padding-top:15px;
+	}
+	.pad-t-0-0-20, .pad-t-0-5-20, .pad-t-0-10-20, .pad-t-0-15-20, .pad-t-5-0-20, .pad-t-5-5-20, .pad-t-5-10-20, .pad-t-5-15-20, .pad-t-10-0-20, .pad-t-10-5-20, .pad-t-10-10-20, .pad-t-10-15-20, .pad-t-15-0-20, .pad-t-15-5-20, .pad-t-15-10-20, .pad-t-15-15-20, .pad-t-20-0-20, .pad-t-20-5-20, .pad-t-20-10-20, .pad-t-20-15-20 {
+		padding-top:20px;
+	}
+	/* */
+	.pad-r-0-5-0, .pad-r-0-10-0, .pad-r-0-15-0, .pad-r-0-20-0, .pad-r-5-5-0, .pad-r-5-10-0, .pad-r-5-15-0, .pad-r-5-20-0, .pad-r-10-5-0, .pad-r-10-10-0, .pad-r-10-15-0, .pad-r-10-20-0, .pad-r-15-5-0, .pad-r-15-10-0, .pad-r-15-15-0, .pad-r-15-20-0, .pad-r-20-5-0, .pad-r-20-10-0, .pad-r-20-15-0, .pad-r-20-20-0 {
+		padding-right:0px;
+	}
+	.pad-r-0-0-5, .pad-r-0-10-5, .pad-r-0-15-5, .pad-r-0-20-5, .pad-r-5-0-5, .pad-r-5-10-5, .pad-r-5-15-5, .pad-r-5-20-5, .pad-r-10-0-5, .pad-r-10-10-5, .pad-r-10-15-5, .pad-r-10-20-5, .pad-r-15-0-5, .pad-r-15-10-5, .pad-r-15-15-5, .pad-r-15-20-5, .pad-r-20-0-5, .pad-r-20-10-5, .pad-r-20-15-5, .pad-r-20-20-5 {
+		padding-right:5px;
+	}
+	.pad-r-0-0-10, .pad-r-0-5-10, .pad-r-0-15-10, .pad-r-0-20-10, .pad-r-5-0-10, .pad-r-5-5-10, .pad-r-5-15-10, .pad-r-5-20-10, .pad-r-10-0-10, .pad-r-10-5-10, .pad-r-10-15-10, .pad-r-10-20-10, .pad-r-15-0-10, .pad-r-15-5-10, .pad-r-15-15-10, .pad-r-15-20-10, .pad-r-20-0-10, .pad-r-20-5-10, .pad-r-20-15-10, .pad-r-20-20-10 {
+		padding-right:10px;
+	}
+	.pad-r-0-0-15, .pad-r-0-5-15, .pad-r-0-10-15, .pad-r-0-20-15, .pad-r-5-0-15, .pad-r-5-5-15, .pad-r-5-10-15, .pad-r-5-20-15, .pad-r-10-0-15, .pad-r-10-5-15, .pad-r-10-10-15, .pad-r-10-20-15, .pad-r-15-0-15, .pad-r-15-5-15, .pad-r-15-10-15, .pad-r-15-20-15, .pad-r-20-0-15, .pad-r-20-5-15, .pad-r-20-10-15, .pad-r-20-20-15 {
+		padding-right:15px;
+	}
+	.pad-r-0-0-20, .pad-r-0-5-20, .pad-r-0-10-20, .pad-r-0-15-20, .pad-r-5-0-20, .pad-r-5-5-20, .pad-r-5-10-20, .pad-r-5-15-20, .pad-r-10-0-20, .pad-r-10-5-20, .pad-r-10-10-20, .pad-r-10-15-20, .pad-r-15-0-20, .pad-r-15-5-20, .pad-r-15-10-20, .pad-r-15-15-20, .pad-r-20-0-20, .pad-r-20-5-20, .pad-r-20-10-20, .pad-r-20-15-20 {
+		padding-right:20px;
+	}
+	/* */
+	.pad-b-0-5-0, .pad-b-0-10-0, .pad-b-0-15-0, .pad-b-0-20-0, .pad-b-5-5-0, .pad-b-5-10-0, .pad-b-5-15-0, .pad-b-5-20-0, .pad-b-10-5-0, .pad-b-10-10-0, .pad-b-10-15-0, .pad-b-10-20-0, .pad-b-15-5-0, .pad-b-15-10-0, .pad-b-15-15-0, .pad-b-15-20-0, .pad-b-20-5-0, .pad-b-20-10-0, .pad-b-20-15-0, .pad-b-20-20-0 {
+		padding-bottom:0px;
+	}
+	.pad-b-0-0-5, .pad-b-0-10-5, .pad-b-0-15-5, .pad-b-0-20-5, .pad-b-5-0-5, .pad-b-5-10-5, .pad-b-5-15-5, .pad-b-5-20-5, .pad-b-10-0-5, .pad-b-10-10-5, .pad-b-10-15-5, .pad-b-10-20-5, .pad-b-15-0-5, .pad-b-15-10-5, .pad-b-15-15-5, .pad-b-15-20-5, .pad-b-20-0-5, .pad-b-20-10-5, .pad-b-20-15-5, .pad-b-20-20-5 {
+		padding-bottom:5px;
+	}
+	.pad-b-0-0-10, .pad-b-0-5-10, .pad-b-0-15-10, .pad-b-0-20-10, .pad-b-5-0-10, .pad-b-5-5-10, .pad-b-5-15-10, .pad-b-5-20-10, .pad-b-10-0-10, .pad-b-10-5-10, .pad-b-10-15-10, .pad-b-10-20-10, .pad-b-15-0-10, .pad-b-15-5-10, .pad-b-15-15-10, .pad-b-15-20-10, .pad-b-20-0-10, .pad-b-20-5-10, .pad-b-20-15-10, .pad-b-20-20-10 {
+		padding-bottom:10px;
+	}
+	.pad-b-0-0-15, .pad-b-0-5-15, .pad-b-0-10-15, .pad-b-0-20-15, .pad-b-5-0-15, .pad-b-5-5-15, .pad-b-5-10-15, .pad-b-5-20-15, .pad-b-10-0-15, .pad-b-10-5-15, .pad-b-10-10-15, .pad-b-10-20-15, .pad-b-15-0-15, .pad-b-15-5-15, .pad-b-15-10-15, .pad-b-15-20-15, .pad-b-20-0-15, .pad-b-20-5-15, .pad-b-20-10-15, .pad-b-20-20-15 {
+		padding-bottom:15px;
+	}
+	.pad-b-0-0-20, .pad-b-0-5-20, .pad-b-0-10-20, .pad-b-0-15-20, .pad-b-5-0-20, .pad-b-5-5-20, .pad-b-5-10-20, .pad-b-5-15-20, .pad-b-10-0-20, .pad-b-10-5-20, .pad-b-10-10-20, .pad-b-10-15-20, .pad-b-15-0-20, .pad-b-15-5-20, .pad-b-15-10-20, .pad-b-15-15-20, .pad-b-20-0-20, .pad-b-20-5-20, .pad-b-20-10-20, .pad-b-20-15-20 {
+		padding-bottom:20px;
+	}
+	/* */
+	.pad-l-0-5-0, .pad-l-0-10-0, .pad-l-0-15-0, .pad-l-0-20-0, .pad-l-5-5-0, .pad-l-5-10-0, .pad-l-5-15-0, .pad-l-5-20-0, .pad-l-10-5-0, .pad-l-10-10-0, .pad-l-10-15-0, .pad-l-10-20-0, .pad-l-15-5-0, .pad-l-15-10-0, .pad-l-15-15-0, .pad-l-15-20-0, .pad-l-20-5-0, .pad-l-20-10-0, .pad-l-20-15-0, .pad-l-20-20-0 {
+		padding-left:0px;
+	}
+	.pad-l-0-0-5, .pad-l-0-10-5, .pad-l-0-15-5, .pad-l-0-20-5, .pad-l-5-0-5, .pad-l-5-10-5, .pad-l-5-15-5, .pad-l-5-20-5, .pad-l-10-0-5, .pad-l-10-10-5, .pad-l-10-15-5, .pad-l-10-20-5, .pad-l-15-0-5, .pad-l-15-10-5, .pad-l-15-15-5, .pad-l-15-20-5, .pad-l-20-0-5, .pad-l-20-10-5, .pad-l-20-15-5, .pad-l-20-20-5 {
+		padding-left:5px;
+	}
+	.pad-l-0-0-10, .pad-l-0-5-10, .pad-l-0-15-10, .pad-l-0-20-10, .pad-l-5-0-10, .pad-l-5-5-10, .pad-l-5-15-10, .pad-l-5-20-10, .pad-l-10-0-10, .pad-l-10-5-10, .pad-l-10-15-10, .pad-l-10-20-10, .pad-l-15-0-10, .pad-l-15-5-10, .pad-l-15-15-10, .pad-l-15-20-10, .pad-l-20-0-10, .pad-l-20-5-10, .pad-l-20-15-10, .pad-l-20-20-10 {
+		padding-left:10px;
+	}
+	.pad-l-0-0-15, .pad-l-0-5-15, .pad-l-0-10-15, .pad-l-0-20-15, .pad-l-5-0-15, .pad-l-5-5-15, .pad-l-5-10-15, .pad-l-5-20-15, .pad-l-10-0-15, .pad-l-10-5-15, .pad-l-10-10-15, .pad-l-10-20-15, .pad-l-15-0-15, .pad-l-15-5-15, .pad-l-15-10-15, .pad-l-15-20-15, .pad-l-20-0-15, .pad-l-20-5-15, .pad-l-20-10-15, .pad-l-20-20-15 {
+		padding-left:15px;
+	}
+	.pad-l-0-0-20, .pad-l-0-5-20, .pad-l-0-10-20, .pad-l-0-15-20, .pad-l-5-0-20, .pad-l-5-5-20, .pad-l-5-10-20, .pad-l-5-15-20, .pad-l-10-0-20, .pad-l-10-5-20, .pad-l-10-10-20, .pad-l-10-15-20, .pad-l-15-0-20, .pad-l-15-5-20, .pad-l-15-10-20, .pad-l-15-15-20, .pad-l-20-0-20, .pad-l-20-5-20, .pad-l-20-10-20, .pad-l-20-15-20 {
+		padding-left:20px;
+	}
+	
+	
+	/* Pushing
+	*/
+	.push-0-5-0, .push-0-10-0, .push-0-15-0, .push-0-20-0, .push-5-5-0, .push-5-10-0, .push-5-15-0, .push-5-20-0, .push-10-5-0, .push-10-10-0, .push-10-15-0, .push-10-20-0, .push-15-5-0, .push-15-10-0, .push-15-15-0, .push-15-20-0, .push-20-5-0, .push-20-10-0, .push-20-15-0, .push-20-20-0 {
+		border:0px solid transparent;
+	}
+	.push-0-0-5, .push-0-10-5, .push-0-15-5, .push-0-20-5, .push-5-0-5, .push-5-10-5, .push-5-15-5, .push-5-20-5, .push-10-0-5, .push-10-10-5, .push-10-15-5, .push-10-20-5, .push-15-0-5, .push-15-10-5, .push-15-15-5, .push-15-20-5, .push-20-0-5, .push-20-10-5, .push-20-15-5, .push-20-20-5 {
+		border:5px solid transparent;
+	}
+	.push-0-0-10, .push-0-5-10, .push-0-15-10, .push-0-20-10, .push-5-0-10, .push-5-5-10, .push-5-15-10, .push-5-20-10, .push-10-0-10, .push-10-5-10, .push-10-15-10, .push-10-20-10, .push-15-0-10, .push-15-5-10, .push-15-15-10, .push-15-20-10, .push-20-0-10, .push-20-5-10, .push-20-15-10, .push-20-20-10 {
+		border:10px solid transparent;
+	}
+	.push-0-0-15, .push-0-5-15, .push-0-10-15, .push-0-20-15, .push-5-0-15, .push-5-5-15, .push-5-10-15, .push-5-20-15, .push-10-0-15, .push-10-5-15, .push-10-10-15, .push-10-20-15, .push-15-0-15, .push-15-5-15, .push-15-10-15, .push-15-20-15, .push-20-0-15, .push-20-5-15, .push-20-10-15, .push-20-20-15 {
+		border:15px solid transparent;
+	}
+	.push-0-0-20, .push-0-5-20, .push-0-10-20, .push-0-15-20, .push-5-0-20, .push-5-5-20, .push-5-10-20, .push-5-15-20, .push-10-0-20, .push-10-5-20, .push-10-10-20, .push-10-15-20, .push-15-0-20, .push-15-5-20, .push-15-10-20, .push-15-15-20, .push-20-0-20, .push-20-5-20, .push-20-10-20, .push-20-15-20 {
+		border:20px solid transparent;
+	}
+	/* */
+	.push-tb-0-5-0, .push-tb-0-10-0, .push-tb-0-15-0, .push-tb-0-20-0, .push-tb-5-5-0, .push-tb-5-10-0, .push-tb-5-15-0, .push-tb-5-20-0, .push-tb-10-5-0, .push-tb-10-10-0, .push-tb-10-15-0, .push-tb-10-20-0, .push-tb-15-5-0, .push-tb-15-10-0, .push-tb-15-15-0, .push-tb-15-20-0, .push-tb-20-5-0, .push-tb-20-10-0, .push-tb-20-15-0, .push-tb-20-20-0 {
+		border-top:0px solid transparent;
+		border-bottom:0px solid transparent;
+	}
+	.push-tb-0-0-5, .push-tb-0-10-5, .push-tb-0-15-5, .push-tb-0-20-5, .push-tb-5-0-5, .push-tb-5-10-5, .push-tb-5-15-5, .push-tb-5-20-5, .push-tb-10-0-5, .push-tb-10-10-5, .push-tb-10-15-5, .push-tb-10-20-5, .push-tb-15-0-5, .push-tb-15-10-5, .push-tb-15-15-5, .push-tb-15-20-5, .push-tb-20-0-5, .push-tb-20-10-5, .push-tb-20-15-5, .push-tb-20-20-5 {
+		border-top:5px solid transparent;
+		border-bottom:5px solid transparent;
+	}
+	.push-tb-0-0-10, .push-tb-0-5-10, .push-tb-0-15-10, .push-tb-0-20-10, .push-tb-5-0-10, .push-tb-5-5-10, .push-tb-5-15-10, .push-tb-5-20-10, .push-tb-10-0-10, .push-tb-10-5-10, .push-tb-10-15-10, .push-tb-10-20-10, .push-tb-15-0-10, .push-tb-15-5-10, .push-tb-15-15-10, .push-tb-15-20-10, .push-tb-20-0-10, .push-tb-20-5-10, .push-tb-20-15-10, .push-tb-20-20-10 {
+		border-top:10px solid transparent;
+		border-bottom:10px solid transparent;
+	}
+	.push-tb-0-0-15, .push-tb-0-5-15, .push-tb-0-10-15, .push-tb-0-20-15, .push-tb-5-0-15, .push-tb-5-5-15, .push-tb-5-10-15, .push-tb-5-20-15, .push-tb-10-0-15, .push-tb-10-5-15, .push-tb-10-10-15, .push-tb-10-20-15, .push-tb-15-0-15, .push-tb-15-5-15, .push-tb-15-10-15, .push-tb-15-20-15, .push-tb-20-0-15, .push-tb-20-5-15, .push-tb-20-10-15, .push-tb-20-20-15 {
+		border-top:15px solid transparent;
+		border-bottom:15px solid transparent;
+	}
+	.push-tb-0-0-20, .push-tb-0-5-20, .push-tb-0-10-20, .push-tb-0-15-20, .push-tb-5-0-20, .push-tb-5-5-20, .push-tb-5-10-20, .push-tb-5-15-20, .push-tb-10-0-20, .push-tb-10-5-20, .push-tb-10-10-20, .push-tb-10-15-20, .push-tb-15-0-20, .push-tb-15-5-20, .push-tb-15-10-20, .push-tb-15-15-20, .push-tb-20-0-20, .push-tb-20-5-20, .push-tb-20-10-20, .push-tb-20-15-20 {
+		border-top:20px solid transparent;
+		border-bottom:20px solid transparent;
+	}
+	/* */
+	.push-lr-0-5-0, .push-lr-0-10-0, .push-lr-0-15-0, .push-lr-0-20-0, .push-lr-5-5-0, .push-lr-5-10-0, .push-lr-5-15-0, .push-lr-5-20-0, .push-lr-10-5-0, .push-lr-10-10-0, .push-lr-10-15-0, .push-lr-10-20-0, .push-lr-15-5-0, .push-lr-15-10-0, .push-lr-15-15-0, .push-lr-15-20-0, .push-lr-20-5-0, .push-lr-20-10-0, .push-lr-20-15-0, .push-lr-20-20-0 {
+		border-left:0px solid transparent;
+		border-right:0px solid transparent;
+	}
+	.push-lr-0-0-5, .push-lr-0-10-5, .push-lr-0-15-5, .push-lr-0-20-5, .push-lr-5-0-5, .push-lr-5-10-5, .push-lr-5-15-5, .push-lr-5-20-5, .push-lr-10-0-5, .push-lr-10-10-5, .push-lr-10-15-5, .push-lr-10-20-5, .push-lr-15-0-5, .push-lr-15-10-5, .push-lr-15-15-5, .push-lr-15-20-5, .push-lr-20-0-5, .push-lr-20-10-5, .push-lr-20-15-5, .push-lr-20-20-5 {
+		border-left:5px solid transparent;
+		border-right:5px solid transparent;
+	}
+	.push-lr-0-0-10, .push-lr-0-5-10, .push-lr-0-15-10, .push-lr-0-20-10, .push-lr-5-0-10, .push-lr-5-5-10, .push-lr-5-15-10, .push-lr-5-20-10, .push-lr-10-0-10, .push-lr-10-5-10, .push-lr-10-15-10, .push-lr-10-20-10, .push-lr-15-0-10, .push-lr-15-5-10, .push-lr-15-15-10, .push-lr-15-20-10, .push-lr-20-0-10, .push-lr-20-5-10, .push-lr-20-15-10, .push-lr-20-20-10 {
+		border-left:10px solid transparent;
+		border-right:10px solid transparent;
+	}
+	.push-lr-0-0-15, .push-lr-0-5-15, .push-lr-0-10-15, .push-lr-0-20-15, .push-lr-5-0-15, .push-lr-5-5-15, .push-lr-5-10-15, .push-lr-5-20-15, .push-lr-10-0-15, .push-lr-10-5-15, .push-lr-10-10-15, .push-lr-10-20-15, .push-lr-15-0-15, .push-lr-15-5-15, .push-lr-15-10-15, .push-lr-15-20-15, .push-lr-20-0-15, .push-lr-20-5-15, .push-lr-20-10-15, .push-lr-20-20-15 {
+		border-left:15px solid transparent;
+		border-right:15px solid transparent;
+	}
+	.push-lr-0-0-20, .push-lr-0-5-20, .push-lr-0-10-20, .push-lr-0-15-20, .push-lr-5-0-20, .push-lr-5-5-20, .push-lr-5-10-20, .push-lr-5-15-20, .push-lr-10-0-20, .push-lr-10-5-20, .push-lr-10-10-20, .push-lr-10-15-20, .push-lr-15-0-20, .push-lr-15-5-20, .push-lr-15-10-20, .push-lr-15-15-20, .push-lr-20-0-20, .push-lr-20-5-20, .push-lr-20-10-20, .push-lr-20-15-20 {
+		border-left:20px solid transparent;
+		border-right:20px solid transparent;
+	}
+	/* */
+	.push-t-0-5-0, .push-t-0-10-0, .push-t-0-15-0, .push-t-0-20-0, .push-t-5-5-0, .push-t-5-10-0, .push-t-5-15-0, .push-t-5-20-0, .push-t-10-5-0, .push-t-10-10-0, .push-t-10-15-0, .push-t-10-20-0, .push-t-15-5-0, .push-t-15-10-0, .push-t-15-15-0, .push-t-15-20-0, .push-t-20-5-0, .push-t-20-10-0, .push-t-20-15-0, .push-t-20-20-0 {
+		border-top:0px solid transparent;
+	}
+	.push-t-0-0-5, .push-t-0-10-5, .push-t-0-15-5, .push-t-0-20-5, .push-t-5-0-5, .push-t-5-10-5, .push-t-5-15-5, .push-t-5-20-5, .push-t-10-0-5, .push-t-10-10-5, .push-t-10-15-5, .push-t-10-20-5, .push-t-15-0-5, .push-t-15-10-5, .push-t-15-15-5, .push-t-15-20-5, .push-t-20-0-5, .push-t-20-10-5, .push-t-20-15-5, .push-t-20-20-5 {
+		border-top:5px solid transparent;
+	}
+	.push-t-0-0-10, .push-t-0-5-10, .push-t-0-15-10, .push-t-0-20-10, .push-t-5-0-10, .push-t-5-5-10, .push-t-5-15-10, .push-t-5-20-10, .push-t-10-0-10, .push-t-10-5-10, .push-t-10-15-10, .push-t-10-20-10, .push-t-15-0-10, .push-t-15-5-10, .push-t-15-15-10, .push-t-15-20-10, .push-t-20-0-10, .push-t-20-5-10, .push-t-20-15-10, .push-t-20-20-10 {
+		border-top:10px solid transparent;
+	}
+	.push-t-0-0-15, .push-t-0-5-15, .push-t-0-10-15, .push-t-0-20-15, .push-t-5-0-15, .push-t-5-5-15, .push-t-5-10-15, .push-t-5-20-15, .push-t-10-0-15, .push-t-10-5-15, .push-t-10-10-15, .push-t-10-20-15, .push-t-15-0-15, .push-t-15-5-15, .push-t-15-10-15, .push-t-15-20-15, .push-t-20-0-15, .push-t-20-5-15, .push-t-20-10-15, .push-t-20-20-15 {
+		border-top:15px solid transparent;
+	}
+	.push-t-0-0-20, .push-t-0-5-20, .push-t-0-10-20, .push-t-0-15-20, .push-t-5-0-20, .push-t-5-5-20, .push-t-5-10-20, .push-t-5-15-20, .push-t-10-0-20, .push-t-10-5-20, .push-t-10-10-20, .push-t-10-15-20, .push-t-15-0-20, .push-t-15-5-20, .push-t-15-10-20, .push-t-15-15-20, .push-t-20-0-20, .push-t-20-5-20, .push-t-20-10-20, .push-t-20-15-20 {
+		border-top:20px solid transparent;
+	}
+	/* */
+	.push-r-0-5-0, .push-r-0-10-0, .push-r-0-15-0, .push-r-0-20-0, .push-r-5-5-0, .push-r-5-10-0, .push-r-5-15-0, .push-r-5-20-0, .push-r-10-5-0, .push-r-10-10-0, .push-r-10-15-0, .push-r-10-20-0, .push-r-15-5-0, .push-r-15-10-0, .push-r-15-15-0, .push-r-15-20-0, .push-r-20-5-0, .push-r-20-10-0, .push-r-20-15-0, .push-r-20-20-0 {
+		border-right:0px solid transparent;
+	}
+	.push-r-0-0-5, .push-r-0-10-5, .push-r-0-15-5, .push-r-0-20-5, .push-r-5-0-5, .push-r-5-10-5, .push-r-5-15-5, .push-r-5-20-5, .push-r-10-0-5, .push-r-10-10-5, .push-r-10-15-5, .push-r-10-20-5, .push-r-15-0-5, .push-r-15-10-5, .push-r-15-15-5, .push-r-15-20-5, .push-r-20-0-5, .push-r-20-10-5, .push-r-20-15-5, .push-r-20-20-5 {
+		border-right:5px solid transparent;
+	}
+	.push-r-0-0-10, .push-r-0-5-10, .push-r-0-15-10, .push-r-0-20-10, .push-r-5-0-10, .push-r-5-5-10, .push-r-5-15-10, .push-r-5-20-10, .push-r-10-0-10, .push-r-10-5-10, .push-r-10-15-10, .push-r-10-20-10, .push-r-15-0-10, .push-r-15-5-10, .push-r-15-15-10, .push-r-15-20-10, .push-r-20-0-10, .push-r-20-5-10, .push-r-20-15-10, .push-r-20-20-10 {
+		border-right:10px solid transparent;
+	}
+	.push-r-0-0-15, .push-r-0-5-15, .push-r-0-10-15, .push-r-0-20-15, .push-r-5-0-15, .push-r-5-5-15, .push-r-5-10-15, .push-r-5-20-15, .push-r-10-0-15, .push-r-10-5-15, .push-r-10-10-15, .push-r-10-20-15, .push-r-15-0-15, .push-r-15-5-15, .push-r-15-10-15, .push-r-15-20-15, .push-r-20-0-15, .push-r-20-5-15, .push-r-20-10-15, .push-r-20-20-15 {
+		border-right:15px solid transparent;
+	}
+	.push-r-0-0-20, .push-r-0-5-20, .push-r-0-10-20, .push-r-0-15-20, .push-r-5-0-20, .push-r-5-5-20, .push-r-5-10-20, .push-r-5-15-20, .push-r-10-0-20, .push-r-10-5-20, .push-r-10-10-20, .push-r-10-15-20, .push-r-15-0-20, .push-r-15-5-20, .push-r-15-10-20, .push-r-15-15-20, .push-r-20-0-20, .push-r-20-5-20, .push-r-20-10-20, .push-r-20-15-20 {
+		border-right:20px solid transparent;
+	}
+	/* */
+	.push-b-0-5-0, .push-b-0-10-0, .push-b-0-15-0, .push-b-0-20-0, .push-b-5-5-0, .push-b-5-10-0, .push-b-5-15-0, .push-b-5-20-0, .push-b-10-5-0, .push-b-10-10-0, .push-b-10-15-0, .push-b-10-20-0, .push-b-15-5-0, .push-b-15-10-0, .push-b-15-15-0, .push-b-15-20-0, .push-b-20-5-0, .push-b-20-10-0, .push-b-20-15-0, .push-b-20-20-0 {
+		border-bottom:0px solid transparent;
+	}
+	.push-b-0-0-5, .push-b-0-10-5, .push-b-0-15-5, .push-b-0-20-5, .push-b-5-0-5, .push-b-5-10-5, .push-b-5-15-5, .push-b-5-20-5, .push-b-10-0-5, .push-b-10-10-5, .push-b-10-15-5, .push-b-10-20-5, .push-b-15-0-5, .push-b-15-10-5, .push-b-15-15-5, .push-b-15-20-5, .push-b-20-0-5, .push-b-20-10-5, .push-b-20-15-5, .push-b-20-20-5 {
+		border-bottom:5px solid transparent;
+	}
+	.push-b-0-0-10, .push-b-0-5-10, .push-b-0-15-10, .push-b-0-20-10, .push-b-5-0-10, .push-b-5-5-10, .push-b-5-15-10, .push-b-5-20-10, .push-b-10-0-10, .push-b-10-5-10, .push-b-10-15-10, .push-b-10-20-10, .push-b-15-0-10, .push-b-15-5-10, .push-b-15-15-10, .push-b-15-20-10, .push-b-20-0-10, .push-b-20-5-10, .push-b-20-15-10, .push-b-20-20-10 {
+		border-bottom:10px solid transparent;
+	}
+	.push-b-0-0-15, .push-b-0-5-15, .push-b-0-10-15, .push-b-0-20-15, .push-b-5-0-15, .push-b-5-5-15, .push-b-5-10-15, .push-b-5-20-15, .push-b-10-0-15, .push-b-10-5-15, .push-b-10-10-15, .push-b-10-20-15, .push-b-15-0-15, .push-b-15-5-15, .push-b-15-10-15, .push-b-15-20-15, .push-b-20-0-15, .push-b-20-5-15, .push-b-20-10-15, .push-b-20-20-15 {
+		border-bottom:15px solid transparent;
+	}
+	.push-b-0-0-20, .push-b-0-5-20, .push-b-0-10-20, .push-b-0-15-20, .push-b-5-0-20, .push-b-5-5-20, .push-b-5-10-20, .push-b-5-15-20, .push-b-10-0-20, .push-b-10-5-20, .push-b-10-10-20, .push-b-10-15-20, .push-b-15-0-20, .push-b-15-5-20, .push-b-15-10-20, .push-b-15-15-20, .push-b-20-0-20, .push-b-20-5-20, .push-b-20-10-20, .push-b-20-15-20 {
+		border-bottom:20px solid transparent;
+	}
+	/* */
+	.push-l-0-5-0, .push-l-0-10-0, .push-l-0-15-0, .push-l-0-20-0, .push-l-5-5-0, .push-l-5-10-0, .push-l-5-15-0, .push-l-5-20-0, .push-l-10-5-0, .push-l-10-10-0, .push-l-10-15-0, .push-l-10-20-0, .push-l-15-5-0, .push-l-15-10-0, .push-l-15-15-0, .push-l-15-20-0, .push-l-20-5-0, .push-l-20-10-0, .push-l-20-15-0, .push-l-20-20-0 {
+		border-left:0px solid transparent;
+	}
+	.push-l-0-0-5, .push-l-0-10-5, .push-l-0-15-5, .push-l-0-20-5, .push-l-5-0-5, .push-l-5-10-5, .push-l-5-15-5, .push-l-5-20-5, .push-l-10-0-5, .push-l-10-10-5, .push-l-10-15-5, .push-l-10-20-5, .push-l-15-0-5, .push-l-15-10-5, .push-l-15-15-5, .push-l-15-20-5, .push-l-20-0-5, .push-l-20-10-5, .push-l-20-15-5, .push-l-20-20-5 {
+		border-left:5px solid transparent;
+	}
+	.push-l-0-0-10, .push-l-0-5-10, .push-l-0-15-10, .push-l-0-20-10, .push-l-5-0-10, .push-l-5-5-10, .push-l-5-15-10, .push-l-5-20-10, .push-l-10-0-10, .push-l-10-5-10, .push-l-10-15-10, .push-l-10-20-10, .push-l-15-0-10, .push-l-15-5-10, .push-l-15-15-10, .push-l-15-20-10, .push-l-20-0-10, .push-l-20-5-10, .push-l-20-15-10, .push-l-20-20-10 {
+		border-left:10px solid transparent;
+	}
+	.push-l-0-0-15, .push-l-0-5-15, .push-l-0-10-15, .push-l-0-20-15, .push-l-5-0-15, .push-l-5-5-15, .push-l-5-10-15, .push-l-5-20-15, .push-l-10-0-15, .push-l-10-5-15, .push-l-10-10-15, .push-l-10-20-15, .push-l-15-0-15, .push-l-15-5-15, .push-l-15-10-15, .push-l-15-20-15, .push-l-20-0-15, .push-l-20-5-15, .push-l-20-10-15, .push-l-20-20-15 {
+		border-left:15px solid transparent;
+	}
+	.push-l-0-0-20, .push-l-0-5-20, .push-l-0-10-20, .push-l-0-15-20, .push-l-5-0-20, .push-l-5-5-20, .push-l-5-10-20, .push-l-5-15-20, .push-l-10-0-20, .push-l-10-5-20, .push-l-10-10-20, .push-l-10-15-20, .push-l-15-0-20, .push-l-15-5-20, .push-l-15-10-20, .push-l-15-15-20, .push-l-20-0-20, .push-l-20-5-20, .push-l-20-10-20, .push-l-20-15-20 {
+		border-left:20px solid transparent;
+	}
+	
+	
+}
+
