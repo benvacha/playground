@@ -15,3 +15,6 @@ An artificially intelligent box packing GUI implemented entirely in the browser.
 
 #### navsponsive
 An accessible, responsive CSS menu framework with a jQuery upgrade. *Navsponsive* makes no assumptions or rules on design; it just provides robust functionality.
+
+#### chewvacha
+A logo concept for an alter ego. *Chewvacha*, a.k.a. The Code Wookiee.
