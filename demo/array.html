@@ -1,0 +1,28 @@
+<html>
+<head>
+	<link type="image/png" rel="icon" href="http://esocode.com/img/icon.png" />
+	<script type="text/javascript" src="../esoframe.min.js"></script>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		
+		var ns = ['n1', 'n2', 'n3', 'n4', 'n5'];
+		var ms = ['m1', 'm2', 'm3', 'm4', 'm5'];
+		var nms = ['m1', 'n2', 'm3', 'n4', 'm5', 'm6', 'n7'];
+		
+		var merged = esoframe.array.merge(ns, ms, nms);
+		var sorted = esoframe.array.sort(ns, ms, nms);
+		var extended = esoframe.array.extend(ns, ms, nms);
+		var extendsorted = esoframe.array.extendsort(ns, ms, nms);
+		
+		esoframe.array.each(extendsorted, function(i, token) {
+			document.write(i + ' : ' + token + '<br />');
+		});
+		
+		document.write(esoframe.array.indexof(extendsorted, 'n4'));
+		
+	</script>
+	
+</body>
+</html>

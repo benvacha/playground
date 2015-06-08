@@ -1,0 +1,58 @@
+<html>
+<head>
+	<link type="image/png" rel="icon" href="http://esocode.com/img/icon.png" />
+	<script type="text/javascript" src="../esoframe.min.js"></script>
+	<script type="text/javascript">
+		
+		(function() {
+			
+			var shape = function(color) {
+				this.getColor = function() {
+					return color;
+				}
+			}
+			
+			esoframe.class.define('shape.shape', shape);
+			
+		})();
+		
+		(function() {
+			
+			var square = function(color, width, height) {
+				this.superConstructor(color);
+				this.getArea = function() {
+					return width * height;
+				}
+			}
+			
+			esoframe.class.inherit(square, shape.shape);
+			esoframe.class.define('shape.square', square);
+			
+		})();
+		
+		(function() {
+			
+			var circle = function(color, radius) {
+				this.superConstructor(color);
+				this.getArea = function() {
+					return Math.PI * radius * radius;
+				}
+			}
+			
+			esoframe.class.inherit(circle, shape.shape);
+			esoframe.class.define('shape.circle', circle);
+			
+		})();
+		
+		var square = new shape.square('blue', 2, 2);
+		var circle = new shape.circle('pink', 3);
+		
+		console.log(square.getColor() + ' : ' + square.getArea());
+		console.log(circle.getColor() + ' : ' + circle.getArea());
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
