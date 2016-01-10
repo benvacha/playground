@@ -1,0 +1,195 @@
+/**
+* Benjamin Vacha : benvacha.com
+* KCPO : github.com/benvacha/kcpo
+*/
+
+/* 
+ * Whole Document / Body 
+*/
+html, body {
+	margin:0px;
+	width:100%;
+	height:100% !important;
+	height:auto;
+	min-height:100%;
+	background-image:url('../images/binding_dark.png');
+}
+/* used to make floating things force parent height */
+.clear {
+	position:relative;
+	clear:both;
+	margin:0px;
+	width:100%;
+	height:0px;
+	padding:0px;
+}
+
+/*
+ * The list of posts
+*/
+.galleries {
+	position:relative;
+	margin:0px;
+	width:100%;
+	height:auto;
+	min-height:100%;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+/* the + button */
+.galleries .more {
+	position:relative;
+	margin:0px;
+	width:100%;
+	height:60px;
+	font-size:30px;
+	line-height:2em;
+	color:rgba(255,255,255,.5);
+	vertical-align:middle;
+	font-family:'Source Sans Pro', 'PT Sans', Arial, "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+	text-align:center;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.galleries .more img {
+	position:relative;
+	top:25px;
+	opacity:.6;
+}
+.galleries .more:hover, .galleries .more:focus {
+	cursor:pointer;
+	color:rgba(255,255,255,.6);
+	background-color:rgba(255,255,255,.1);
+}
+/* a post */
+.galleries .gallery {
+	position:relative;
+	margin:0px;
+	width:100%;
+	height:auto;
+	padding:15px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	border-bottom:1px solid rgba(255,255,255,.2);
+}
+.galleries .gallery:hover {
+	background-color:rgba(255,255,255,.1);
+}
+.galleries .gallery .header {
+	position:relative;
+	margin:0px;
+	width:100%;
+	height:auto;
+	padding:0px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	cursor:pointer;
+}
+.galleries .gallery .header .preview {
+	position:relative;
+	z-index:1;
+	float:left;
+	margin:0px 10px 0px 0px;
+	width:75px;
+	height:75px;
+	padding:0px;
+	background-position:center center;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.galleries .gallery .header .title {
+	position:relative;
+	margin:0px 0px 0px 0px;
+	width:100%;
+	height:auto;
+	padding:0px;
+	vertical-align:middle;
+	font-family:'Source Sans Pro', 'PT Sans', Arial, "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+	color:#FFF;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+/* the thumb scroller in a post */
+.galleries .gallery .images {
+	position:relative;
+	display:none;
+	margin:0px;
+	width:100%;
+	height:auto;
+	padding:0px;
+	overflow:auto;
+	white-space:nowrap;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-overflow-scrolling:touch;
+}
+.galleries .gallery .images img {
+	position:relative;
+	display:inline-block;
+	margin:10px;
+	width:auto;
+	height:auto;
+	padding:0px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .3);
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .3);
+}
+.galleries .gallery .images img:hover {
+	-webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .6);
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .6);
+}
+
+/*
+ * The full screen image viewer
+*/
+.viewer {
+	position:fixed;
+	display:none;
+	z-index:10;
+	top:0px;
+	left:0px;
+	margin:0px;
+	width:100%;
+	height:100%;
+	padding:0px;
+	white-space:nowrap;
+	background-color:rgba(0,0,0,.9);
+}
+.viewer .image {
+	position:relative;
+	display:inline-block;
+	margin:0px;
+	width:100%;
+	max-width:100%;
+	height:100%;
+	max-height:100%;
+	padding:0px;
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
